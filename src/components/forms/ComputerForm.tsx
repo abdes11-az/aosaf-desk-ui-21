@@ -135,7 +135,7 @@ const ComputerForm = ({ onBack, onGenerateDescription }: ComputerFormProps) => {
         </div>
       </div>
 
-      <Accordion type="multiple" defaultValue={["general"]} className="space-y-4">
+      <Accordion type="single" collapsible defaultValue="general" className="space-y-4">
         {/* General Section */}
         <AccordionItem value="general" className="form-section">
           <AccordionTrigger className="text-lg font-semibold">
