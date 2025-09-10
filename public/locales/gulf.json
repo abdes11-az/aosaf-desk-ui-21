@@ -213,7 +213,7 @@
     "fuel_consumption": "استهلاك البنزين (كيلو/لتر)",
     "max_speed": "السرعة القصوى (كيلو/ساعة)",
     "mileage": "المسافة المقطوعة (كيلو)",
-    "modifications": "التعديلات",
+    "technical_details": "التفاصيل التقنية",
     "accessories": "الملحقات"
   },
   "clothing": {
@@ -365,6 +365,7 @@
     "motorcycle_for_sale": "دراجة نارية للبيع",
     "clothing_for_sale": "ملابس للبيع",
     "tablet_for_sale": "تابلت مميز للبيع", 
+    "computer_for_sale": "حاسوب للبيع",
     "car_for_sale": "سيارة للبيع"
   }
 }
