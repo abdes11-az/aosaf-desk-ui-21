@@ -32,7 +32,7 @@ export const APP_CONFIG = {
 export const SUPPORTED_ITEM_TYPES = [
   'car', 'phone', 'real-estate', 'tenant', 
   'free-writing', 'tablet', 'bicycle', 
-  'motorcycle', 'clothing', 'questions'
+  'motorcycle', 'clothing', 'computer', 'questions'
 ] as const;
 
 export type SupportedItemType = typeof SUPPORTED_ITEM_TYPES[number];
