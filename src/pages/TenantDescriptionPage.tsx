@@ -28,10 +28,11 @@ const TenantDescriptionPage = ({ tenantData, onBack, onNewDescription }: TenantD
     }
 
     // القسم السكني
-    if (data.numberOfResidents || data.hasChildren || data.hasFurniture || data.hasPets || data.contractSigning || data.paymentMethod) {
+    if (data.numberOfResidents || data.hasChildren || data.numberOfChildren || data.hasFurniture || data.hasPets || data.contractSigning || data.paymentMethod) {
       description += `🏠 ${t('description.residential_section_desc')}:\n`;
       if (data.numberOfResidents) description += `• ${t('tenant.number_of_residents')}: ${data.numberOfResidents}\n`;
       if (data.hasChildren) description += `• ${t('tenant.has_children')}: ${yn(data.hasChildren, t)}\n`;
+      if (data.numberOfChildren) description += `• ${t('tenant.number_of_children')}: ${data.numberOfChildren}\n`;
       if (data.hasFurniture) description += `• ${t('tenant.has_furniture')}: ${yn(data.hasFurniture, t)}\n`;
       if (data.hasPets) description += `• ${t('tenant.has_pets')}: ${yn(data.hasPets, t)}\n`;
       if (data.contractSigning) description += `• ${t('tenant.contract_signing')}: ${opt(data.contractSigning, t)}\n`;

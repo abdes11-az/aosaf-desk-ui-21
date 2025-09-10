@@ -27,6 +27,7 @@ const TenantForm = ({ onBack, onGenerateDescription }: TenantFormProps) => {
     // القسم السكني
     numberOfResidents: "",
     hasChildren: "",
+    numberOfChildren: "",
     hasFurniture: "",
     hasPets: "",
     contractSigning: "",
@@ -168,6 +169,18 @@ const TenantForm = ({ onBack, onGenerateDescription }: TenantFormProps) => {
                   </SelectContent>
                 </Select>
               </div>
+              {formData.hasChildren === "نعم" && (
+                <div>
+                  <Label htmlFor="numberOfChildren">{t('tenant.number_of_children')}</Label>
+                  <Input
+                    id="numberOfChildren"
+                    type="number"
+                    placeholder={t('placeholders.number')}
+                    value={formData.numberOfChildren}
+                    onChange={(e) => updateField("numberOfChildren", e.target.value)}
+                  />
+                </div>
+              )}
               <div>
                 <Label htmlFor="hasFurniture">{t('tenant.has_furniture')}</Label>
                 <Select value={formData.hasFurniture} onValueChange={(value) => updateField("hasFurniture", value)}>

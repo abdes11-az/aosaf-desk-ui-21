@@ -155,6 +155,7 @@
     "residential_desc": "هذا القسم خاص بالاستخدام السكني",
     "number_of_residents": "عدد السكان",
     "has_children": "يوجد أطفال",
+    "number_of_children": "عدد الأطفال",
     "has_furniture": "يوجد أثاث",
     "has_pets": "يوجد حيوانات أليفة",
     "contract_signing": "توقيع العقد",
@@ -269,6 +270,7 @@
     "additional_details": "أضف أي تفاصيل إضافية...",
     "additional_notes": "أضف أي ملاحظات إضافية هنا...",
     "choose": "اختر...",
+    "number": "أدخل الرقم...",
     "enter_client_type": "أدخل نوع العميل المستهدف..."
   },
   "options": {
