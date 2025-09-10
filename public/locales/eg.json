@@ -365,6 +365,24 @@
     "motorcycle_for_sale": "موتوسيكل للبيع",
     "clothing_for_sale": "هدوم للبيع", 
     "tablet_for_sale": "تابلت مميز للبيع",
-    "car_for_sale": "عربية للبيع"
+    "car_for_sale": "عربية للبيع",
+    "specifications": "المواصفات",
+    "frame_size": "حجم الإطار",
+    "material": "مادة الإطار",
+    "gear_system": "نظام السرعات",
+    "brake_type": "نوع الفرامل",
+    "weight": "الوزن",
+    "wheel_size": "حجم الكاوتش",
+    "included_accessories": "الملحقات المرفقة",
+    "tenant_profile": "ملف المستأجر",
+    "generated": "الوصف اللي اتعمل",
+    "generated_by_app": "الملف ده اتعمل بواسطة تطبيق عمل الأوصاف",
+    "general_section_desc": "القسم العام",
+    "residential_section_desc": "القسم السكني",
+    "commercial_section_desc": "القسم التجاري",
+    "contact_section_desc": "معلومات التواصل",
+    "save_file": "احفظ الملف",
+    "copy_text": "انسخ النص",
+    "edit_info": "عدل المعلومات"
   }
 }

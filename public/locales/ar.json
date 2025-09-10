@@ -373,6 +373,16 @@
     "brake_type": "نوع المكابح",
     "weight": "الوزن",
     "wheel_size": "حجم العجلات",
-    "included_accessories": "الملحقات المرفقة"
+    "included_accessories": "الملحقات المرفقة",
+    "tenant_profile": "ملف المستأجر",
+    "generated": "الوصف المُنشأ",
+    "generated_by_app": "تم إنشاء هذا الملف بواسطة تطبيق إنشاء الأوصاف",
+    "general_section_desc": "القسم العام",
+    "residential_section_desc": "القسم السكني",
+    "commercial_section_desc": "القسم التجاري",
+    "contact_section_desc": "معلومات التواصل",
+    "save_file": "حفظ الملف",
+    "copy_text": "نسخ النص",
+    "edit_info": "تعديل المعلومات"
   }
 }

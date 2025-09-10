@@ -365,6 +365,24 @@
     "motorcycle_for_sale": "موطو للبيع", 
     "clothing_for_sale": "حوايج للبيع",
     "tablet_for_sale": "تابلت مميز للبيع",
-    "car_for_sale": "طوموبيل للبيع"
+    "car_for_sale": "طوموبيل للبيع",
+    "specifications": "المواصفات",
+    "frame_size": "حجم الإطار",
+    "material": "مادة الإطار",
+    "gear_system": "نظام السرعات",
+    "brake_type": "نوع الفرامل",
+    "weight": "الوزن",
+    "wheel_size": "حجم الروايض",
+    "included_accessories": "الملحقات المرفقة",
+    "tenant_profile": "ملف المكري",
+    "generated": "الوصف اللي تدار",
+    "generated_by_app": "هذا الملف تدار بواسطة تطبيق إنشاء الأوصاف",
+    "general_section_desc": "القسم العام",
+    "residential_section_desc": "القسم السكني",
+    "commercial_section_desc": "القسم التجاري",
+    "contact_section_desc": "معلومات التواصل",
+    "save_file": "احفظ الملف",
+    "copy_text": "انسخ النص",
+    "edit_info": "بدل المعلومات"
   }
 }
