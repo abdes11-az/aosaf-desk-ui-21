@@ -20,8 +20,17 @@ export class PWAManager {
         this.serviceWorkerRegistration = registration;
         
         console.log('✅ تم تسجيل Service Worker بنجاح');
-        
-        // التحقق من التحديثات
+        // اطلب التحقق من التحديثات فوراً وعند عودة التبويب للواجهة
+        registration.update().catch(() => {});
+        document.addEventListener('visibilitychange', () => {
+          if (document.visibilityState === 'visible') registration.update().catch(() => {});
+        });
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+          // عندما يتم تفعيل العامل الجديد نستبدل الصفحة تلقائياً لضمان أحدث نسخة
+          window.location.reload();
+        });
+
+        // مراقبة ظهور نسخة جديدة من الخدمة
         registration.addEventListener('updatefound', () => {
           const newWorker = registration.installing;
           if (newWorker) {

@@ -1,5 +1,5 @@
 // Service Worker لدعم العمل بدون انترنت
-const CACHE_NAME = 'ausaf-app-v1';
+const CACHE_NAME = 'ausaf-app-v2';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
@@ -41,50 +41,64 @@ self.addEventListener('activate', (event) => {
       );
     }).then(() => {
       return self.clients.claim();
-    })
+      })
   );
 });
 
-// استراتيجية الكاش
+// استراتيجية الكاش مع تحديث تلقائي للمحتوى
 self.addEventListener('fetch', (event) => {
+  const req = event.request;
+
   // تجاهل الطلبات غير HTTP/HTTPS
-  if (!event.request.url.startsWith('http')) {
+  if (!req.url.startsWith('http')) return;
+
+  // صفحات HTML والتنقل => شبكة أولاً مع رجوع للكاش إن لزم
+  if (req.mode === 'navigate' || req.destination === 'document') {
+    event.respondWith((async () => {
+      try {
+        const fresh = await fetch(req);
+        // خزّن نسخة للاستخدام دون إنترنت
+        const cache = await caches.open(CACHE_NAME);
+        cache.put('/index.html', fresh.clone());
+        return fresh;
+      } catch (e) {
+        return (await caches.match('/index.html')) || (await caches.match('/'));
+      }
+    })());
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request)
-      .then((response) => {
-        // إرجاع من الكاش إذا وُجد
-        if (response) {
-          return response;
+  // ملفات الترجمة => شبكة أولاً لضمان أحدث النصوص
+  if (new URL(req.url).pathname.startsWith('/locales/')) {
+    event.respondWith((async () => {
+      try {
+        const fresh = await fetch(req);
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(req, fresh.clone());
+        return fresh;
+      } catch (e) {
+        return caches.match(req);
+      }
+    })());
+    return;
+  }
+
+  // باقي الأصول => stale-while-revalidate
+  event.respondWith((async () => {
+    const cache = await caches.open(CACHE_NAME);
+    const cached = await cache.match(req);
+
+    const fetchPromise = fetch(req)
+      .then((networkRes) => {
+        if (networkRes && networkRes.status === 200 && networkRes.type === 'basic') {
+          cache.put(req, networkRes.clone());
         }
-
-        // محاولة جلب من الشبكة
-        return fetch(event.request)
-          .then((response) => {
-            // التحقق من صحة الاستجابة
-            if (!response || response.status !== 200 || response.type !== 'basic') {
-              return response;
-            }
-
-            // نسخ الاستجابة للكاش
-            const responseToCache = response.clone();
-            caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseToCache);
-              });
-
-            return response;
-          })
-          .catch(() => {
-            // في حالة عدم توفر الشبكة، إرجاع صفحة افتراضية
-            if (event.request.destination === 'document') {
-              return caches.match('/');
-            }
-          });
+        return networkRes;
       })
-  );
+      .catch(() => undefined);
+
+    return cached || (await fetchPromise);
+  })());
 });
 
 // رسائل للتطبيق
