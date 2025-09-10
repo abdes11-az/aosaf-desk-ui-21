@@ -1,0 +1,55 @@
+{
+  "name": "أوصاف - منصة إنشاء الأوصاف الذكية",
+  "short_name": "أوصاف",
+  "description": "منصة أوصاف لإنشاء أوصاف احترافية للسيارات والعقارات والهواتف باستخدام الذكاء الاصطناعي",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "scope": "/",
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/lovable-uploads/99683814-2513-420d-b37f-2b72567ede76.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/lovable-uploads/99683814-2513-420d-b37f-2b72567ede76.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "إنشاء وصف جديد",
+      "short_name": "وصف جديد",
+      "description": "إنشاء وصف جديد للمنتج",
+      "url": "/?action=create",
+      "icons": [
+        {
+          "src": "/lovable-uploads/99683814-2513-420d-b37f-2b72567ede76.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "الأوصاف المحفوظة",
+      "short_name": "المحفوظات",
+      "description": "عرض الأوصاف المحفوظة",
+      "url": "/?tab=saved",
+      "icons": [
+        {
+          "src": "/lovable-uploads/99683814-2513-420d-b37f-2b72567ede76.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
+  "categories": ["productivity", "utilities"],
+  "lang": "ar",
+  "dir": "rtl"
+}
