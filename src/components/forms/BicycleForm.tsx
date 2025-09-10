@@ -122,7 +122,7 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            🚲 المعلومات الأساسية
+            🚲 {t('bicycle.basic_info')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -192,15 +192,15 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
 
       {/* التفاصيل التقنية */}
       <Card>
-        <CardHeader>
-          <CardTitle className="text-lg flex items-center gap-2">
-            ⚙️ التفاصيل التقنية
-          </CardTitle>
+          <CardHeader>
+            <CardTitle className="text-lg flex items-center gap-2">
+              ⚙️ {t('bicycle.technical_details')}
+            </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label>حجم الإطار</Label>
+              <Label>{t('bicycle.frame_size')}</Label>
               <Input
                 value={formData.frameSize}
                 onChange={(e) => updateData({ ...formData, frameSize: e.target.value })}
@@ -209,7 +209,7 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
             </div>
 
             <div>
-              <Label>مادة الإطار</Label>
+              <Label>{t('bicycle.material')}</Label>
               <Input
                 value={formData.material}
                 onChange={(e) => updateData({ ...formData, material: e.target.value })}
@@ -218,7 +218,7 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
             </div>
 
             <div>
-              <Label>نظام السرعات</Label>
+              <Label>{t('bicycle.gear_system')}</Label>
               <Select value={formData.gearSystem} onValueChange={(value) => updateData({ ...formData, gearSystem: value })}>
                 <SelectTrigger>
                   <SelectValue placeholder="اختر نظام السرعات" />
@@ -236,7 +236,7 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
             </div>
 
             <div>
-              <Label>نوع المكابح</Label>
+              <Label>{t('bicycle.brake_type')}</Label>
               <Input
                 value={formData.brakeType}
                 onChange={(e) => updateData({ ...formData, brakeType: e.target.value })}
@@ -245,7 +245,7 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
             </div>
 
             <div>
-              <Label>الوزن (كغ)</Label>
+              <Label>{t('bicycle.weight')}</Label>
               <Input
                 value={formData.weight}
                 onChange={(e) => updateData({ ...formData, weight: e.target.value })}
@@ -254,7 +254,7 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
             </div>
 
             <div>
-              <Label>حجم العجلات</Label>
+              <Label>{t('bicycle.wheel_size')}</Label>
               <Input
                 value={formData.wheelSize}
                 onChange={(e) => updateData({ ...formData, wheelSize: e.target.value })}
@@ -269,7 +269,7 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            🛠️ التعديلات
+            🛠️ {t('bicycle.modifications')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -292,7 +292,7 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            📦 الملحقات
+            📦 {t('bicycle.accessories')}
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -315,15 +315,15 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            💭 سبب البيع
+            💭 {t('description.sell_reason')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            <Label>سبب البيع</Label>
+            <Label>{t('description.sell_reason')}</Label>
             <Select value={formData.sellReason} onValueChange={(value) => updateData({ ...formData, sellReason: value })}>
               <SelectTrigger>
-                <SelectValue placeholder="اختر سبب البيع" />
+                <SelectValue placeholder={t('options.choose')} />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="شراء دراجة جديدة">شراء دراجة جديدة</SelectItem>
@@ -346,11 +346,11 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            🚫 العملاء غير المرغوب فيهم
+            🚫 {t('common.unwanted_customers')}
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Label className="text-base font-medium">من لا تريد التعامل معه؟:</Label>
+          <Label className="text-base font-medium">{t('common.unwanted_customers_desc')}:</Label>
           <div className="grid grid-cols-1 gap-2 mt-3">
             {availableUnwantedCustomers.map((customer) => (
               <div key={customer} className="flex items-center space-x-2 space-x-reverse">
@@ -370,115 +370,115 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            👤 معلومات البائع
+            👤 {t('common.seller_info')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="city">المدينة</Label>
-              <Input
-                id="city"
-                value={formData.city}
-                onChange={(e) => updateData({ ...formData, city: e.target.value })}
-                placeholder="أدخل اسم المدينة"
-              />
+            <Label htmlFor="city">{t('form.city')}</Label>
+            <Input
+              id="city"
+              value={formData.city}
+              onChange={(e) => updateData({ ...formData, city: e.target.value })}
+              placeholder={t('placeholders.enter_city')}
+            />
             </div>
             <div>
-              <Label htmlFor="sellerType">نوع البائع</Label>
-              <Select value={formData.sellerType} onValueChange={(value) => updateData({ ...formData, sellerType: value })}>
-                <SelectTrigger>
-                  <SelectValue placeholder="اختر..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="شخص">شخص</SelectItem>
-                  <SelectItem value="محل">محل</SelectItem>
-                  <SelectItem value="شركة">شركة</SelectItem>
-                  <SelectItem value="وسيط">وسيط</SelectItem>
-                </SelectContent>
-              </Select>
+            <Label htmlFor="sellerType">{t('form.seller_type')}</Label>
+            <Select value={formData.sellerType} onValueChange={(value) => updateData({ ...formData, sellerType: value })}>
+              <SelectTrigger>
+                <SelectValue placeholder={t('options.choose')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="شخص">{t('options.person')}</SelectItem>
+                <SelectItem value="محل">{t('options.shop')}</SelectItem>
+                <SelectItem value="شركة">{t('options.company')}</SelectItem>
+                <SelectItem value="وسيط">{t('options.broker')}</SelectItem>
+              </SelectContent>
+            </Select>
             </div>
             <div>
-              <Label htmlFor="deliveryMethod">طريقة التسليم</Label>
-              <Select value={formData.deliveryMethod} onValueChange={(value) => updateData({ ...formData, deliveryMethod: value })}>
-                <SelectTrigger>
-                  <SelectValue placeholder="اختر..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="استلام شخصي">استلام شخصي</SelectItem>
-                  <SelectItem value="توصيل">توصيل</SelectItem>
-                  <SelectItem value="شحن">شحن</SelectItem>
-                  <SelectItem value="كلاهما">كلاهما</SelectItem>
-                </SelectContent>
-              </Select>
+            <Label htmlFor="deliveryMethod">{t('form.delivery_method')}</Label>
+            <Select value={formData.deliveryMethod} onValueChange={(value) => updateData({ ...formData, deliveryMethod: value })}>
+              <SelectTrigger>
+                <SelectValue placeholder={t('options.choose')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="استلام شخصي">{t('options.personal_pickup')}</SelectItem>
+                <SelectItem value="توصيل">{t('options.delivery')}</SelectItem>
+                <SelectItem value="شحن">{t('options.shipping')}</SelectItem>
+                <SelectItem value="كلاهما">{t('options.both')}</SelectItem>
+              </SelectContent>
+            </Select>
             </div>
             <div>
-              <Label htmlFor="price">السعر</Label>
-              <Input
-                id="price"
-                value={formData.price}
-                onChange={(e) => updateData({ ...formData, price: e.target.value })}
-                placeholder="أدخل السعر"
-              />
+            <Label htmlFor="price">{t('form.price')}</Label>
+            <Input
+              id="price"
+              value={formData.price}
+              onChange={(e) => updateData({ ...formData, price: e.target.value })}
+              placeholder={t('placeholders.enter_price')}
+            />
             </div>
             <div>
-              <Label htmlFor="negotiable">السعر قابل للتفاوض</Label>
-              <Select value={formData.negotiable} onValueChange={(value) => updateData({ ...formData, negotiable: value })}>
-                <SelectTrigger>
-                  <SelectValue placeholder="اختر..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="نعم">نعم</SelectItem>
-                  <SelectItem value="لا">لا</SelectItem>
-                  <SelectItem value="ضمن حدود معقولة">ضمن حدود معقولة</SelectItem>
-                </SelectContent>
-              </Select>
+            <Label htmlFor="negotiable">{t('form.negotiable')}</Label>
+            <Select value={formData.negotiable} onValueChange={(value) => updateData({ ...formData, negotiable: value })}>
+              <SelectTrigger>
+                <SelectValue placeholder={t('options.choose')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="نعم">{t('options.yes')}</SelectItem>
+                <SelectItem value="لا">{t('options.no')}</SelectItem>
+                <SelectItem value="ضمن حدود معقولة">{t('options.within_reasonable_limits')}</SelectItem>
+              </SelectContent>
+            </Select>
             </div>
             <div>
-              <Label htmlFor="contactMethod">طريقة التواصل</Label>
-              <Input
-                id="contactMethod"
-                value={formData.contactMethod}
-                onChange={(e) => updateData({ ...formData, contactMethod: e.target.value })}
-                placeholder="رقم الهاتف أو واتساب..."
-              />
+            <Label htmlFor="contactMethod">{t('form.contact_method')}</Label>
+            <Input
+              id="contactMethod"
+              value={formData.contactMethod}
+              onChange={(e) => updateData({ ...formData, contactMethod: e.target.value })}
+              placeholder={t('placeholders.phone_whatsapp')}
+            />
             </div>
             <div>
-              <Label htmlFor="warranty">الضمان</Label>
-              <Select value={formData.warranty} onValueChange={(value) => updateData({ ...formData, warranty: value })}>
-                <SelectTrigger>
-                  <SelectValue placeholder="اختر..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="متوفر">متوفر</SelectItem>
-                  <SelectItem value="غير متوفر">غير متوفر</SelectItem>
-                  <SelectItem value="منتهي">منتهي</SelectItem>
-                </SelectContent>
-              </Select>
+            <Label htmlFor="warranty">{t('form.warranty')}</Label>
+            <Select value={formData.warranty} onValueChange={(value) => updateData({ ...formData, warranty: value })}>
+              <SelectTrigger>
+                <SelectValue placeholder={t('options.choose')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="متوفر">{t('options.available')}</SelectItem>
+                <SelectItem value="غير متوفر">{t('options.not_available')}</SelectItem>
+                <SelectItem value="منتهي">{t('options.expired')}</SelectItem>
+              </SelectContent>
+            </Select>
             </div>
             {formData.warranty === "متوفر" && (
               <div>
-                <Label htmlFor="warrantyDuration">مدة الضمان</Label>
-                <Input
-                  id="warrantyDuration"
-                  value={formData.warrantyDuration || ""}
-                  onChange={(e) => updateData({ ...formData, warrantyDuration: e.target.value })}
-                  placeholder="مثال: سنة واحدة، 6 أشهر، سنتان..."
-                />
+              <Label htmlFor="warrantyDuration">{t('form.warranty_duration')}</Label>
+              <Input
+                id="warrantyDuration"
+                value={formData.warrantyDuration || ""}
+                onChange={(e) => updateData({ ...formData, warrantyDuration: e.target.value })}
+                placeholder={t('form.warranty_duration')}
+              />
               </div>
             )}
             <div>
-              <Label htmlFor="acceptExchange">قبول التبادل</Label>
-              <Select value={formData.acceptExchange} onValueChange={(value) => updateData({ ...formData, acceptExchange: value })}>
-                <SelectTrigger>
-                  <SelectValue placeholder="اختر..." />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="نعم">نعم</SelectItem>
-                  <SelectItem value="لا">لا</SelectItem>
-                  <SelectItem value="حسب النوع">حسب النوع</SelectItem>
-                </SelectContent>
-              </Select>
+            <Label htmlFor="acceptExchange">{t('form.accept_exchange')}</Label>
+            <Select value={formData.acceptExchange} onValueChange={(value) => updateData({ ...formData, acceptExchange: value })}>
+              <SelectTrigger>
+                <SelectValue placeholder={t('options.choose')} />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="نعم">{t('options.yes')}</SelectItem>
+                <SelectItem value="لا">{t('options.no')}</SelectItem>
+                <SelectItem value="حسب النوع">{t('options.by_type')}</SelectItem>
+              </SelectContent>
+            </Select>
             </div>
           </div>
         </CardContent>
@@ -488,16 +488,16 @@ const BicycleForm = ({ data, onChange }: BicycleFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            📝 ملاحظات إضافية
+            📝 {t('common.additional_notes')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            <Label>وصف إضافي</Label>
+            <Label>{t('common.additional_description')}</Label>
             <Textarea
               value={formData.description}
               onChange={(e) => updateData({ ...formData, description: e.target.value })}
-              placeholder="أضف أي تفاصيل إضافية..."
+              placeholder={t('placeholders.additional_details')}
             />
           </div>
         </CardContent>

@@ -22,32 +22,38 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
       description += `🚗 ${data.model} موديل ${data.year}\n\n`;
     }
 
+    const yn = (val: string) => {
+      if (val === 'نعم' || val?.toLowerCase?.() === 'yes') return t('options.yes');
+      if (val === 'لا' || val?.toLowerCase?.() === 'no') return t('options.no');
+      return val;
+    };
+
     // المعلومات الأساسية
     description += `📋 ${t('description.basic_info')}:\n`;
-    if (data.city) description += `📍 المدينة: ${data.city}\n`;
-    if (data.carType) description += `🚙 نوع السيارة: ${data.carType}\n`;
-    if (data.fuelType) description += `⛽ نوع الوقود: ${data.fuelType}\n`;
-    if (data.enginePower) description += `💪 قوة المحرك: ${data.enginePower} حصان\n`;
-    if (data.transmission) description += `⚙️ ناقل الحركة: ${data.transmission}\n`;
-    if (data.fuelConsumption) description += `📊 استهلاك الوقود: ${data.fuelConsumption} لتر/100كم\n`;
-    if (data.doors) description += `🚪 عدد الأبواب: ${data.doors}\n`;
+    if (data.city) description += `📍 ${t('form.city')}: ${data.city}\n`;
+    if (data.carType) description += `🚙 ${t('car.car_type')}: ${data.carType}\n`;
+    if (data.fuelType) description += `⛽ ${t('car.fuel_type')}: ${data.fuelType}\n`;
+    if (data.enginePower) description += `💪 ${t('car.engine_power')}: ${data.enginePower}\n`;
+    if (data.transmission) description += `⚙️ ${t('car.transmission')}: ${data.transmission}\n`;
+    if (data.fuelConsumption) description += `📊 ${t('car.fuel_consumption')}: ${data.fuelConsumption}\n`;
+    if (data.doors) description += `🚪 ${t('car.doors')}: ${data.doors}\n`;
     description += "\n";
 
     // تفاصيل الاستخدام
-    description += "📅 تفاصيل الاستخدام:\n";
-    if (data.kilometers) description += `🛣️ عدد الكيلومترات: ${data.kilometers} كم\n`;
-    if (data.color) description += `🎨 اللون: ${data.color}\n`;
-    if (data.firstUse) description += `📆 الاستخدام الأول للسيارة: ${data.firstUse}\n`;
-    if (data.allServicesAvailable) description += `🔧 جميع الخدمات متوفرة: ${data.allServicesAvailable}\n`;
-    if (data.firstUseInCountry) description += `🌍 أول استخدام في البلد: ${data.firstUseInCountry}\n`;
-    if (data.hadAccident) description += `🚨 تعرضت لحادث: ${data.hadAccident}\n`;
-    if (data.originalPaint) description += `🎯 الدهان: ${data.originalPaint}\n`;
-    if (data.condition) description += `✨ حالة السيارة: ${data.condition}\n`;
+    description += `📅 ${t('car.usage_details')}:\n`;
+    if (data.kilometers) description += `🛣️ ${t('car.kilometers')}: ${data.kilometers}\n`;
+    if (data.color) description += `🎨 ${t('form.color')}: ${data.color}\n`;
+    if (data.firstUse) description += `📆 ${t('car.first_use')}: ${yn(data.firstUse)}\n`;
+    if (data.allServicesAvailable) description += `🔧 ${t('car.all_services')}: ${yn(data.allServicesAvailable)}\n`;
+    if (data.firstUseInCountry) description += `🌍 ${t('car.first_use_country')}: ${data.firstUseInCountry}\n`;
+    if (data.hadAccident) description += `🚨 ${t('car.had_accident')}: ${yn(data.hadAccident)}\n`;
+    if (data.originalPaint) description += `🎯 ${t('car.original_paint')}: ${yn(data.originalPaint)}\n`;
+    if (data.condition) description += `✨ ${t('form.condition')}: ${data.condition}\n`;
     description += "\n";
 
     // التعديلات
     if (data.modifications && data.modifications.length > 0) {
-      description += "🛠️ التعديلات:\n";
+      description += `🛠️ ${t('car.modifications')}:\n`;
       data.modifications.forEach((mod: string) => {
         description += `• ${mod}\n`;
       });
@@ -55,24 +61,24 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     }
 
     // التفاصيل التقنية
-    description += "⚙️ التفاصيل التقنية:\n";
-    if (data.engineType) description += `🏭 نوع المحرك: ${data.engineType}\n`;
-    if (data.steering) description += `🎯 المقود: ${data.steering}\n`;
-    if (data.airbags) description += `🛡️ الوسائد الهوائية: ${data.airbags}\n`;
-    if (data.airConditioning) description += `❄️ التكييف: ${data.airConditioning}\n`;
+    description += `⚙️ ${t('car.technical_details')}:\n`;
+    if (data.engineType) description += `🏭 ${t('car.engine_type')}: ${data.engineType}\n`;
+    if (data.steering) description += `🎯 ${t('car.steering')}: ${data.steering}\n`;
+    if (data.airbags) description += `🛡️ ${t('car.airbags')}: ${data.airbags}\n`;
+    if (data.airConditioning) description += `❄️ ${t('car.air_conditioning')}: ${data.airConditioning}\n`;
     description += "\n";
 
     // حالة السيارة
-    description += "🔍 حالة السيارة:\n";
-    if (data.wheelType) description += `🛞 العجلات: ${data.wheelType}\n`;
-    if (data.glass) description += `🪟 الزجاج: ${data.glass}\n`;
-    if (data.interior) description += `🪑 الداخلية: ${data.interior}\n`;
-    if (data.speakers) description += `🔊 السماعات: ${data.speakers}\n`;
+    description += `🔍 ${t('car.condition_section')}:\n`;
+    if (data.wheelType) description += `🛞 ${t('car.wheel_type')}: ${data.wheelType}\n`;
+    if (data.glass) description += `🪟 ${t('car.glass')}: ${data.glass}\n`;
+    if (data.interior) description += `🪑 ${t('car.interior')}: ${data.interior}\n`;
+    if (data.speakers) description += `🔊 ${t('car.speakers')}: ${data.speakers}\n`;
     description += "\n";
 
     // التجهيزات الإضافية
     if (data.additionalEquipment && data.additionalEquipment.length > 0) {
-      description += "✨ التجهيزات الإضافية:\n";
+      description += `✨ ${t('car.additional_equipment')}:\n`;
       data.additionalEquipment.forEach((equipment: string) => {
         description += `• ${equipment}\n`;
       });
@@ -80,23 +86,23 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     }
 
     // معلومات المالك
-    description += "👤 معلومات المالك:\n";
-    if (data.ownerType) description += `👥 نوع المالك: ${data.ownerType}\n`;
-    if (data.usageDuration) description += `⏱️ مدة الاستخدام: ${data.usageDuration}\n`;
-    if (data.ownership) description += `📜 الملكية: ${data.ownership}\n`;
-    if (data.documentsReady) description += `📋 الأوراق جاهزة: ${data.documentsReady}\n`;
-    if (data.taxAmount) description += `💳 مبلغ الضريبة: ${data.taxAmount}\n`;
-    if (data.insuranceAmount) description += `🛡️ مبلغ التأمين: ${data.insuranceAmount}\n`;
+    description += `👤 ${t('car.owner_info')}:\n`;
+    if (data.ownerType) description += `👥 ${t('car.owner_type')}: ${data.ownerType}\n`;
+    if (data.usageDuration) description += `⏱️ ${t('car.usage_duration')}: ${data.usageDuration}\n`;
+    if (data.ownership) description += `📜 ${t('car.ownership')}: ${data.ownership}\n`;
+    if (data.documentsReady) description += `📋 ${t('car.documents_ready')}: ${data.documentsReady}\n`;
+    if (data.taxAmount) description += `💳 ${t('car.tax_amount')}: ${data.taxAmount}\n`;
+    if (data.insuranceAmount) description += `🛡️ ${t('car.insurance_amount')}: ${data.insuranceAmount}\n`;
     description += "\n";
 
     // السعر وسبب البيع
     if (data.price) {
-      description += `💰 السعر: ${data.price}`;
-      if (data.negotiable) description += ` (${data.negotiable === "نعم" ? "قابل للتفاوض" : "غير قابل للتفاوض"})`;
+      description += `💰 ${t('description.price')}: ${data.price}`;
+      if (data.negotiable) description += ` (${data.negotiable === 'نعم' ? t('description.negotiable') : t('description.not_negotiable')})`;
       description += "\n";
     }
-    if (data.sellReason) description += `💭 سبب البيع: ${data.sellReason}\n`;
-    if (data.inspectionTimes) description += `🕒 أوقات المعاينة: ${data.inspectionTimes}\n`;
+    if (data.sellReason) description += `💭 ${t('description.sell_reason')}: ${data.sellReason}\n`;
+    if (data.inspectionTimes) description += `🕒 ${t('car.inspection_times')}: ${data.inspectionTimes}\n`;
     description += "\n";
 
     // العملاء غير المرغوبين
