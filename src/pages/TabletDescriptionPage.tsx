@@ -2,6 +2,7 @@ import { Copy, RotateCcw, Save, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface TabletDescriptionPageProps {
   data: any;
@@ -11,9 +12,10 @@ interface TabletDescriptionPageProps {
 
 const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescriptionPageProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const generateDescription = () => {
-    let description = "📱 تابلت مميز للبيع\n\n";
+    let description = `📱 ${t('description.tablet_for_sale')}\n\n`;
     
     // معلومات أساسية
     if (data.brand) {
@@ -147,8 +149,8 @@ const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescrip
   const handleCopy = () => {
     navigator.clipboard.writeText(generateDescription());
     toast({
-      title: "تم النسخ",
-      description: "تم نسخ الوصف إلى الحافظة بنجاح",
+      title: t('messages.copied_success'),
+      description: t('messages.description_copied'),
     });
   };
 
@@ -156,8 +158,8 @@ const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescrip
     const title = generateTitleFromData('tablet', data);
     saveDescription('tablet', title, generateDescription(), data);
     toast({
-      title: "تم الحفظ",
-      description: "تم حفظ الوصف بنجاح",
+      title: t('messages.saved_success'),
+      description: t('messages.description_saved'),
     });
   };
 

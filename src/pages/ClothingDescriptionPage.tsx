@@ -2,6 +2,7 @@ import { Copy, RotateCcw, Save, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ClothingDescriptionPageProps {
   data: any;
@@ -11,9 +12,10 @@ interface ClothingDescriptionPageProps {
 
 const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDescriptionPageProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const generateDescription = () => {
-    let description = "👕 ملابس للبيع\n\n";
+    let description = `👕 ${t('description.clothing_for_sale')}\n\n`;
     
     // معلومات أساسية
     if (data.gender) {
@@ -142,8 +144,8 @@ const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDes
   const handleCopy = () => {
     navigator.clipboard.writeText(generateDescription());
     toast({
-      title: "تم النسخ",
-      description: "تم نسخ الوصف إلى الحافظة بنجاح",
+      title: t('messages.copied_success'),
+      description: t('messages.description_copied'),
     });
   };
 
@@ -151,8 +153,8 @@ const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDes
     const title = generateTitleFromData('clothing', data);
     saveDescription('clothing', title, generateDescription(), data);
     toast({
-      title: "تم الحفظ",
-      description: "تم حفظ الوصف بنجاح",
+      title: t('messages.saved_success'),
+      description: t('messages.description_saved'),
     });
   };
 

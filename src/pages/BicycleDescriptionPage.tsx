@@ -15,7 +15,7 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
   const { t } = useLanguage();
 
   const generateDescription = () => {
-    let description = "🚲 دراجة هوائية للبيع\n\n";
+    let description = `🚲 ${t('bicycle.title')}\n\n`;
     
     // معلومات أساسية
     if (data.type) {

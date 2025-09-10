@@ -2,6 +2,7 @@ import { Copy, RotateCcw, Save, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface MotorcycleDescriptionPageProps {
   data: any;
@@ -11,9 +12,10 @@ interface MotorcycleDescriptionPageProps {
 
 const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: MotorcycleDescriptionPageProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const generateDescription = () => {
-    let description = "🏍️ دراجة نارية للبيع\n\n";
+    let description = `🏍️ ${t('description.motorcycle_for_sale')}\n\n`;
     
     // معلومات أساسية
     if (data.type) {
@@ -177,8 +179,8 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
   const handleCopy = () => {
     navigator.clipboard.writeText(generateDescription());
     toast({
-      title: "تم النسخ",
-      description: "تم نسخ الوصف إلى الحافظة بنجاح",
+      title: t('messages.copied_success'),
+      description: t('messages.description_copied'),
     });
   };
 
@@ -186,8 +188,8 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
     const title = generateTitleFromData('motorcycle', data);
     saveDescription('motorcycle', title, generateDescription(), data);
     toast({
-      title: "تم الحفظ",
-      description: "تم حفظ الوصف بنجاح",
+      title: t('messages.saved_success'),
+      description: t('messages.description_saved'),
     });
   };
 
