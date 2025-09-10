@@ -7,7 +7,7 @@ import { getSavedDescriptions, deleteSavedDescription } from "@/utils/saveSystem
 
 interface SavedItem {
   id: string;
-  type: 'car' | 'phone' | 'real-estate' | 'questions' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing';
+  type: 'car' | 'phone' | 'real-estate' | 'questions' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing' | 'computer';
   title: string;
   description: string;
   data?: any;
@@ -58,6 +58,7 @@ const SavedPage = ({ onViewItem }: SavedPageProps) => {
       case 'bicycle': return '🚲';
       case 'motorcycle': return '🏍️';
       case 'clothing': return '👕';
+      case 'computer': return '💻';
       default: return '📄';
     }
   };
@@ -74,6 +75,7 @@ const SavedPage = ({ onViewItem }: SavedPageProps) => {
       case 'bicycle': return 'دراجة هوائية';
       case 'motorcycle': return 'دراجة نارية';
       case 'clothing': return 'ملابس';
+      case 'computer': return 'حاسوب';
       default: return 'عام';
     }
   };

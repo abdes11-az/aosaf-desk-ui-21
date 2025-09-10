@@ -3,7 +3,7 @@ import { LocalStorageManager } from './localStorageManager';
 
 interface SavedItem {
   id: string;
-  type: 'car' | 'phone' | 'real-estate' | 'questions' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing';
+  type: 'car' | 'phone' | 'real-estate' | 'questions' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing' | 'computer';
   title: string;
   description: string;
   data?: any;
@@ -12,7 +12,7 @@ interface SavedItem {
 }
 
 // Simple localStorage-based save system
-export const saveDescription = (type: 'car' | 'phone' | 'real-estate' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing', title: string, description: string, data: any): SavedItem => {
+export const saveDescription = (type: 'car' | 'phone' | 'real-estate' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing' | 'computer', title: string, description: string, data: any): SavedItem => {
   const storage = LocalStorageManager.getInstance();
   
   // التحقق من صحة البيانات
@@ -118,7 +118,7 @@ export const deleteSavedDescription = (id: string): void => {
   storage.setItem('saved-descriptions', updatedItems);
 };
 
-export const generateTitleFromData = (type: 'car' | 'phone' | 'real-estate' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing', data: any): string => {
+export const generateTitleFromData = (type: 'car' | 'phone' | 'real-estate' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing' | 'computer', data: any): string => {
   switch (type) {
     case 'car':
       return `${data.model || 'سيارة'} ${data.year || ''}`.trim();
@@ -138,6 +138,8 @@ export const generateTitleFromData = (type: 'car' | 'phone' | 'real-estate' | 't
       return `${data.brand || ''} ${data.model || 'دراجة نارية'}`.trim();
     case 'clothing':
       return `${data.brand || ''} ${data.category || 'ملابس'}`.trim();
+    case 'computer':
+      return `${data.brand || ''} ${data.model || 'حاسوب'}`.trim();
     default:
       return 'وصف محفوظ';
   }
