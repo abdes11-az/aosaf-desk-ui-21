@@ -26,6 +26,7 @@
     "bicycle": "بيسيكليتات",
     "motorcycle": "موطو",
     "clothing": "حوايج",
+    "computer": "كومبيوترات",
     "tenant": "ملف المكري",
     "more_categories": "غادي نزيدو تصنيفات أخرى قريب"
   },
@@ -230,6 +231,29 @@
     "modifications": "التعديلات",
     "available_colors": "الألوان المتاحة"
   },
+  "computer": {
+    "title": "تفاصيل الكومبيوتر",
+    "basic_info": "المعلومات الأساسية",
+    "type": "نوع الكومبيوتر",
+    "processor": "المعالج",
+    "ram": "الذاكرة العشوائية (RAM)",
+    "storage": "مساحة التخزين",
+    "screen_size": "حجم الشاشة",
+    "graphics_card": "بطاقة الرسوميات",
+    "operating_system": "نظام التشغيل",
+    "battery_life": "عمر البطارية",
+    "ports": "المنافذ",
+    "connectivity": "الاتصال",
+    "webcam": "كاميرا الويب",
+    "keyboard_layout": "تخطيط لوحة المفاتيح",
+    "modifications": "التعديلات",
+    "accessories": "الملحقات",
+    "available_colors": "الألوان المتاحة",
+    "sell_reason": "علاش باغي تبيع",
+    "unwanted_customers": "العملاء اللي ما بغيناش",
+    "seller_info": "معلومات البائع",
+    "additional_notes": "ملاحظات زايدة"
+  },
   "common": {
     "seller_info": "معلومات البائع",
     "unwanted_customers": "العملاء اللي ما بغيناش",
@@ -365,6 +389,7 @@
     "motorcycle_for_sale": "موطو للبيع", 
     "clothing_for_sale": "حوايج للبيع",
     "tablet_for_sale": "تابلت مميز للبيع",
+    "computer_for_sale": "كومبيوتر للبيع",
     "car_for_sale": "طوموبيل للبيع"
   }
 }
