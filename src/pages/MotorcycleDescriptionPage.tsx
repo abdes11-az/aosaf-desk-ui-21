@@ -196,8 +196,8 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
           <ChevronRight className="w-5 h-5 text-accent-foreground" />
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-foreground">🏍️ {t('description.motorcycle_title')}</h2>
-          <p className="text-muted-foreground text-sm">{t('description.generated_for_motorcycle')}</p>
+          <h2 className="text-2xl font-bold text-foreground">🏍️ وصف الدراجة النارية</h2>
+          <p className="text-muted-foreground text-sm">الوصف المُنشأ لدراجتك النارية</p>
         </div>
       </div>
       
@@ -210,23 +210,23 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
       <div className="flex flex-col gap-3">
         <Button onClick={handleSave} className="w-full">
           <Save className="w-4 h-4 mr-2" />
-          {t('actions.save')}
+          حفظ الوصف
         </Button>
         
         <Button onClick={handleCopy} variant="outline" className="w-full">
           <Copy className="w-4 h-4 mr-2" />
-          {t('actions.copy')}
+          نسخ الوصف
         </Button>
         
         <Button onClick={handleRegenerate} variant="outline" className="w-full">
           <RotateCcw className="w-4 h-4 mr-2" />
-          {t('actions.regenerate')}
+          إعادة إنشاء
         </Button>
       </div>
       
       <div className="mt-8 text-center">
         <p className="text-xs text-muted-foreground">
-          {t('description.auto_generated_note')}
+          هذا الوصف تم إنشاؤه تلقائياً ويمكنك تعديله حسب حاجتك
         </p>
       </div>
     </div>

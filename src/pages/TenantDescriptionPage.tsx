@@ -2,8 +2,6 @@ import { Button } from "@/components/ui/button";
 import { ChevronRight, Copy, Save, Edit } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { saveDescription } from "@/utils/saveSystem";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { yn, opt } from "@/utils/i18nHelpers";
 
 interface TenantDescriptionPageProps {
   tenantData: any;
@@ -13,48 +11,47 @@ interface TenantDescriptionPageProps {
 
 const TenantDescriptionPage = ({ tenantData, onBack, onNewDescription }: TenantDescriptionPageProps) => {
   const { toast } = useToast();
-  const { t } = useLanguage();
 
   const generateTenantDescription = (data: any) => {
-    let description = `📋 ${t('description.tenant_profile')}\n\n`;
+    let description = "📋 ملف المستأجر\n\n";
 
     // القسم العام
     if (data.usageType || data.tenantType || data.rentalDuration) {
-      description += `🧾 ${t('tenant.general_section')}:\n`;
-      if (data.usageType) description += `• ${t('tenant.usage_type')}: ${opt(data.usageType, t)}\n`;
-      if (data.tenantType) description += `• ${t('tenant.tenant_type')}: ${opt(data.tenantType, t)}\n`;
-      if (data.rentalDuration) description += `• ${t('tenant.rental_duration')}: ${data.rentalDuration}\n`;
+      description += "🧾 القسم العام:\n";
+      if (data.usageType) description += `• نوع الاستخدام: ${data.usageType}\n`;
+      if (data.tenantType) description += `• نوع المستأجر: ${data.tenantType}\n`;
+      if (data.rentalDuration) description += `• مدة الإيجار: ${data.rentalDuration}\n`;
       description += "\n";
     }
 
     // القسم السكني
     if (data.numberOfResidents || data.hasChildren || data.hasFurniture || data.hasPets || data.contractSigning || data.paymentMethod) {
-      description += `🏠 ${t('tenant.residential_section')}:\n`;
-      if (data.numberOfResidents) description += `• ${t('tenant.number_of_residents')}: ${data.numberOfResidents}\n`;
-      if (data.hasChildren) description += `• ${t('tenant.has_children')}: ${yn(data.hasChildren, t)}\n`;
-      if (data.hasFurniture) description += `• ${t('tenant.has_furniture')}: ${yn(data.hasFurniture, t)}\n`;
-      if (data.hasPets) description += `• ${t('tenant.has_pets')}: ${yn(data.hasPets, t)}\n`;
-      if (data.contractSigning) description += `• ${t('tenant.contract_signing')}: ${opt(data.contractSigning, t)}\n`;
-      if (data.paymentMethod) description += `• ${t('tenant.payment_method')}: ${opt(data.paymentMethod, t)}\n`;
+      description += "🏠 القسم السكني:\n";
+      if (data.numberOfResidents) description += `• عدد السكان: ${data.numberOfResidents}\n`;
+      if (data.hasChildren) description += `• يوجد أطفال: ${data.hasChildren}\n`;
+      if (data.hasFurniture) description += `• يوجد أثاث: ${data.hasFurniture}\n`;
+      if (data.hasPets) description += `• يوجد حيوانات أليفة: ${data.hasPets}\n`;
+      if (data.contractSigning) description += `• توقيع العقد: ${data.contractSigning}\n`;
+      if (data.paymentMethod) description += `• طريقة الدفع: ${data.paymentMethod}\n`;
       description += "\n";
     }
 
     // طريقة التواصل
     if (data.contactMethod || data.additionalRequirements) {
-      description += `📞 ${t('tenant.contact_info')}:\n`;
-      if (data.contactMethod) description += `• ${t('description.contact_method')}: ${data.contactMethod}\n`;
-      if (data.additionalRequirements) description += `• ${t('tenant.additional_requirements')}: ${data.additionalRequirements}\n`;
+      description += "📞 معلومات التواصل:\n";
+      if (data.contactMethod) description += `• طريقة التواصل: ${data.contactMethod}\n`;
+      if (data.additionalRequirements) description += `• متطلبات إضافية: ${data.additionalRequirements}\n`;
       description += "\n";
     }
 
     // ملاحظات إضافية
     if (data.additionalNotes) {
-      description += `💭 ${t('common.additional_notes')}:\n`;
+      description += "💭 ملاحظات إضافية:\n";
       description += `${data.additionalNotes}\n\n`;
     }
 
     description += "---\n";
-    description += t('description.generated_by_app');
+    description += "تم إنشاء هذا الملف بواسطة تطبيق إنشاء الأوصاف";
 
     return description;
   };
@@ -65,24 +62,24 @@ const TenantDescriptionPage = ({ tenantData, onBack, onNewDescription }: TenantD
     try {
       await navigator.clipboard.writeText(generatedDescription);
       toast({
-        title: t('messages.copied_success'),
-        description: t('messages.tenant_copied'),
+        title: "تم النسخ",
+        description: "تم نسخ ملف المستأجر إلى الحافظة",
       });
     } catch (err) {
       toast({
-        title: t('messages.copy_error'),
-        description: t('messages.copy_failed'),
+        title: "خطأ",
+        description: "فشل في نسخ النص",
         variant: "destructive",
       });
     }
   };
 
   const handleSave = () => {
-    const title = `${t('description.tenant_profile')} - ${tenantData.tenantType || t('options.not_specified')} - ${new Date().toLocaleDateString('ar')}`;
+    const title = `ملف مستأجر - ${tenantData.tenantType || 'غير محدد'} - ${new Date().toLocaleDateString('ar')}`;
     saveDescription('tenant', title, generatedDescription, tenantData);
     toast({
-      title: t('messages.saved_success'),
-      description: t('messages.tenant_saved'),
+      title: "تم الحفظ",
+      description: "تم حفظ ملف المستأجر بنجاح",
     });
   };
 
@@ -98,8 +95,8 @@ const TenantDescriptionPage = ({ tenantData, onBack, onNewDescription }: TenantD
         <div className="flex items-center gap-2">
           <span className="text-2xl">📋</span>
           <div>
-            <h2 className="text-xl font-bold text-foreground">{t('description.tenant_profile')}</h2>
-            <p className="text-muted-foreground text-sm">{t('description.generated')}</p>
+            <h2 className="text-xl font-bold text-foreground">ملف المستأجر</h2>
+            <p className="text-muted-foreground text-sm">الوصف المُنشأ</p>
           </div>
         </div>
       </div>
@@ -113,21 +110,21 @@ const TenantDescriptionPage = ({ tenantData, onBack, onNewDescription }: TenantD
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
         <Button onClick={handleSave} className="flex items-center gap-2">
           <Save className="w-4 h-4" />
-          {t('actions.save_file')}
+          حفظ الملف
         </Button>
         <Button onClick={handleCopy} variant="outline" className="flex items-center gap-2">
           <Copy className="w-4 h-4" />
-          {t('actions.copy')}
+          نسخ النص
         </Button>
         <Button onClick={onBack} variant="outline" className="flex items-center gap-2">
           <Edit className="w-4 h-4" />
-          {t('actions.edit_info')}
+          تعديل المعلومات
         </Button>
       </div>
 
       <div className="bg-accent rounded-lg p-4 text-center">
         <p className="text-sm text-accent-foreground">
-          {t('description.generated_by_app')}
+          تم إنشاء هذا الملف بواسطة تطبيق إنشاء الأوصاف
         </p>
       </div>
     </div>
