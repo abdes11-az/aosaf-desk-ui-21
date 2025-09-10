@@ -17,7 +17,6 @@ import TabletFormWrapper from "@/components/forms/TabletFormWrapper";
 import BicycleFormWrapper from "@/components/forms/BicycleFormWrapper";
 import MotorcycleFormWrapper from "@/components/forms/MotorcycleFormWrapper";
 import ClothingFormWrapper from "@/components/forms/ClothingFormWrapper";
-import { ComputerFormWrapper } from "@/components/forms/ComputerFormWrapper";
 import CarDescriptionPage from "./CarDescriptionPage";
 import PhoneDescriptionPage from "./PhoneDescriptionPage";
 import RealEstateDescriptionPage from "./RealEstateDescriptionPage";
@@ -26,7 +25,6 @@ import TabletDescriptionPage from "./TabletDescriptionPage";
 import BicycleDescriptionPage from "./BicycleDescriptionPage";
 import MotorcycleDescriptionPage from "./MotorcycleDescriptionPage";
 import ClothingDescriptionPage from "./ClothingDescriptionPage";
-import { ComputerDescriptionPage } from "./ComputerDescriptionPage";
 import FreeWritingPage from "./FreeWritingPage";
 import SavedPage from "./SavedPage";
 import SettingsPage from "./SettingsPage";
@@ -46,7 +44,6 @@ const Index = () => {
   const [bicycleFormData, setBicycleFormData] = useState<any>(null);
   const [motorcycleFormData, setMotorcycleFormData] = useState<any>(null);
   const [clothingFormData, setClothingFormData] = useState<any>(null);
-  const [computerFormData, setComputerFormData] = useState<any>(null);
   const [viewingItem, setViewingItem] = useState<any>(null);
 
   const handleNavigate = (page: string, category?: string) => {
@@ -70,8 +67,6 @@ const Index = () => {
         setCurrentPage('motorcycle-form');
       } else if (category === 'clothing') {
         setCurrentPage('clothing-form');
-      } else if (category === 'computer') {
-        setCurrentPage('computer-form');
       }
     }
   };
@@ -93,9 +88,7 @@ const Index = () => {
       setCurrentPage('motorcycle-form');
     } else if (currentPage === 'clothing-description') {
       setCurrentPage('clothing-form');
-    } else if (currentPage === 'computer-description') {
-      setCurrentPage('computer-form');
-    } else if (currentPage === 'car-form' || currentPage === 'phone-form' || currentPage === 'real-estate-form' || currentPage === 'tenant-form' || currentPage === 'tablet-form' || currentPage === 'bicycle-form' || currentPage === 'motorcycle-form' || currentPage === 'clothing-form' || currentPage === 'computer-form') {
+    } else if (currentPage === 'car-form' || currentPage === 'phone-form' || currentPage === 'real-estate-form' || currentPage === 'tenant-form' || currentPage === 'tablet-form' || currentPage === 'bicycle-form' || currentPage === 'motorcycle-form' || currentPage === 'clothing-form') {
       setCurrentPage('create-description');
     } else if (currentPage === 'car-questions' || currentPage === 'phone-questions' || currentPage === 'real-estate-questions') {
       setCurrentPage('question-bank');
@@ -193,11 +186,6 @@ const Index = () => {
     setCurrentPage('clothing-description');
   };
 
-  const handleComputerFormSubmit = (data: any) => {
-    setComputerFormData(data);
-    setCurrentPage('computer-description');
-  };
-
   const handleNewCarDescription = () => {
     setCurrentPage('car-form');
   };
@@ -244,8 +232,6 @@ const Index = () => {
         return <MotorcycleFormWrapper onBack={handleBack} onGenerateDescription={handleMotorcycleFormSubmit} />;
       case 'clothing-form':
         return <ClothingFormWrapper onBack={handleBack} onGenerateDescription={handleClothingFormSubmit} />;
-      case 'computer-form':
-        return <ComputerFormWrapper onBack={handleBack} onGenerateDescription={handleComputerFormSubmit} />;
       case 'car-description':
         return (
           <CarDescriptionPage 
@@ -286,8 +272,6 @@ const Index = () => {
         return <MotorcycleDescriptionPage data={motorcycleFormData} onBack={handleBack} onNewDescription={() => setCurrentPage('motorcycle-form')} />;
       case 'clothing-description':
         return <ClothingDescriptionPage data={clothingFormData} onBack={handleBack} onNewDescription={() => setCurrentPage('clothing-form')} />;
-      case 'computer-description':
-        return <ComputerDescriptionPage data={computerFormData} onBack={handleBack} onNewDescription={() => setCurrentPage('computer-form')} />;
       case 'free-writing':
         return <FreeWritingPage onBack={handleBack} />;
       case 'description':
@@ -305,13 +289,12 @@ const Index = () => {
                 <ChevronRight className="w-5 h-5 text-accent-foreground" />
               </button>
               <div className="flex items-center gap-2">
-                 <span className="text-2xl">
-                   {viewingItem?.type === 'car' ? '🚗' : 
-                    viewingItem?.type === 'phone' ? '📱' : 
-                    viewingItem?.type === 'tenant' ? '📋' : 
-                    viewingItem?.type === 'computer' ? '💻' :
-                    viewingItem?.type === 'free-writing' ? '✍️' : '🏠'}
-                 </span>
+                <span className="text-2xl">
+                  {viewingItem?.type === 'car' ? '🚗' : 
+                   viewingItem?.type === 'phone' ? '📱' : 
+                   viewingItem?.type === 'tenant' ? '📋' : 
+                   viewingItem?.type === 'free-writing' ? '✍️' : '🏠'}
+                </span>
                 <div>
                   <h2 className="text-xl font-bold text-foreground">{viewingItem?.title}</h2>
                   <p className="text-muted-foreground text-sm">وصف محفوظ</p>
