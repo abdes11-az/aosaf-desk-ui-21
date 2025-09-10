@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { yn, opt, cond, isYes } from "@/utils/i18nHelpers";
 
 interface PhoneDescriptionPageProps {
   phoneData: any;
@@ -25,7 +26,7 @@ const PhoneDescriptionPage = ({ phoneData, onBack, onNewDescription }: PhoneDesc
     // المعلومات الأساسية
     description += `📋 ${t('description.basic_info')}:\n`;
     if (data.color) description += `🎨 ${t('description.color')}: ${data.color}\n`;
-    if (data.condition) description += `✨ ${t('description.condition')}: ${data.condition}\n`;
+    if (data.condition) description += `✨ ${t('description.condition')}: ${cond(data.condition, t)}\n`;
     if (data.usageDuration) description += `⏱️ ${t('description.usage_duration')}: ${data.usageDuration}\n`;
     description += "\n";
 
@@ -38,9 +39,8 @@ const PhoneDescriptionPage = ({ phoneData, onBack, onNewDescription }: PhoneDesc
     if (data.batteryCapacity) description += `🔋 ${t('description.battery_capacity')}: ${data.batteryCapacity}\n`;
     if (data.batteryLifeNormal) description += `🔋 ${t('description.battery_life_normal')}: ${data.batteryLifeNormal}\n`;
     if (data.batteryLifeGaming) description += `🎮 ${t('description.battery_life_gaming')}: ${data.batteryLifeGaming}\n`;
-    if (data.batteryPercentageIphone) description += `🍎 ${t('description.battery_percentage_iphone')}: ${data.batteryPercentageIphone}%\n`;
-    if (data.fingerprintWorking) description += `👆 ${t('description.fingerprint')}: ${data.fingerprintWorking}\n`;
-    if (data.waterResistant) description += `💧 ${t('description.water_resistant')}: ${data.waterResistant}\n`;
+    if (data.fingerprintWorking) description += `👆 ${t('description.fingerprint')}: ${yn(data.fingerprintWorking, t)}\n`;
+    if (data.waterResistant) description += `💧 ${t('description.water_resistant')}: ${yn(data.waterResistant, t)}\n`;
     if (data.networkStatus) description += `📶 ${t('description.network_status')}: ${data.networkStatus}\n`;
     description += "\n";
 
@@ -55,8 +55,8 @@ const PhoneDescriptionPage = ({ phoneData, onBack, onNewDescription }: PhoneDesc
 
     // الملحقات
     description += `📦 ${t('description.accessories')}:\n`;
-    if (data.originalBox) description += `📦 ${t('description.original_box')}: ${data.originalBox}\n`;
-    if (data.originalCharger) description += `🔌 ${t('description.original_charger')}: ${data.originalCharger}\n`;
+    if (data.originalBox) description += `📦 ${t('description.original_box')}: ${opt(data.originalBox, t)}\n`;
+    if (data.originalCharger) description += `🔌 ${t('description.original_charger')}: ${opt(data.originalCharger, t)}\n`;
     
     if (data.additionalAccessories && data.additionalAccessories.length > 0) {
       description += `${t('description.additional_accessories')}:\n`;
@@ -69,18 +69,18 @@ const PhoneDescriptionPage = ({ phoneData, onBack, onNewDescription }: PhoneDesc
     // معلومات البائع
     description += `👤 ${t('description.seller_info')}:\n`;
     if (data.city) description += `📍 ${t('description.city')}: ${data.city}\n`;
-    if (data.sellerType) description += `👥 ${t('description.seller_type')}: ${data.sellerType}\n`;
-    if (data.deliveryMethod) description += `🚚 ${t('description.delivery_method')}: ${data.deliveryMethod}\n`;
+    if (data.sellerType) description += `👥 ${t('description.seller_type')}: ${opt(data.sellerType, t)}\n`;
+    if (data.deliveryMethod) description += `🚚 ${t('description.delivery_method')}: ${opt(data.deliveryMethod, t)}\n`;
     if (data.contactMethod) description += `📞 ${t('description.contact_method')}: ${data.contactMethod}\n`;
-    if (data.warranty) description += `🛡️ ${t('description.warranty')}: ${data.warranty}\n`;
+    if (data.warranty) description += `🛡️ ${t('description.warranty')}: ${opt(data.warranty, t)}\n`;
     if (data.warranty === "متوفر" && data.warrantyDuration) description += `⏰ ${t('description.warranty_duration')}: ${data.warrantyDuration}\n`;
-    if (data.acceptExchange) description += `🔄 ${t('description.accept_exchange')}: ${data.acceptExchange}\n`;
+    if (data.acceptExchange) description += `🔄 ${t('description.accept_exchange')}: ${yn(data.acceptExchange, t)}\n`;
     description += "\n";
 
     // السعر
     if (data.price) {
       description += `💰 ${t('description.price')}: ${data.price}`;
-      if (data.negotiable) description += ` (${data.negotiable === "نعم" ? t('description.negotiable') : t('description.not_negotiable')})`;
+      if (data.negotiable) description += ` (${isYes(data.negotiable) ? t('description.negotiable') : t('description.not_negotiable')})`;
       description += "\n";
     }
 

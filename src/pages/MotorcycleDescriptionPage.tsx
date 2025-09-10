@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { yn, opt, cond, isYes } from "@/utils/i18nHelpers";
 
 interface MotorcycleDescriptionPageProps {
   data: any;
@@ -119,36 +120,20 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
     
     // الحالة والسعر
     if (data.condition) {
-      const conditionMap: { [key: string]: string } = {
-        "new": "جديد",
-        "like-new": "كالجديد",
-        "excellent": "ممتاز",
-        "good": "جيد",
-        "fair": "مقبول"
-      };
-      description += `✅ الحالة: ${conditionMap[data.condition] || data.condition}\n`;
+      description += `✅ ${t('description.condition')}: ${cond(data.condition, t)}\n`;
     }
     
     // معلومات البائع
     if (data.city || data.sellerType || data.deliveryMethod || data.negotiable || data.contactMethod || data.warranty || data.acceptExchange) {
-      description += "\n👤 معلومات البائع:\n";
-      if (data.city) description += `📍 المدينة: ${data.city}\n`;
-      if (data.sellerType) description += `👥 نوع البائع: ${data.sellerType}\n`;
-      if (data.deliveryMethod) description += `🚚 طريقة التسليم: ${data.deliveryMethod}\n`;
-      if (data.negotiable) description += `💰 السعر قابل للتفاوض: ${data.negotiable}\n`;
-      if (data.contactMethod) description += `📞 طريقة التواصل: ${data.contactMethod}\n`;
-      if (data.warranty) description += `🛡️ الضمان: ${data.warranty}\n`;
-      if (data.warranty === "متوفر" && data.warrantyDuration) description += `⏰ مدة الضمان: ${data.warrantyDuration}\n`;
-      if (data.acceptExchange) description += `🔄 يقبل التبديل: ${data.acceptExchange}\n`;
-      description += "\n";
-      description += "\n👤 معلومات البائع:\n";
-      if (data.city) description += `📍 المدينة: ${data.city}\n`;
-      if (data.sellerType) description += `👥 نوع البائع: ${data.sellerType}\n`;
-      if (data.deliveryMethod) description += `🚚 طريقة التسليم: ${data.deliveryMethod}\n`;
-      if (data.negotiable) description += `💰 السعر قابل للتفاوض: ${data.negotiable}\n`;
-      if (data.contactMethod) description += `📞 طريقة التواصل: ${data.contactMethod}\n`;
-      if (data.warranty) description += `🛡️ الضمان: ${data.warranty}\n`;
-      if (data.acceptExchange) description += `🔄 يقبل التبديل: ${data.acceptExchange}\n`;
+      description += "\n👤 " + t('common.seller_info') + ":\n";
+      if (data.city) description += `📍 ${t('form.city')}: ${data.city}\n`;
+      if (data.sellerType) description += `👥 ${t('form.seller_type')}: ${opt(data.sellerType, t)}\n`;
+      if (data.deliveryMethod) description += `🚚 ${t('form.delivery_method')}: ${opt(data.deliveryMethod, t)}\n`;
+      if (data.negotiable) description += `💰 ${t('form.negotiable')}: ${yn(data.negotiable, t)}\n`;
+      if (data.contactMethod) description += `📞 ${t('description.contact_method')}: ${data.contactMethod}\n`;
+      if (data.warranty) description += `🛡️ ${t('description.warranty')}: ${opt(data.warranty, t)}\n`;
+      if (data.warranty === "متوفر" && data.warrantyDuration) description += `⏰ ${t('description.warranty_duration')}: ${data.warrantyDuration}\n`;
+      if (data.acceptExchange) description += `🔄 ${t('description.accept_exchange')}: ${yn(data.acceptExchange, t)}\n`;
       description += "\n";
     }
     

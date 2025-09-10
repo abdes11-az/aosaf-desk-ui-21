@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { yn, cond, isYes } from "@/utils/i18nHelpers";
 
 interface CarDescriptionPageProps {
   carData: any;
@@ -22,12 +23,6 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
       description += `🚗 ${data.model} موديل ${data.year}\n\n`;
     }
 
-    const yn = (val: string) => {
-      if (val === 'نعم' || val?.toLowerCase?.() === 'yes') return t('options.yes');
-      if (val === 'لا' || val?.toLowerCase?.() === 'no') return t('options.no');
-      return val;
-    };
-
     // المعلومات الأساسية
     description += `📋 ${t('description.basic_info')}:\n`;
     if (data.city) description += `📍 ${t('form.city')}: ${data.city}\n`;
@@ -43,12 +38,12 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     description += `📅 ${t('car.usage_details')}:\n`;
     if (data.kilometers) description += `🛣️ ${t('car.kilometers')}: ${data.kilometers}\n`;
     if (data.color) description += `🎨 ${t('form.color')}: ${data.color}\n`;
-    if (data.firstUse) description += `📆 ${t('car.first_use')}: ${yn(data.firstUse)}\n`;
-    if (data.allServicesAvailable) description += `🔧 ${t('car.all_services')}: ${yn(data.allServicesAvailable)}\n`;
+    if (data.firstUse) description += `📆 ${t('car.first_use')}: ${yn(data.firstUse, t)}\n`;
+    if (data.allServicesAvailable) description += `🔧 ${t('car.all_services')}: ${yn(data.allServicesAvailable, t)}\n`;
     if (data.firstUseInCountry) description += `🌍 ${t('car.first_use_country')}: ${data.firstUseInCountry}\n`;
-    if (data.hadAccident) description += `🚨 ${t('car.had_accident')}: ${yn(data.hadAccident)}\n`;
-    if (data.originalPaint) description += `🎯 ${t('car.original_paint')}: ${yn(data.originalPaint)}\n`;
-    if (data.condition) description += `✨ ${t('form.condition')}: ${data.condition}\n`;
+    if (data.hadAccident) description += `🚨 ${t('car.had_accident')}: ${yn(data.hadAccident, t)}\n`;
+    if (data.originalPaint) description += `🎯 ${t('car.original_paint')}: ${data.originalPaint}\n`;
+    if (data.condition) description += `✨ ${t('form.condition')}: ${cond(data.condition, t)}\n`;
     description += "\n";
 
     // التعديلات
@@ -98,7 +93,7 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     // السعر وسبب البيع
     if (data.price) {
       description += `💰 ${t('description.price')}: ${data.price}`;
-      if (data.negotiable) description += ` (${data.negotiable === 'نعم' ? t('description.negotiable') : t('description.not_negotiable')})`;
+      if (data.negotiable) description += ` (${isYes(data.negotiable) ? t('description.negotiable') : t('description.not_negotiable')})`;
       description += "\n";
     }
     if (data.sellReason) description += `💭 ${t('description.sell_reason')}: ${data.sellReason}\n`;
@@ -107,7 +102,7 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
 
     // العملاء غير المرغوبين
     if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += "🚫 يُرجى من الفئات التالية عدم التواصل:\n";
+      description += `🚫 ${t('description.unwanted_customers')}:\n`;
       data.unwantedCustomers.forEach((customer: string) => {
         description += `• ${customer}\n`;
       });
@@ -116,11 +111,11 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
 
     // ملاحظات إضافية
     if (data.additionalNotes) {
-      description += `📝 ملاحظات إضافية:\n${data.additionalNotes}\n\n`;
+      description += `📝 ${t('description.additional_notes')}:\n${data.additionalNotes}\n\n`;
     }
 
-    description += "للتواصل والاستفسار، يُرجى الاتصال أو إرسال رسالة واتساب.\n";
-    description += "شكراً لاهتمامكم! 🙏";
+    description += `${t('description.contact_info')}\n`;
+    description += t('description.thank_you');
 
     return description;
   };

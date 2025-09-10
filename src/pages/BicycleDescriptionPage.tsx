@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { yn, opt, cond, isYes } from "@/utils/i18nHelpers";
 
 interface BicycleDescriptionPageProps {
   data: any;
@@ -101,14 +102,7 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     
     // الحالة والسعر
     if (data.condition) {
-      const conditionMap: { [key: string]: string } = {
-        "new": "جديد",
-        "like-new": "كالجديد",
-        "excellent": "ممتاز",
-        "good": "جيد",
-        "fair": "مقبول"
-      };
-      description += `✅ الحالة: ${conditionMap[data.condition] || data.condition}\n`;
+      description += `✅ ${t('description.condition')}: ${cond(data.condition, t)}\n`;
     }
     
     // معلومات البائع

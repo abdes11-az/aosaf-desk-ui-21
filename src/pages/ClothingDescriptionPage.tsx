@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { yn, opt, cond, isYes } from "@/utils/i18nHelpers";
 
 interface ClothingDescriptionPageProps {
   data: any;
@@ -106,18 +107,11 @@ const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDes
     
     // الحالة والسعر
     if (data.condition) {
-      const conditionMap: { [key: string]: string } = {
-        "new": "جديد",
-        "like-new": "كالجديد",
-        "excellent": "ممتاز",
-        "good": "جيد",
-        "fair": "مقبول"
-      };
-      description += `✅ الحالة: ${conditionMap[data.condition] || data.condition}\n`;
+      description += `✅ ${t('description.condition')}: ${cond(data.condition, t)}\n`;
     }
     
     if (data.price) {
-      description += `💰 السعر: ${data.price}\n\n`;
+      description += `💰 ${t('description.price')}: ${data.price}\n\n`;
     }
     
     // سبب البيع
@@ -131,10 +125,10 @@ const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDes
     }
     
     // معلومات التواصل والضمان
-    if (data.contactMethod) description += `📞 طريقة التواصل: ${data.contactMethod}\n`;
-    if (data.warranty) description += `🛡️ الضمان: ${data.warranty}\n`;
-    if (data.warranty === "متوفر" && data.warrantyDuration) description += `⏰ مدة الضمان: ${data.warrantyDuration}\n`;
-    if (data.acceptExchange) description += `🔄 يقبل التبديل: ${data.acceptExchange}\n`;
+    if (data.contactMethod) description += `📞 ${t('description.contact_method')}: ${data.contactMethod}\n`;
+    if (data.warranty) description += `🛡️ ${t('description.warranty')}: ${opt(data.warranty, t)}\n`;
+    if (data.warranty === "متوفر" && data.warrantyDuration) description += `⏰ ${t('description.warranty_duration')}: ${data.warrantyDuration}\n`;
+    if (data.acceptExchange) description += `🔄 ${t('description.accept_exchange')}: ${yn(data.acceptExchange, t)}\n`;
     
     description += "📞 للاستفسار والتواصل، يرجى الاتصال";
     
