@@ -1,4 +1,5 @@
-import { TFunction } from 'i18next';
+// Translation helper function type that matches LanguageContext
+type TranslationFunction = (key: string) => string;
 
 // Normalize value to compare easily
 const norm = (v: any) => (typeof v === 'string' ? v.trim().toLowerCase() : v);
@@ -13,14 +14,14 @@ export const isNo = (v: any): boolean => {
   return n === 'لا' || n === 'no' || n === 'لأ' || n === 'مو' || n === 'مش';
 };
 
-export const yn = (v: any, t: TFunction): string => {
+export const yn = (v: any, t: TranslationFunction): string => {
   if (isYes(v)) return t('options.yes');
   if (isNo(v)) return t('options.no');
   return typeof v === 'string' ? v : String(v ?? '');
 };
 
 // Common option translator (seller type, delivery, availability, negotiable variants, partial, etc.)
-export const opt = (v: any, t: TFunction): string => {
+export const opt = (v: any, t: TranslationFunction): string => {
   const n = norm(v);
   switch (n) {
     // Availability
@@ -80,7 +81,7 @@ export const opt = (v: any, t: TFunction): string => {
   return typeof v === 'string' ? v : String(v ?? '');
 };
 
-export const cond = (v: any, t: TFunction): string => {
+export const cond = (v: any, t: TranslationFunction): string => {
   const n = norm(v);
   switch (n) {
     case 'new':
@@ -91,7 +92,7 @@ export const cond = (v: any, t: TFunction): string => {
     case 'كالجديد':
     case 'شبه جديدة':
     case 'شبه جديد':
-      return t('options.like_new', { defaultValue: 'كالجديد' });
+      return t('options.like_new');
     case 'excellent':
     case 'ممتاز':
       return t('options.excellent');
