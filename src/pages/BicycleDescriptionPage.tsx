@@ -2,6 +2,7 @@ import { Copy, RotateCcw, Save, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface BicycleDescriptionPageProps {
   data: any;
@@ -11,6 +12,7 @@ interface BicycleDescriptionPageProps {
 
 const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescriptionPageProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
 
   const generateDescription = () => {
     let description = "🚲 دراجة هوائية للبيع\n\n";
@@ -168,8 +170,8 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
   const handleCopy = () => {
     navigator.clipboard.writeText(generateDescription());
     toast({
-      title: "تم النسخ",
-      description: "تم نسخ الوصف إلى الحافظة بنجاح",
+      title: t('messages.copied_success'),
+      description: t('messages.description_copied'),
     });
   };
 
@@ -177,8 +179,8 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     const title = generateTitleFromData('bicycle', data);
     saveDescription('bicycle', title, generateDescription(), data);
     toast({
-      title: "تم الحفظ",
-      description: "تم حفظ الوصف بنجاح",
+      title: t('messages.saved_success'),
+      description: t('messages.description_saved'),
     });
   };
 

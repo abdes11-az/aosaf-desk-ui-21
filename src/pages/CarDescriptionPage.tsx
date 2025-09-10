@@ -23,7 +23,7 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     }
 
     // المعلومات الأساسية
-    description += "📋 المعلومات الأساسية:\n";
+    description += `📋 ${t('description.basic_info')}:\n`;
     if (data.city) description += `📍 المدينة: ${data.city}\n`;
     if (data.carType) description += `🚙 نوع السيارة: ${data.carType}\n`;
     if (data.fuelType) description += `⛽ نوع الوقود: ${data.fuelType}\n`;
