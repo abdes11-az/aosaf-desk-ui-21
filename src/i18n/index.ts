@@ -28,8 +28,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'moroccan', // البدء بالمغربية كما طلبت
-    lng: 'moroccan', // اللغة الافتراضية
+    fallbackLng: 'standard', // العربية الفصحى كلغة افتراضية
+    lng: 'standard', // اللغة الافتراضية
     
     interpolation: {
       escapeValue: false

@@ -1,3 +1,5 @@
+import React from 'react';
+
 // نظام معالجة الأخطاء
 export class AppError extends Error {
   constructor(
