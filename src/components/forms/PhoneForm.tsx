@@ -54,6 +54,7 @@ const PhoneForm = ({ onBack, onGenerateDescription }: PhoneFormProps) => {
     negotiable: "",
     contactMethod: "",
     warranty: "",
+    warrantyDuration: "",
     acceptExchange: "",
     
     // سبب البيع

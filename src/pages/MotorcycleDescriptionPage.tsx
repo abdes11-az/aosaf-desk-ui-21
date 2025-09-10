@@ -9,7 +9,7 @@ interface MotorcycleDescriptionPageProps {
   onNewDescription?: () => void;
 }
 
-const MotorcycleDescriptionPage = ({ data, onBack }: MotorcycleDescriptionPageProps) => {
+const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: MotorcycleDescriptionPageProps) => {
   const { toast } = useToast();
 
   const generateDescription = () => {

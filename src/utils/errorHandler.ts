@@ -91,24 +91,28 @@ export const withErrorBoundary = <P extends object>(
 
     render() {
       if (this.state.hasError) {
-        return (
-          <div className="page-content text-center">
-            <div className="mt-20">
-              <div className="text-6xl mb-4">⚠️</div>
-              <h2 className="text-xl font-bold text-foreground mb-2">حدث خطأ</h2>
-              <p className="text-muted-foreground">عذراً، حدث خطأ غير متوقع</p>
-              <button 
-                onClick={() => window.location.reload()}
-                className="mt-4 px-4 py-2 bg-primary text-primary-foreground rounded-lg"
-              >
-                إعادة تحميل الصفحة
-              </button>
-            </div>
-          </div>
+        return React.createElement(
+          'div',
+          { className: 'page-content text-center' },
+          React.createElement(
+            'div',
+            { className: 'mt-20' },
+            React.createElement('div', { className: 'text-6xl mb-4' }, '⚠️'),
+            React.createElement('h2', { className: 'text-xl font-bold text-foreground mb-2' }, 'حدث خطأ'),
+            React.createElement('p', { className: 'text-muted-foreground' }, 'عذراً، حدث خطأ غير متوقع'),
+            React.createElement(
+              'button',
+              {
+                onClick: () => window.location.reload(),
+                className: 'mt-4 px-4 py-2 bg-primary text-primary-foreground rounded-lg'
+              },
+              'إعادة تحميل الصفحة'
+            )
+          )
         );
       }
 
-      return <Component {...this.props} />;
+      return React.createElement(Component, this.props);
     }
   };
 };
