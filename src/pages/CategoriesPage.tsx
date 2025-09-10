@@ -47,11 +47,6 @@ const CategoriesPage = ({ onNavigate, onBack }: CategoriesPageProps) => {
       title: t('categories.clothing')
     },
     {
-      id: 'computer',
-      icon: '💻',
-      title: t('categories.computer')
-    },
-    {
       id: 'tenant',
       icon: '📋',
       title: t('categories.tenant')
