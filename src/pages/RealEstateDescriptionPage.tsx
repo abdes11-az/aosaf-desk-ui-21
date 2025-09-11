@@ -2,6 +2,7 @@ import { ChevronRight, Star, Copy, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface RealEstateDescriptionPageProps {
   realEstateData: any;
@@ -11,6 +12,7 @@ interface RealEstateDescriptionPageProps {
 
 const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }: RealEstateDescriptionPageProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const generateRealEstateDescription = (data: any) => {
     let description = "";
 
@@ -30,7 +32,7 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     if (data.area) description += `📐 المساحة: ${data.area}\n`;
     if (data.floors) description += `🏢 عدد الطوابق: ${data.floors}\n`;
     if (data.currentFloor) description += `📍 الطابق الحالي: ${data.currentFloor}\n`;
-    if (data.clientType) description += `👤 نوع العميل المستهدف: ${data.clientType}\n`;
+    if (data.clientType) description += `👤 ${t('realestate.client_type')}: ${data.clientType}\n`;
     description += "\n";
 
     // تفاصيل الغرف
