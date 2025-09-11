@@ -10,18 +10,10 @@ import CarForm from "@/components/forms/CarForm";
 import PhoneForm from "@/components/forms/PhoneForm";
 import RealEstateForm from "@/components/forms/RealEstateForm";
 import TenantForm from "@/components/forms/TenantForm";
-import TabletFormWrapper from "@/components/forms/TabletFormWrapper";
-import BicycleFormWrapper from "@/components/forms/BicycleFormWrapper";
-import MotorcycleFormWrapper from "@/components/forms/MotorcycleFormWrapper";
-import ClothingFormWrapper from "@/components/forms/ClothingFormWrapper";
 import CarDescriptionPage from "@/pages/CarDescriptionPage";
 import PhoneDescriptionPage from "@/pages/PhoneDescriptionPage";
 import RealEstateDescriptionPage from "@/pages/RealEstateDescriptionPage";
 import TenantDescriptionPage from "@/pages/TenantDescriptionPage";
-import TabletDescriptionPage from "@/pages/TabletDescriptionPage";
-import BicycleDescriptionPage from "@/pages/BicycleDescriptionPage";
-import MotorcycleDescriptionPage from "@/pages/MotorcycleDescriptionPage";
-import ClothingDescriptionPage from "@/pages/ClothingDescriptionPage";
 import FreeWritingPage from "@/pages/FreeWritingPage";
 import SavedPage from "@/pages/SavedPage";
 import SettingsPage from "@/pages/SettingsPage";
@@ -111,14 +103,6 @@ const PageRenderer = ({
       return <RealEstateForm onBack={onBack} onGenerateDescription={onRealEstateFormSubmit} />;
     case 'tenant-form':
       return <TenantForm onBack={onBack} onGenerateDescription={onTenantFormSubmit} />;
-    case 'tablet-form':
-      return <TabletFormWrapper onBack={onBack} onGenerateDescription={onTabletFormSubmit} />;
-    case 'bicycle-form':
-      return <BicycleFormWrapper onBack={onBack} onGenerateDescription={onBicycleFormSubmit} />;
-    case 'motorcycle-form':
-      return <MotorcycleFormWrapper onBack={onBack} onGenerateDescription={onMotorcycleFormSubmit} />;
-    case 'clothing-form':
-      return <ClothingFormWrapper onBack={onBack} onGenerateDescription={onClothingFormSubmit} />;
     case 'car-description':
       return (
         <CarDescriptionPage 
@@ -151,14 +135,6 @@ const PageRenderer = ({
           onNewDescription={onNewTenantDescription}
         />
       );
-    case 'tablet-description':
-      return <TabletDescriptionPage data={tabletFormData} onBack={onBack} onNewDescription={() => onNavigate('tablet-form')} />;
-    case 'bicycle-description':
-      return <BicycleDescriptionPage data={bicycleFormData} onBack={onBack} onNewDescription={() => onNavigate('bicycle-form')} />;
-    case 'motorcycle-description':
-      return <MotorcycleDescriptionPage data={motorcycleFormData} onBack={onBack} onNewDescription={() => onNavigate('motorcycle-form')} />;
-    case 'clothing-description':
-      return <ClothingDescriptionPage data={clothingFormData} onBack={onBack} onNewDescription={() => onNavigate('clothing-form')} />;
     case 'free-writing':
       return <FreeWritingPage onBack={onBack} />;
     case 'description':

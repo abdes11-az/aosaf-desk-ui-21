@@ -1,6 +1,5 @@
 import { ChevronRight } from "lucide-react";
 import CategoryCard from "@/components/CategoryCard";
-import { useLanguage } from "@/contexts/LanguageContext";
 
 interface CategoriesPageProps {
   onNavigate: (page: string, category?: string) => void;
@@ -8,48 +7,46 @@ interface CategoriesPageProps {
 }
 
 const CategoriesPage = ({ onNavigate, onBack }: CategoriesPageProps) => {
-  const { t } = useLanguage();
-  
   const categories = [
     {
       id: 'cars',
       icon: '🚗',
-      title: t('categories.cars')
+      title: 'السيارات'
     },
     {
       id: 'real-estate',
       icon: '🏠',
-      title: t('categories.real_estate')
+      title: 'العقارات'
     },
     {
       id: 'phones',
       icon: '📱',
-      title: t('categories.phones')
+      title: 'الهواتف'
     },
     {
       id: 'tablet',
       icon: '📱',
-      title: t('categories.tablet')
+      title: 'الأجهزة اللوحية'
     },
     {
       id: 'bicycle',
       icon: '🚲',
-      title: t('categories.bicycle')
+      title: 'الدراجات الهوائية'
     },
     {
       id: 'motorcycle',
       icon: '🏍️',
-      title: t('categories.motorcycle')
+      title: 'الدراجات النارية'
     },
     {
       id: 'clothing',
       icon: '👕',
-      title: t('categories.clothing')
+      title: 'الملابس'
     },
     {
       id: 'tenant',
       icon: '📋',
-      title: t('categories.tenant')
+      title: 'ملف المستأجر'
     }
   ];
 
@@ -63,8 +60,8 @@ const CategoriesPage = ({ onNavigate, onBack }: CategoriesPageProps) => {
           <ChevronRight className="w-5 h-5 text-accent-foreground" />
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-foreground">{t('categories.choose_category')}</h2>
-          <p className="text-muted-foreground text-sm">{t('categories.choose_category_desc')}</p>
+          <h2 className="text-2xl font-bold text-foreground">اختر التصنيف</h2>
+          <p className="text-muted-foreground text-sm">حدد نوع المنتج لإنشاء الوصف المناسب</p>
         </div>
       </div>
       
@@ -81,7 +78,7 @@ const CategoriesPage = ({ onNavigate, onBack }: CategoriesPageProps) => {
       
       <div className="mt-8 text-center">
         <p className="text-sm text-muted-foreground">
-          {t('categories.more_categories')}
+          سيتم إضافة المزيد من التصنيفات قريباً
         </p>
       </div>
     </div>
