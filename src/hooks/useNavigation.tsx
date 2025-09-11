@@ -32,25 +32,32 @@ export const useNavigation = () => {
   };
 
   const handleBack = () => {
-    if (currentPage === 'car-description') {
-      setCurrentPage('car-form');
-    } else if (currentPage === 'phone-description') {
-      setCurrentPage('phone-form');
-    } else if (currentPage === 'real-estate-description') {
-      setCurrentPage('real-estate-form');
-    } else if (currentPage === 'tenant-description') {
-      setCurrentPage('tenant-form');
-    } else if (currentPage === 'tablet-description') {
-      setCurrentPage('tablet-form');
-    } else if (currentPage === 'bicycle-description') {
-      setCurrentPage('bicycle-form');
-    } else if (currentPage === 'motorcycle-description') {
-      setCurrentPage('motorcycle-form');
-    } else if (currentPage === 'clothing-description') {
-      setCurrentPage('clothing-form');
-    } else if (currentPage === 'car-form' || currentPage === 'phone-form' || currentPage === 'real-estate-form' || currentPage === 'tenant-form' || currentPage === 'tablet-form' || currentPage === 'bicycle-form' || currentPage === 'motorcycle-form' || currentPage === 'clothing-form') {
+    // صفحات الوصف ترجع لصفحات النماذج
+    const descriptionToFormMap: Record<string, string> = {
+      'car-description': 'car-form',
+      'phone-description': 'phone-form',
+      'real-estate-description': 'real-estate-form',
+      'tenant-description': 'tenant-form',
+      'tablet-description': 'tablet-form',
+      'bicycle-description': 'bicycle-form',
+      'motorcycle-description': 'motorcycle-form',
+      'clothing-description': 'clothing-form'
+    };
+
+    // النماذج ترجع لصفحة إنشاء الوصف
+    const forms = ['car-form', 'phone-form', 'real-estate-form', 'tenant-form', 'tablet-form', 'bicycle-form', 'motorcycle-form', 'clothing-form'];
+    
+    // أسئلة ترجع لبنك الأسئلة
+    const questions = ['car-questions', 'phone-questions', 'real-estate-questions'];
+    
+    // صفحات الإعدادات
+    const settingsPages = ['terms', 'privacy', 'contact'];
+
+    if (descriptionToFormMap[currentPage]) {
+      setCurrentPage(descriptionToFormMap[currentPage]);
+    } else if (forms.includes(currentPage)) {
       setCurrentPage('create-description');
-    } else if (currentPage === 'car-questions' || currentPage === 'phone-questions' || currentPage === 'real-estate-questions') {
+    } else if (questions.includes(currentPage)) {
       setCurrentPage('question-bank');
     } else if (currentPage === 'question-bank') {
       setCurrentPage('home');
@@ -60,7 +67,7 @@ export const useNavigation = () => {
     } else if (currentPage === 'create-description') {
       setCurrentPage('home');
       setActiveTab('home');
-    } else if (currentPage === 'terms' || currentPage === 'privacy' || currentPage === 'contact') {
+    } else if (settingsPages.includes(currentPage)) {
       setCurrentPage('settings');
       setActiveTab('settings');
     } else if (currentPage === 'settings') {

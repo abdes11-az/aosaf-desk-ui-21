@@ -8,7 +8,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ChevronRight } from "lucide-react";
 import { sanitizeFormData } from "@/utils/security";
-import { debounce } from "@/utils/performance";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ModificationsSection,
