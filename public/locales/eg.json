@@ -40,11 +40,11 @@
     "warranty_duration": "مدة الضمان",
     "contact_method": "إزاي نتواصل",
     "negotiable": "السعر يتفاوض فيه",
-    "sell_reason": "سبب البيع",
+    "sell_reason": "ليه عايز تبيع",
     "additional_notes": "ملاحظات زيادة",
     "seller_type": "نوع البايع",
     "delivery_method": "طريقة التسليم",
-    "accept_exchange": "تقبل البدل؟",
+    "accept_exchange": "قبول التبديل",
     "fill_all_info": "املا كل المعلومات عشان تعمل وصف شامل"
   },
   "car": {
@@ -359,7 +359,7 @@
     "price": "السعر المطلوب",
     "negotiable": "يتفاوض فيه",
     "not_negotiable": "مايتفاوضش فيه",
-    "sell_reason": "سبب البيع",
+    "sell_reason": "ليه عايز تبيع",
     "inspection_times": "أوقات المعاينة",
     "unwanted_customers": "ارجو من الفئات دي متتواصلوش",
     "additional_notes": "ملاحظات زيادة",
