@@ -1,17 +1,21 @@
 import { createRoot } from 'react-dom/client'
+import React from 'react'
 import App from './App.tsx'
 import './index.css'
-import i18n from './i18n'
+import './i18n'
 import { PWAManager } from './utils/pwaUtils'
 
 // تسجيل Service Worker للعمل بدون انترنت
 const pwaManager = PWAManager.getInstance();
 pwaManager.registerServiceWorker();
 
-// انتظار تهيئة i18n قبل تشغيل التطبيق
-i18n.init().then(() => {
-  createRoot(document.getElementById("root")!).render(<App />);
-}).catch((error) => {
-  console.error('Failed to initialize i18n:', error);
-  createRoot(document.getElementById("root")!).render(<App />);
-});
+// التأكد من وجود عنصر root
+const rootElement = document.getElementById("root");
+if (!rootElement) {
+  throw new Error("Root element not found");
+}
+
+// انتظار قليل للتأكد من تحميل React بالكامل
+setTimeout(() => {
+  createRoot(rootElement).render(React.createElement(App));
+}, 0);
