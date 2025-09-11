@@ -2,6 +2,8 @@ import { ChevronRight, Star, Copy, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { yn, cond, isYes } from "@/utils/i18nHelpers";
 
 interface CarDescriptionPageProps {
   carData: any;
@@ -11,115 +13,192 @@ interface CarDescriptionPageProps {
 
 const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptionPageProps) => {
   const { toast } = useToast();
+  const { t } = useLanguage();
   
-  const formatYesNo = (value: any): string => {
-    if (!value) return '';
-    const str = String(value).trim().toLowerCase();
-    if (['نعم', 'yes', 'true', '1'].includes(str)) return 'نعم';
-    if (['لا', 'no', 'false', '0'].includes(str)) return 'لا';
-    return String(value);
-  };
-
-  const generateCarDescription = (data: any) => {
+  const generateComprehensiveDescription = (data: any) => {
     let description = "";
 
-    // العنوان الرئيسي
-    if (data.brand && data.model) {
-      description += `🚗 ${data.brand} ${data.model}`;
-      if (data.year) description += ` - ${data.year}`;
-      description += "\n\n";
-    }
-
     // المعلومات الأساسية
-    description += "📋 المعلومات الأساسية:\n";
-    if (data.city) description += `📍 المدينة: ${data.city}\n`;
-    if (data.brand) description += `🏭 الماركة: ${data.brand}\n`;
-    if (data.model) description += `🚗 الموديل: ${data.model}\n`;
-    if (data.year) description += `📅 سنة الصنع: ${data.year}\n`;
-    if (data.color) description += `🎨 اللون: ${data.color}\n`;
-    if (data.fuelType) description += `⛽ نوع الوقود: ${data.fuelType}\n`;
-    if (data.transmission) description += `⚙️ ناقل الحركة: ${data.transmission}\n`;
-    if (data.kilometers) description += `🛣️ عدد الكيلومترات: ${data.kilometers}\n`;
-    if (data.condition) description += `✨ الحالة: ${data.condition}\n`;
+    description += `📋 ${t('description.basic_info')}:\n`;
+    if (data.city) description += `📍 ${t('form.city')}: ${data.city}\n`;
+    if (data.carType) description += `🚙 ${t('car.car_type')}: ${data.carType}\n`;
+    if (data.model) description += `🚗 ${t('car.model')}: ${data.model}\n`;
+    if (data.year) description += `📅 ${t('car.year')}: ${data.year}\n`;
+    if (data.make) description += `🏭 ${t('car.make')}: ${data.make}\n`;
+    if (data.fuelType) description += `⛽ ${t('car.fuel_type')}: ${data.fuelType}\n`;
+    if (data.enginePower) description += `💪 ${t('car.engine_power')}: ${data.enginePower}\n`;
+    if (data.transmission) description += `⚙️ ${t('car.transmission')}: ${data.transmission}\n`;
+    if (data.fuelConsumption) description += `📊 ${t('car.fuel_consumption')}: ${data.fuelConsumption}\n`;
+    if (data.doors) description += `🚪 ${t('car.doors')}: ${data.doors}\n`;
     description += "\n";
 
-    // معلومات البائع
-    description += "👤 معلومات البائع:\n";
-    if (data.price) description += `💰 السعر: ${data.price}\n`;
-    if (data.sellerType) description += `👥 نوع البائع: ${data.sellerType}\n`;
-    if (data.warranty) description += `🛡️ الضمان: ${data.warranty}\n`;
-    if (data.negotiable) description += `💬 قابل للتفاوض: ${formatYesNo(data.negotiable)}\n`;
-    if (data.contactMethod) description += `📞 للتواصل: ${data.contactMethod}\n`;
+    // تفاصيل الاستخدام
+    description += `📅 ${t('car.usage_details')}:\n`;
+    if (data.kilometers) description += `🛣️ ${t('car.kilometers')}: ${data.kilometers}\n`;
+    if (data.color) description += `🎨 ${t('form.color')}: ${data.color}\n`;
+    if (data.firstUse) description += `📆 ${t('car.first_use')}: ${yn(data.firstUse, t)}\n`;
+    if (data.allServicesAvailable) description += `🔧 ${t('car.all_services')}: ${yn(data.allServicesAvailable, t)}\n`;
+    if (data.firstUseInCountry) description += `🌍 ${t('car.first_use_country')}: ${data.firstUseInCountry}\n`;
+    if (data.hadAccident) description += `🚨 ${t('car.had_accident')}: ${yn(data.hadAccident, t)}\n`;
+    if (data.originalPaint) description += `🎯 ${t('car.original_paint')}: ${data.originalPaint}\n`;
+    if (data.condition) description += `✨ ${t('form.condition')}: ${cond(data.condition, t)}\n`;
     description += "\n";
 
-    if (data.sellReason) {
-      description += `💭 سبب البيع:\n${data.sellReason}\n\n`;
+    // التعديلات
+    if (data.modifications && data.modifications.length > 0) {
+      description += `🛠️ ${t('car.modifications')}:\n`;
+      data.modifications.forEach((mod: string) => {
+        description += `• ${mod}\n`;
+      });
+      description += "\n";
     }
 
+    // التفاصيل التقنية
+    description += `⚙️ ${t('car.technical_details')}:\n`;
+    if (data.engineType) description += `🏭 ${t('car.engine_type')}: ${data.engineType}\n`;
+    if (data.steering) description += `🎯 ${t('car.steering')}: ${data.steering}\n`;
+    if (data.airbags) description += `🛡️ ${t('car.airbags')}: ${data.airbags}\n`;
+    if (data.airConditioning) description += `❄️ ${t('car.air_conditioning')}: ${data.airConditioning}\n`;
+    description += "\n";
+
+    // حالة السيارة
+    description += `🔍 ${t('car.condition_section')}:\n`;
+    if (data.wheelType) description += `🛞 ${t('car.wheel_type')}: ${data.wheelType}\n`;
+    if (data.glass) description += `🪟 ${t('car.glass')}: ${data.glass}\n`;
+    if (data.interior) description += `🪑 ${t('car.interior')}: ${data.interior}\n`;
+    if (data.speakers) description += `🔊 ${t('car.speakers')}: ${data.speakers}\n`;
+    description += "\n";
+
+    // التجهيزات الإضافية
+    if (data.additionalEquipment && data.additionalEquipment.length > 0) {
+      description += `✨ ${t('car.additional_equipment')}:\n`;
+      data.additionalEquipment.forEach((equipment: string) => {
+        description += `• ${equipment}\n`;
+      });
+      description += "\n";
+    }
+
+    // معلومات المالك
+    description += `👤 ${t('car.owner_info')}:\n`;
+    if (data.ownerType) description += `👥 ${t('car.owner_type')}: ${data.ownerType}\n`;
+    if (data.usageDuration) description += `⏱️ ${t('car.usage_duration')}: ${data.usageDuration}\n`;
+    if (data.ownership) description += `📜 ${t('car.ownership')}: ${data.ownership}\n`;
+    if (data.documentsReady) description += `📋 ${t('car.documents_ready')}: ${data.documentsReady}\n`;
+    if (data.taxAmount) description += `💳 ${t('car.tax_amount')}: ${data.taxAmount}\n`;
+    if (data.insuranceAmount) description += `🛡️ ${t('car.insurance_amount')}: ${data.insuranceAmount}\n`;
+    description += "\n";
+
+    // السعر وسبب البيع
+    if (data.price) {
+      description += `💰 ${t('description.price')}: ${data.price}`;
+      if (data.negotiable) description += ` (${isYes(data.negotiable) ? t('description.negotiable') : t('description.not_negotiable')})`;
+      description += "\n";
+    }
+    if (data.sellReason) description += `💭 ${t('description.sell_reason')}: ${data.sellReason}\n`;
+    if (data.inspectionTimes) description += `🕒 ${t('car.inspection_times')}: ${data.inspectionTimes}\n`;
+    description += "\n";
+
+    // العملاء غير المرغوبين
+    if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
+      description += `🚫 ${t('description.unwanted_customers')}:\n`;
+      data.unwantedCustomers.forEach((customer: string) => {
+        description += `• ${customer}\n`;
+      });
+      description += "\n";
+    }
+
+    // ملاحظات إضافية
     if (data.additionalNotes) {
-      description += `📝 ملاحظات إضافية:\n${data.additionalNotes}\n\n`;
+      description += `📝 ${t('description.additional_notes')}:\n${data.additionalNotes}\n\n`;
     }
 
-    description += "شكراً لاهتمامكم! 🙏";
+    description += `${t('description.contact_info')}\n`;
+    description += t('description.thank_you');
+
     return description;
   };
 
-  const generatedDescription = generateCarDescription(carData);
+  const generatedDescription = generateComprehensiveDescription(carData);
 
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(generatedDescription);
-      toast({ title: "تم النسخ بنجاح", description: "تم نسخ وصف السيارة" });
+      toast({
+        title: t('messages.copied_success'),
+        description: t('messages.description_copied'),
+      });
     } catch (err) {
-      toast({ title: "خطأ", description: "فشل في نسخ النص", variant: "destructive" });
+      console.error("فشل في نسخ النص:", err);
+      toast({
+        variant: "destructive",
+        title: t('messages.error'),
+        description: t('messages.copy_error'),
+      });
     }
   };
 
   const handleSave = () => {
-    const title = generateTitleFromData(carData, 'car');
-    saveDescription('car', title, generatedDescription, carData);
-    toast({ title: "تم الحفظ بنجاح", description: "تم حفظ وصف السيارة" });
+    try {
+      const title = generateTitleFromData('car', carData);
+      saveDescription('car', title, generatedDescription, carData);
+      toast({
+        title: t('messages.saved_success'),
+        description: t('messages.description_saved'),
+      });
+    } catch (err) {
+      console.error("فشل في حفظ الوصف:", err);
+      toast({
+        variant: "destructive",
+        title: t('messages.error'),
+        description: t('messages.save_error'),
+      });
+    }
   };
 
   return (
-    <div className="page-content max-w-2xl mx-auto">
+    <div className="page-content">
       <div className="flex items-center gap-3 mb-6">
-        <button onClick={onBack} className="touch-button bg-accent hover:bg-surface -mr-2">
+        <button
+          onClick={onBack}
+          className="touch-button bg-accent hover:bg-surface -mr-2"
+        >
           <ChevronRight className="w-5 h-5 text-accent-foreground" />
         </button>
         <div className="flex items-center gap-2">
           <span className="text-2xl">🚗</span>
           <div>
-            <h2 className="text-xl font-bold text-foreground">وصف السيارة</h2>
-            <p className="text-muted-foreground text-sm">وصف شامل ومحترف</p>
+            <h2 className="text-xl font-bold text-foreground">{t('common.generated_description')}</h2>
+            <p className="text-muted-foreground text-sm">{t('common.comprehensive_description')}</p>
           </div>
         </div>
       </div>
-
+      
       <div className="bg-card border border-card-border rounded-lg p-6 mb-6">
         <div className="whitespace-pre-line text-card-foreground leading-relaxed text-sm">
           {generatedDescription}
         </div>
       </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
-        <Button onClick={handleSave} className="flex items-center gap-2">
-          <Star className="w-4 h-4" />
-          احفظ الوصف
+      
+      <div className="space-y-3">
+        <Button onClick={handleSave} className="w-full bg-success hover:bg-success/90 text-success-foreground">
+          <Star className="w-4 h-4 ml-2" />
+          {t('actions.save_description')}
         </Button>
-        <Button onClick={handleCopy} variant="outline" className="flex items-center gap-2">
-          <Copy className="w-4 h-4" />
-          انسخ النص
+        
+        <Button onClick={handleCopy} variant="outline" className="w-full">
+          <Copy className="w-4 h-4 ml-2" />
+          {t('actions.copy_text')}
         </Button>
-        <Button onClick={onNewDescription} variant="outline" className="flex items-center gap-2">
-          <RotateCcw className="w-4 h-4" />
-          وصف جديد
+        
+        <Button onClick={onNewDescription} variant="outline" className="w-full">
+          <RotateCcw className="w-4 h-4 ml-2" />
+          {t('actions.edit_info')}
         </Button>
       </div>
-
-      <div className="bg-accent rounded-lg p-4 text-center">
-        <p className="text-sm text-accent-foreground">
-          تم إنشاء هذا الوصف تلقائياً بناءً على المعلومات المدخلة • يمكنك تعديل أي تفاصيل حسب الحاجة
+      
+      <div className="mt-8 bg-accent rounded-lg p-4">
+        <p className="text-xs text-muted-foreground text-center">
+          {t('messages.auto_generated')}
         </p>
       </div>
     </div>

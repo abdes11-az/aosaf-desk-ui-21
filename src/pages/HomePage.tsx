@@ -1,33 +1,35 @@
 import ServiceCard from "@/components/ServiceCard";
-
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
 const HomePage = ({ onNavigate }: HomePageProps) => {
+  const { t } = useLanguage();
+  
   const services = [
     {
       id: 'create-description',
       icon: '📝',
-      title: 'كتابة الأوصاف',
-      description: 'اكتب وصف مفصل ومحترف للمنتج'
+      title: t('home.create_description'),
+      description: t('home.create_description_desc')
     },
     {
       id: 'free-writing',
       icon: '✍️',
-      title: 'الكتابة الحرة',
-      description: 'اكتب وحرر النصوص بسهولة مع إمكانية الحفظ والنسخ'
+      title: t('home.free_writing'),
+      description: t('home.free_writing_desc')
     },
     {
       id: 'question-bank',
       icon: '❓',
-      title: 'بنك الأسئلة',
-      description: 'تصفح الأسئلة الشائعة حسب الفئة',
+      title: t('home.question_bank'),
+      description: t('home.question_bank_desc'),
       categories: [
-        { icon: '🚗', title: 'سيارات', id: 'cars' },
-        { icon: '🏠', title: 'عقارات', id: 'real-estate' },
-        { icon: '📱', title: 'هواتف', id: 'phones' }
+        { icon: '🚗', title: t('categories.cars'), id: 'cars' },
+        { icon: '🏠', title: t('categories.real_estate'), id: 'real-estate' },
+        { icon: '📱', title: t('categories.phones'), id: 'phones' }
       ]
     }
   ];
@@ -35,8 +37,8 @@ const HomePage = ({ onNavigate }: HomePageProps) => {
   return (
     <div className="page-content">
       <div className="mb-8">
-        <h2 className="text-2xl font-bold text-foreground mb-2">أهلاً وسهلاً</h2>
-        <p className="text-muted-foreground">اختر الخدمة التي تريدها من القائمة</p>
+        <h2 className="text-2xl font-bold text-foreground mb-2">{t('home.welcome')}</h2>
+        <p className="text-muted-foreground">{t('home.choose_service')}</p>
       </div>
       
       <div className="space-y-4">
@@ -53,9 +55,9 @@ const HomePage = ({ onNavigate }: HomePageProps) => {
       
       <div className="mt-12 text-center">
         <div className="bg-accent rounded-radius p-6">
-          <h3 className="font-semibold text-accent-foreground mb-2">نصيحة</h3>
+          <h3 className="font-semibold text-accent-foreground mb-2">{t('home.tip')}</h3>
           <p className="text-sm text-muted-foreground">
-            استخدم خدمة كتابة الأوصاف للحصول على أوصاف احترافية ومقنعة لمنتجاتك
+            {t('home.tip_desc')}
           </p>
         </div>
       </div>

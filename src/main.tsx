@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client'
 import React from 'react'
 import App from './App.tsx'
 import './index.css'
-
+import './i18n'
 import { PWAManager } from './utils/pwaUtils'
 
 // تسجيل Service Worker للعمل بدون انترنت

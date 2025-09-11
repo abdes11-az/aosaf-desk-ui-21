@@ -1,5 +1,6 @@
 import { ChevronRight } from "lucide-react";
 import CategoryCard from "@/components/CategoryCard";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface QuestionBankPageProps {
   onBack: () => void;
@@ -7,21 +8,23 @@ interface QuestionBankPageProps {
 }
 
 const QuestionBankPage = ({ onBack, onSelectCategory }: QuestionBankPageProps) => {
+  const { t } = useLanguage();
+  
   const categories = [
     {
       id: 'cars',
       icon: '🚗',
-      title: 'سيارات'
+      title: t('categories.cars')
     },
     {
       id: 'real-estate',
       icon: '🏠',
-      title: 'عقارات'
+      title: t('categories.real_estate')
     },
     {
       id: 'phones',
       icon: '📱',
-      title: 'هواتف'
+      title: t('categories.phones')
     }
   ];
 
@@ -35,8 +38,8 @@ const QuestionBankPage = ({ onBack, onSelectCategory }: QuestionBankPageProps) =
           <ChevronRight className="w-5 h-5 text-accent-foreground" />
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-foreground">بنك الأسئلة</h2>
-          <p className="text-muted-foreground text-sm">تصفح الأسئلة الشائعة حسب الفئة</p>
+          <h2 className="text-2xl font-bold text-foreground">{t('home.question_bank')}</h2>
+          <p className="text-muted-foreground text-sm">{t('home.question_bank_desc')}</p>
         </div>
       </div>
       
@@ -53,7 +56,7 @@ const QuestionBankPage = ({ onBack, onSelectCategory }: QuestionBankPageProps) =
       
       <div className="mt-8 text-center">
         <p className="text-sm text-muted-foreground">
-          تصفح الأسئلة الشائعة حسب الفئة
+          {t('home.question_bank_desc')}
         </p>
       </div>
     </div>
