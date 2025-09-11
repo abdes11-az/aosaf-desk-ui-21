@@ -1,10 +1,9 @@
-import { memo } from "react";
 import { Globe } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
-const Header = memo(() => {
+const Header = () => {
   const { dialect, setDialect } = useLanguage();
   const { t } = useLanguage();
 
@@ -49,8 +48,6 @@ const Header = memo(() => {
       </div>
     </header>
   );
-});
-
-Header.displayName = "Header";
+};
 
 export default Header;

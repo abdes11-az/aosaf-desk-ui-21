@@ -40,7 +40,6 @@ const TabletForm = ({ data, onChange }: TabletFormProps) => {
     negotiable: "",
     contactMethod: "",
     warranty: "",
-    warrantyDuration: "",
     acceptExchange: "",
     sellReason: "",
     unwantedCustomers: [] as string[],
