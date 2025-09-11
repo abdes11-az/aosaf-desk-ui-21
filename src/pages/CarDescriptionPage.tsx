@@ -20,11 +20,11 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
 
     // المعلومات الأساسية
     description += `📋 ${t('description.basic_info')}:\n`;
-    if (data.make) description += `🏭 ${t('car.make')}: ${data.make}\n`;
-    if (data.model) description += `🚗 ${t('car.model')}: ${data.model}\n`;
-    if (data.year) description += `📅 ${t('car.year')}: ${data.year}\n`;
     if (data.city) description += `📍 ${t('form.city')}: ${data.city}\n`;
     if (data.carType) description += `🚙 ${t('car.car_type')}: ${data.carType}\n`;
+    if (data.model) description += `🚗 ${t('car.model')}: ${data.model}\n`;
+    if (data.year) description += `📅 ${t('car.year')}: ${data.year}\n`;
+    if (data.make) description += `🏭 ${t('car.make')}: ${data.make}\n`;
     if (data.fuelType) description += `⛽ ${t('car.fuel_type')}: ${data.fuelType}\n`;
     if (data.enginePower) description += `💪 ${t('car.engine_power')}: ${data.enginePower}\n`;
     if (data.transmission) description += `⚙️ ${t('car.transmission')}: ${data.transmission}\n`;
