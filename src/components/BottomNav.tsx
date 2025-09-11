@@ -1,4 +1,5 @@
 import { Home, Star, Settings } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface BottomNavProps {
   activeTab: string;
@@ -6,10 +7,12 @@ interface BottomNavProps {
 }
 
 const BottomNav = ({ activeTab, onTabChange }: BottomNavProps) => {
+  const { t } = useLanguage();
+  
   const navItems = [
-    { id: 'home', icon: Home, label: 'الرئيسية' },
-    { id: 'saved', icon: Star, label: 'المحفوظات' },
-    { id: 'settings', icon: Settings, label: 'الإعدادات' },
+    { id: 'home', icon: Home, label: t('nav.home') },
+    { id: 'saved', icon: Star, label: t('nav.saved') },
+    { id: 'settings', icon: Settings, label: t('nav.settings') },
   ];
 
   return (
