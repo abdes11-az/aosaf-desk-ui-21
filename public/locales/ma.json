@@ -240,7 +240,8 @@
     "additional_notes": "ملاحظات زايدة",
     "additional_description": "وصف زايد",
     "generated_description": "الوصف اللي تدار",
-    "comprehensive_description": "وصف شامل"
+    "comprehensive_description": "وصف شامل",
+    "form_tip": "ماشي لازم تدخل جميع المعلومات، ولكن كلما زدت تفاصيل أكثر كان الوصف أوضح، وجعل عرضك أكثر جاذبية للشارين، وعاونك باش تتجنب أسئلة زايدة."
   },
   "actions": {
     "save": "احفظ",
