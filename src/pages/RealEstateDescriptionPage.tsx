@@ -2,7 +2,7 @@ import { ChevronRight, Star, Copy, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useToast } from "@/hooks/use-toast";
-import { useLanguage } from "@/contexts/LanguageContext";
+
 
 interface RealEstateDescriptionPageProps {
   realEstateData: any;

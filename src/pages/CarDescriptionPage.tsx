@@ -2,8 +2,7 @@ import { ChevronRight, Star, Copy, RotateCcw } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useToast } from "@/hooks/use-toast";
-import { useLanguage } from "@/contexts/LanguageContext";
-import { yn, cond, isYes } from "@/utils/i18nHelpers";
+import { formatValue, formatYesNo, formatCondition } from "@/utils/descriptionHelpers";
 
 interface CarDescriptionPageProps {
   carData: any;

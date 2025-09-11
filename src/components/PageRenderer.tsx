@@ -10,18 +10,28 @@ import CarForm from "@/components/forms/CarForm";
 import PhoneForm from "@/components/forms/PhoneForm";
 import RealEstateForm from "@/components/forms/RealEstateForm";
 import TenantForm from "@/components/forms/TenantForm";
-import TabletFormWrapper from "@/components/forms/TabletFormWrapper";
-import BicycleFormWrapper from "@/components/forms/BicycleFormWrapper";
-import MotorcycleFormWrapper from "@/components/forms/MotorcycleFormWrapper";
-import ClothingFormWrapper from "@/components/forms/ClothingFormWrapper";
+// Simple stub components for missing categories
+const TabletFormWrapper = ({ onBack, onGenerateDescription }: any) => (
+  <div className="p-4"><button onClick={onBack}>العودة</button><p>قريباً</p></div>
+);
+const BicycleFormWrapper = ({ onBack, onGenerateDescription }: any) => (
+  <div className="p-4"><button onClick={onBack}>العودة</button><p>قريباً</p></div>
+);
+const MotorcycleFormWrapper = ({ onBack, onGenerateDescription }: any) => (
+  <div className="p-4"><button onClick={onBack}>العودة</button><p>قريباً</p></div>
+);
+const ClothingFormWrapper = ({ onBack, onGenerateDescription }: any) => (
+  <div className="p-4"><button onClick={onBack}>العودة</button><p>قريباً</p></div>
+);
 import CarDescriptionPage from "@/pages/CarDescriptionPage";
 import PhoneDescriptionPage from "@/pages/PhoneDescriptionPage";
 import RealEstateDescriptionPage from "@/pages/RealEstateDescriptionPage";
 import TenantDescriptionPage from "@/pages/TenantDescriptionPage";
-import TabletDescriptionPage from "@/pages/TabletDescriptionPage";
-import BicycleDescriptionPage from "@/pages/BicycleDescriptionPage";
-import MotorcycleDescriptionPage from "@/pages/MotorcycleDescriptionPage";
-import ClothingDescriptionPage from "@/pages/ClothingDescriptionPage";
+// Stub components for removed categories
+const TabletDescriptionPage = ({ data, onBack }: any) => <div className="p-4"><button onClick={onBack}>العودة</button><p>قريباً</p></div>;
+const BicycleDescriptionPage = ({ data, onBack }: any) => <div className="p-4"><button onClick={onBack}>العودة</button><p>قريباً</p></div>;
+const MotorcycleDescriptionPage = ({ data, onBack }: any) => <div className="p-4"><button onClick={onBack}>العودة</button><p>قريباً</p></div>;
+const ClothingDescriptionPage = ({ data, onBack }: any) => <div className="p-4"><button onClick={onBack}>العودة</button><p>قريباً</p></div>;
 import FreeWritingPage from "@/pages/FreeWritingPage";
 import SavedPage from "@/pages/SavedPage";
 import SettingsPage from "@/pages/SettingsPage";
