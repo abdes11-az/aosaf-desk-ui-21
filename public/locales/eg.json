@@ -241,6 +241,9 @@
     "additional_description": "وصف زيادة",
     "generated_description": "الوصف اللي اتعمل",
     "comprehensive_description": "وصف شامل",
+    "tablet_description": "وصف التابلت",
+    "motorcycle_description": "وصف الموتوسيكل",
+    "auto_generated_note": "الوصف ده اتعمل أوتوماتيك وممكن تعدل فيه على حسب حاجتك",
     "form_tip": "مش لازم تدخل كل المعلومات، بس كل ما زودت تفاصيل أكتر كل ما الوصف يبقى أوضح، ويخلي عرضك أكتر جاذبية للمشترين، ويساعدك تتجنب أسئلة زيادة."
   },
   "actions": {
@@ -249,6 +252,8 @@
     "back": "ارجع",
     "generate": "اعمل الوصف",
     "new_description": "اعمل وصف جديد",
+    "regenerate": "اعمل تاني",
+    "contact_info": "للاستفسار والتواصل، يرجى الاتصال",
     "save_description": "احفظ الوصف",
     "copy_text": "انسخ النص",
     "edit_info": "عدل المعلومات"
