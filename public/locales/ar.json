@@ -240,8 +240,7 @@
     "additional_notes": "ملاحظات إضافية",
     "additional_description": "وصف إضافي",
     "generated_description": "الوصف المُنشأ",
-    "comprehensive_description": "وصف شامل",
-    "form_tip": "ليس عليك إدخال جميع المعلومات، لكن كلما أضفت تفاصيل أكثر كان الوصف أوضح، وجعل عرضك أكثر جاذبية للمشترين، وساعدك على تجنّب أسئلة إضافية."
+    "comprehensive_description": "وصف شامل"
   },
   "actions": {
     "save": "حفظ",

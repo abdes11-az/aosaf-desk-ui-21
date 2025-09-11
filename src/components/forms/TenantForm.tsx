@@ -73,12 +73,6 @@ const TenantForm = ({ onBack, onGenerateDescription }: TenantFormProps) => {
         </div>
       </div>
 
-      <div className="mb-6 p-4 bg-muted/50 rounded-lg border-l-4 border-primary">
-        <p className="text-sm text-muted-foreground">
-          💡 {t('common.form_tip')}
-        </p>
-      </div>
-
       <div className="space-y-6">
         {/* القسم العام */}
         <Card>

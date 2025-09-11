@@ -74,37 +74,28 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
     return null
   }
 
-  // إنشاء CSS آمن بدون استخدام dangerouslySetInnerHTML
-  const css = Object.entries(THEMES)
-    .map(([theme, prefix]) => {
-      const sanitizedId = id.replace(/[^\w-]/g, ''); // تنظيف ID من الرموز الخطيرة
-      const selector = prefix ? `${prefix} [data-chart="${sanitizedId}"]` : `[data-chart="${sanitizedId}"]`;
-      
-      const rules = colorConfig
-        .map(([key, itemConfig]) => {
-          const color = itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
-          // التحقق من صحة اللون وتنظيفه
-          if (color && /^#[0-9A-Fa-f]{3,6}$|^rgb\(|^hsl\(|^[a-zA-Z]+$/.test(color)) {
-            const sanitizedKey = key.replace(/[^\w-]/g, ''); // تنظيف المفتاح
-            return `  --color-${sanitizedKey}: ${color};`;
-          }
-          return null;
-        })
-        .filter(Boolean)
-        .join('\n');
-      
-      return rules ? `${selector} {\n${rules}\n}` : '';
-    })
-    .filter(Boolean)
-    .join('\n');
-
-  // إنشاء عنصر style بشكل آمن
-  const styleElement = React.createElement('style', {
-    key: `chart-style-${id}`,
-    children: css
-  });
-
-  return styleElement;
+  return (
+    <style
+      dangerouslySetInnerHTML={{
+        __html: Object.entries(THEMES)
+          .map(
+            ([theme, prefix]) => `
+${prefix} [data-chart=${id}] {
+${colorConfig
+  .map(([key, itemConfig]) => {
+    const color =
+      itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+      itemConfig.color
+    return color ? `  --color-${key}: ${color};` : null
+  })
+  .join("\n")}
+}
+`
+          )
+          .join("\n"),
+      }}
+    />
+  )
 }
 
 const ChartTooltip = RechartsPrimitive.Tooltip

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLanguage } from "@/contexts/LanguageContext";
 import BicycleForm from "./BicycleForm";
 
 interface BicycleFormWrapperProps {
@@ -11,7 +10,6 @@ interface BicycleFormWrapperProps {
 
 const BicycleFormWrapper = ({ onBack, onGenerateDescription }: BicycleFormWrapperProps) => {
   const [formData, setFormData] = useState({});
-  const { t } = useLanguage();
 
   return (
     <div className="page-content">
@@ -27,13 +25,6 @@ const BicycleFormWrapper = ({ onBack, onGenerateDescription }: BicycleFormWrappe
           <p className="text-muted-foreground text-sm">أدخل تفاصيل الدراجة الهوائية</p>
         </div>
       </div>
-      
-      <div className="mb-6 p-4 bg-muted/50 rounded-lg border-l-4 border-primary">
-        <p className="text-sm text-muted-foreground">
-          💡 {t('common.form_tip')}
-        </p>
-      </div>
-      
       <BicycleForm data={formData} onChange={setFormData} />
       <div className="mt-8">
         <Button onClick={() => onGenerateDescription(formData)} className="w-full">إنشاء الوصف</Button>

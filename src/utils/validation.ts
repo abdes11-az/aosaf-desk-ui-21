@@ -1,137 +1,120 @@
-import { z } from 'zod';
+// نظام التحقق من صحة البيانات
+export const validators = {
+  // التحقق من النصوص
+  text: (value: string, minLength = 1, maxLength = 1000): boolean => {
+    if (!value || typeof value !== 'string') return false;
+    const trimmed = value.trim();
+    return trimmed.length >= minLength && trimmed.length <= maxLength;
+  },
 
-// مخططات التحقق من صحة البيانات باستخدام Zod
-export const SavedItemSchema = z.object({
-  id: z.string().min(1).max(50),
-  type: z.enum(['car', 'phone', 'real-estate', 'questions', 'tenant', 'free-writing', 'tablet', 'bicycle', 'motorcycle', 'clothing']),
-  title: z.string().max(200),
-  description: z.string().max(10000),
-  data: z.record(z.string(), z.any()).optional(),
-  date: z.string().optional(),
-  savedAt: z.union([z.date(), z.string()]).transform((val) => {
-    if (typeof val === 'string') {
-      return new Date(val);
-    }
-    return val;
-  })
-});
+  // التحقق من الأرقام
+  number: (value: string, min = 0, max = 999999): boolean => {
+    const num = parseFloat(value);
+    return !isNaN(num) && num >= min && num <= max;
+  },
 
-export const CarFormSchema = z.object({
-  brand: z.string().max(50).optional(),
-  model: z.string().max(50).optional(),
-  year: z.number().min(1900).max(2030).optional(),
-  color: z.string().max(30).optional(),
-  mileage: z.number().min(0).optional(),
-  fuelType: z.string().max(20).optional(),
-  transmission: z.string().max(20).optional(),
-  price: z.number().min(0).optional(),
-  condition: z.string().max(20).optional(),
-  description: z.string().max(5000).optional()
-});
+  // التحقق من السنوات
+  year: (value: string): boolean => {
+    const year = parseInt(value);
+    const currentYear = new Date().getFullYear();
+    return !isNaN(year) && year >= 1900 && year <= currentYear + 1;
+  },
 
-export const PhoneFormSchema = z.object({
-  brand: z.string().max(50).optional(),
-  model: z.string().max(50).optional(),
-  storage: z.string().max(20).optional(),
-  color: z.string().max(30).optional(),
-  condition: z.string().max(20).optional(),
-  price: z.number().min(0).optional(),
-  description: z.string().max(5000).optional()
-});
+  // التحقق من أرقام الهواتف
+  phone: (value: string): boolean => {
+    const phoneRegex = /^[\+]?[0-9\s\-\(\)]{7,15}$/;
+    return phoneRegex.test(value.trim());
+  },
 
-export const RealEstateFormSchema = z.object({
-  propertyType: z.string().max(50).optional(),
-  city: z.string().max(50).optional(),
-  district: z.string().max(50).optional(),
-  rooms: z.number().min(0).max(20).optional(),
-  area: z.number().min(0).optional(),
-  price: z.number().min(0).optional(),
-  description: z.string().max(5000).optional()
-});
+  // التحقق من البريد الإلكتروني
+  email: (value: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(value.trim());
+  },
 
-// دالة التحقق من صحة البيانات المحفوظة
-export const validateSavedItem = (item: any): boolean => {
-  try {
-    SavedItemSchema.parse(item);
-    return true;
-  } catch {
-    return false;
+  // التحقق من المدن السعودية والعربية
+  city: (value: string): boolean => {
+    if (!value || typeof value !== 'string') return false;
+    const trimmed = value.trim();
+    // يجب أن يحتوي على أحرف عربية أو إنجليزية فقط
+    const cityRegex = /^[\u0600-\u06FFa-zA-Z\s\-]{2,50}$/;
+    return cityRegex.test(trimmed);
+  },
+
+  // التحقق من المساحات
+  area: (value: string): boolean => {
+    if (!value) return true; // اختياري
+    const areaRegex = /^[\d\s\u0600-\u06FFa-zA-Z\.]{1,50}$/;
+    return areaRegex.test(value.trim());
   }
 };
 
-// دالة التحقق من صحة بيانات النموذج حسب النوع
-export const validateFormDataByType = (type: string, data: any): boolean => {
-  try {
-    switch (type) {
-      case 'car':
-        CarFormSchema.parse(data);
-        return true;
-      case 'phone':
-        PhoneFormSchema.parse(data);
-        return true;
-      case 'real-estate':
-        RealEstateFormSchema.parse(data);
-        return true;
-      default:
-        // للأنواع الأخرى، تحقق أساسي
-        return typeof data === 'object' && data !== null;
-    }
-  } catch {
-    return false;
+// التحقق من صحة نموذج السيارة
+export const validateCarForm = (data: any): { isValid: boolean; errors: string[] } => {
+  const errors: string[] = [];
+
+  if (data.city && !validators.city(data.city)) {
+    errors.push('اسم المدينة غير صحيح');
   }
+
+  if (data.year && !validators.year(data.year)) {
+    errors.push('سنة الصنع غير صحيحة');
+  }
+
+  if (data.kilometers && !validators.number(data.kilometers, 0, 9999999)) {
+    errors.push('عدد الكيلومترات غير صحيح');
+  }
+
+  if (data.price && !validators.number(data.price, 1, 99999999)) {
+    errors.push('السعر غير صحيح');
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors
+  };
 };
 
-// دالة تنظيف البيانات حسب المخطط
-export const sanitizeBySchema = <T>(schema: z.ZodSchema<T>, data: any): T | null => {
-  try {
-    return schema.parse(data);
-  } catch {
-    return null;
+// التحقق من صحة نموذج الهاتف
+export const validatePhoneForm = (data: any): { isValid: boolean; errors: string[] } => {
+  const errors: string[] = [];
+
+  if (data.city && !validators.city(data.city)) {
+    errors.push('اسم المدينة غير صحيح');
   }
+
+  if (data.price && !validators.number(data.price, 1, 99999999)) {
+    errors.push('السعر غير صحيح');
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors
+  };
 };
 
-// التحقق من حجم البيانات
-export const validateDataSize = (data: any, maxSizeKB: number = 100): boolean => {
-  try {
-    const serialized = JSON.stringify(data);
-    const sizeKB = new Blob([serialized]).size / 1024;
-    return sizeKB <= maxSizeKB;
-  } catch {
-    return false;
-  }
-};
+// التحقق من صحة نموذج العقار
+export const validateRealEstateForm = (data: any): { isValid: boolean; errors: string[] } => {
+  const errors: string[] = [];
 
-// تنظيف الكائنات من الخصائص الخطيرة
-export const sanitizeObject = (obj: any): any => {
-  if (obj === null || obj === undefined) return obj;
-  
-  if (typeof obj !== 'object') return obj;
-  
-  if (Array.isArray(obj)) {
-    return obj.slice(0, 100).map(sanitizeObject); // حد أقصى للمصفوفات
+  if (data.city && !validators.city(data.city)) {
+    errors.push('اسم المدينة غير صحيح');
   }
-  
-  const sanitized: any = {};
-  const allowedKeys = Object.keys(obj).slice(0, 50); // حد أقصى للمفاتيح
-  
-  for (const key of allowedKeys) {
-    // تجنب الخصائص الخطيرة
-    if (key.startsWith('__') || key.includes('proto') || key === 'constructor') {
-      continue;
-    }
-    
-    const value = obj[key];
-    
-    if (typeof value === 'string') {
-      sanitized[key] = value.slice(0, 1000); // حد أقصى لطول النص
-    } else if (typeof value === 'number') {
-      sanitized[key] = isFinite(value) ? value : 0;
-    } else if (typeof value === 'boolean') {
-      sanitized[key] = value;
-    } else if (typeof value === 'object') {
-      sanitized[key] = sanitizeObject(value);
-    }
+
+  if (data.district && !validators.city(data.district)) {
+    errors.push('اسم الحي غير صحيح');
   }
-  
-  return sanitized;
+
+  if (data.area && !validators.area(data.area)) {
+    errors.push('المساحة غير صحيحة');
+  }
+
+  if (data.price && !validators.number(data.price, 1, 99999999)) {
+    errors.push('السعر غير صحيح');
+  }
+
+  return {
+    isValid: errors.length === 0,
+    errors
+  };
 };

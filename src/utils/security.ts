@@ -27,31 +27,17 @@ export const sanitizeFormData = (data: any): any => {
   if (!data || typeof data !== 'object') return {};
   
   const sanitized: any = {};
-  const maxKeys = 50;
-  const keys = Object.keys(data).slice(0, maxKeys);
   
-  for (const key of keys) {
-    // تجنب المفاتيح الخطيرة
-    if (key.startsWith('__') || key.includes('proto') || key === 'constructor') {
-      continue;
-    }
-    
-    const value = data[key];
-    
+  for (const [key, value] of Object.entries(data)) {
     if (typeof value === 'string') {
       sanitized[key] = sanitizeInput(value);
     } else if (Array.isArray(value)) {
       sanitized[key] = value
-        .filter(item => typeof item === 'string' || typeof item === 'number' || typeof item === 'boolean')
-        .map(item => typeof item === 'string' ? sanitizeInput(item) : item)
+        .filter(item => typeof item === 'string')
+        .map(item => sanitizeInput(item))
         .slice(0, 50); // حد أقصى للعناصر
-    } else if (typeof value === 'number' && isFinite(value)) {
+    } else {
       sanitized[key] = value;
-    } else if (typeof value === 'boolean') {
-      sanitized[key] = value;
-    } else if (value && typeof value === 'object') {
-      // معالجة الكائنات المتداخلة بحذر
-      sanitized[key] = sanitizeFormData(value);
     }
   }
   
@@ -60,15 +46,9 @@ export const sanitizeFormData = (data: any): any => {
 
 // حماية من هجمات XSS
 export const escapeHtml = (text: string): string => {
-  if (!text || typeof text !== 'string') return '';
-  
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#x27;')
-    .replace(/\//g, '&#x2F;');
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
 };
 
 // التحقق من صحة الروابط

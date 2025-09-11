@@ -240,8 +240,7 @@
     "additional_notes": "ملاحظات زيادة",
     "additional_description": "وصف زيادة",
     "generated_description": "الوصف اللي انسوا",
-    "comprehensive_description": "وصف شامل",
-    "form_tip": "مو لازم تدخل جميع المعلومات، بس كل ما ضفت تفاصيل أكثر كل ما صار الوصف أوضح، وخلى عرضك أكثر جاذبية للمشترين، وساعدك تتجنب أسئلة زايدة."
+    "comprehensive_description": "وصف شامل"
   },
   "actions": {
     "save": "احفظ",

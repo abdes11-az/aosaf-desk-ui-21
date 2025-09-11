@@ -45,25 +45,11 @@ export class LocalStorageManager {
   getItem<T>(key: string, defaultValue: T): T {
     try {
       const item = localStorage.getItem(key);
-      if (item === null || item === undefined) return defaultValue;
+      if (item === null) return defaultValue;
       
-      // التحقق من صحة JSON قبل التحليل
-      if (typeof item !== 'string' || item.trim() === '' || item === 'null' || item === 'undefined') {
-        return defaultValue;
-      }
-      
-      const parsed = JSON.parse(item);
-      
-      // التحقق من صحة البيانات المحللة
-      if (parsed === null || parsed === undefined) {
-        return defaultValue;
-      }
-      
-      return parsed;
+      return JSON.parse(item);
     } catch (error) {
       console.error('خطأ في استرجاع البيانات:', error);
-      // تنظيف البيانات التالفة
-      this.removeItem(key);
       return defaultValue;
     }
   }
