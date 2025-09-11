@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { Home, Star, Settings } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -7,7 +6,7 @@ interface BottomNavProps {
   onTabChange: (tab: string) => void;
 }
 
-const BottomNav = memo(({ activeTab, onTabChange }: BottomNavProps) => {
+const BottomNav = ({ activeTab, onTabChange }: BottomNavProps) => {
   const { t } = useLanguage();
   
   const navItems = [
@@ -37,8 +36,6 @@ const BottomNav = memo(({ activeTab, onTabChange }: BottomNavProps) => {
       })}
     </nav>
   );
-});
-
-BottomNav.displayName = 'BottomNav';
+};
 
 export default BottomNav;

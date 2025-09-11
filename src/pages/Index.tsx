@@ -1,17 +1,24 @@
-import { memo } from "react";
 import Header from "@/components/Header";
 import BottomNav from "@/components/BottomNav";
 import PageRenderer from "@/components/PageRenderer";
-import { useAppStore } from "@/store/useAppStore";
-import { useNavigationHandlers } from "@/hooks/useNavigationHandlers";
+import { useNavigation } from "@/hooks/useNavigation";
 import { useFormHandlers } from "@/hooks/useFormHandlers";
 
-const Index = memo(() => {
+const Index = () => {
   const {
     currentPage,
     activeTab,
     selectedCategory,
     viewingItem,
+    setCurrentPage,
+    handleNavigate,
+    handleBack,
+    handleTabChange,
+    handleViewSavedItem,
+    handleBackFromViewItem
+  } = useNavigation();
+
+  const {
     carFormData,
     phoneFormData,
     realEstateFormData,
@@ -20,19 +27,6 @@ const Index = memo(() => {
     bicycleFormData,
     motorcycleFormData,
     clothingFormData,
-    setCurrentPage,
-  } = useAppStore();
-
-  const {
-    handleNavigate,
-    handleBack,
-    handleTabChange,
-    handleViewSavedItem,
-    handleBackFromViewItem,
-    handleQuestionBankCategory
-  } = useNavigationHandlers();
-
-  const {
     handleCarFormSubmit,
     handlePhoneFormSubmit,
     handleRealEstateFormSubmit,
@@ -45,8 +39,17 @@ const Index = memo(() => {
     handleNewPhoneDescription,
     handleNewRealEstateDescription,
     handleNewTenantDescription
-  } = useFormHandlers();
+  } = useFormHandlers(setCurrentPage);
 
+  const handleQuestionBankCategory = (category: string) => {
+    if (category === 'cars') {
+      setCurrentPage('car-questions');
+    } else if (category === 'phones') {
+      setCurrentPage('phone-questions');
+    } else if (category === 'real-estate') {
+      setCurrentPage('real-estate-questions');
+    }
+  };
 
   return (
     <div className="mobile-container">
@@ -86,8 +89,6 @@ const Index = memo(() => {
       <BottomNav activeTab={activeTab} onTabChange={handleTabChange} />
     </div>
   );
-});
-
-Index.displayName = 'Index';
+};
 
 export default Index;

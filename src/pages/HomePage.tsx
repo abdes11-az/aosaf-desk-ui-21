@@ -1,4 +1,3 @@
-import { memo, useMemo } from "react";
 import ServiceCard from "@/components/ServiceCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -6,10 +5,10 @@ interface HomePageProps {
   onNavigate: (page: string) => void;
 }
 
-const HomePage = memo(({ onNavigate }: HomePageProps) => {
+const HomePage = ({ onNavigate }: HomePageProps) => {
   const { t } = useLanguage();
   
-  const services = useMemo(() => [
+  const services = [
     {
       id: 'create-description',
       icon: '📝',
@@ -33,7 +32,7 @@ const HomePage = memo(({ onNavigate }: HomePageProps) => {
         { icon: '📱', title: t('categories.phones'), id: 'phones' }
       ]
     }
-  ], [t]);
+  ];
 
   return (
     <div className="page-content">
@@ -64,8 +63,6 @@ const HomePage = memo(({ onNavigate }: HomePageProps) => {
       </div>
     </div>
   );
-});
-
-HomePage.displayName = 'HomePage';
+};
 
 export default HomePage;

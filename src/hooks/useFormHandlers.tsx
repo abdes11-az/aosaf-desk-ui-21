@@ -1,10 +1,72 @@
-import { useCallback } from 'react';
-import { saveDescription } from '@/utils/saveSystem';
-import { toast } from '@/hooks/use-toast';
-import { useAppStore } from '@/store/useAppStore';
+import { useState } from 'react';
 
-export const useFormHandlers = () => {
-  const {
+export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
+  const [carFormData, setCarFormData] = useState<any>(null);
+  const [phoneFormData, setPhoneFormData] = useState<any>(null);
+  const [realEstateFormData, setRealEstateFormData] = useState<any>(null);
+  const [tenantFormData, setTenantFormData] = useState<any>(null);
+  const [tabletFormData, setTabletFormData] = useState<any>(null);
+  const [bicycleFormData, setBicycleFormData] = useState<any>(null);
+  const [motorcycleFormData, setMotorcycleFormData] = useState<any>(null);
+  const [clothingFormData, setClothingFormData] = useState<any>(null);
+
+  const handleCarFormSubmit = (data: any) => {
+    setCarFormData(data);
+    setCurrentPage('car-description');
+  };
+
+  const handlePhoneFormSubmit = (data: any) => {
+    setPhoneFormData(data);
+    setCurrentPage('phone-description');
+  };
+
+  const handleRealEstateFormSubmit = (data: any) => {
+    setRealEstateFormData(data);
+    setCurrentPage('real-estate-description');
+  };
+
+  const handleTenantFormSubmit = (data: any) => {
+    setTenantFormData(data);
+    setCurrentPage('tenant-description');
+  };
+
+  const handleTabletFormSubmit = (data: any) => {
+    setTabletFormData(data);
+    setCurrentPage('tablet-description');
+  };
+
+  const handleBicycleFormSubmit = (data: any) => {
+    setBicycleFormData(data);
+    setCurrentPage('bicycle-description');
+  };
+
+  const handleMotorcycleFormSubmit = (data: any) => {
+    setMotorcycleFormData(data);
+    setCurrentPage('motorcycle-description');
+  };
+
+  const handleClothingFormSubmit = (data: any) => {
+    setClothingFormData(data);
+    setCurrentPage('clothing-description');
+  };
+
+  const handleNewCarDescription = () => {
+    setCurrentPage('car-form');
+  };
+
+  const handleNewPhoneDescription = () => {
+    setCurrentPage('phone-form');
+  };
+
+  const handleNewRealEstateDescription = () => {
+    setCurrentPage('real-estate-form');
+  };
+
+  const handleNewTenantDescription = () => {
+    setCurrentPage('tenant-form');
+  };
+
+  return {
     carFormData,
     phoneFormData,
     realEstateFormData,
@@ -13,74 +75,6 @@ export const useFormHandlers = () => {
     bicycleFormData,
     motorcycleFormData,
     clothingFormData,
-    setCarFormData,
-    setPhoneFormData,
-    setRealEstateFormData,
-    setTenantFormData,
-    setTabletFormData,
-    setBicycleFormData,
-    setMotorcycleFormData,
-    setClothingFormData,
-    setCurrentPage
-  } = useAppStore();
-
-  const handleCarFormSubmit = useCallback((data: any) => {
-    setCarFormData(data);
-    setCurrentPage('car-description');
-  }, [setCarFormData, setCurrentPage]);
-
-  const handlePhoneFormSubmit = useCallback((data: any) => {
-    setPhoneFormData(data);
-    setCurrentPage('phone-description');
-  }, [setPhoneFormData, setCurrentPage]);
-
-  const handleRealEstateFormSubmit = useCallback((data: any) => {
-    setRealEstateFormData(data);
-    setCurrentPage('real-estate-description');
-  }, [setRealEstateFormData, setCurrentPage]);
-
-  const handleTenantFormSubmit = useCallback((data: any) => {
-    setTenantFormData(data);
-    setCurrentPage('tenant-description');
-  }, [setTenantFormData, setCurrentPage]);
-
-  const handleTabletFormSubmit = useCallback((data: any) => {
-    setTabletFormData(data);
-    setCurrentPage('tablet-description');
-  }, [setTabletFormData, setCurrentPage]);
-
-  const handleBicycleFormSubmit = useCallback((data: any) => {
-    setBicycleFormData(data);
-    setCurrentPage('bicycle-description');
-  }, [setBicycleFormData, setCurrentPage]);
-
-  const handleMotorcycleFormSubmit = useCallback((data: any) => {
-    setMotorcycleFormData(data);
-    setCurrentPage('motorcycle-description');
-  }, [setMotorcycleFormData, setCurrentPage]);
-
-  const handleClothingFormSubmit = useCallback((data: any) => {
-    setClothingFormData(data);
-    setCurrentPage('clothing-description');
-  }, [setClothingFormData, setCurrentPage]);
-
-  const handleNewCarDescription = useCallback(() => {
-    setCurrentPage('car-form');
-  }, [setCurrentPage]);
-
-  const handleNewPhoneDescription = useCallback(() => {
-    setCurrentPage('phone-form');
-  }, [setCurrentPage]);
-
-  const handleNewRealEstateDescription = useCallback(() => {
-    setCurrentPage('real-estate-form');
-  }, [setCurrentPage]);
-
-  const handleNewTenantDescription = useCallback(() => {
-    setCurrentPage('tenant-form');
-  }, [setCurrentPage]);
-
-  return {
     handleCarFormSubmit,
     handlePhoneFormSubmit,
     handleRealEstateFormSubmit,
