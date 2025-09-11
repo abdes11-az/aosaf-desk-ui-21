@@ -20,51 +20,51 @@ const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescrip
     
     // معلومات أساسية
     if (data.brand) {
-      description += `🏷️ الماركة: ${data.brand}\n`;
+      description += `🏷️ ${t('form.brand')}: ${data.brand}\n`;
     }
     if (data.model) {
-      description += `📱 الموديل: ${data.model}\n`;
+      description += `📱 ${t('form.model')}: ${data.model}\n`;
     }
     if (data.screenSize) {
-      description += `📏 حجم الشاشة: ${data.screenSize}\n`;
+      description += `📏 ${t('tablet.screen_size')}: ${data.screenSize}\n`;
     }
     if (data.screenType) {
-      description += `🖥️ نوع الشاشة: ${data.screenType}\n`;
+      description += `🖥️ ${t('tablet.screen_type')}: ${data.screenType}\n`;
     }
     
     description += "\n";
     
     // المواصفات التقنية
     if (data.processor || data.ram || data.storage) {
-      description += "⚙️ المواصفات التقنية:\n";
+      description += `⚙️ ${t('description.technical_specs')}:\n`;
       if (data.processor) {
-        description += `• المعالج: ${data.processor}\n`;
+        description += `• ${t('tablet.processor')}: ${data.processor}\n`;
       }
       if (data.ram) {
-        description += `• الذاكرة العشوائية: ${data.ram}\n`;
+        description += `• ${t('tablet.ram')}: ${data.ram}\n`;
       }
       if (data.storage) {
-        description += `• سعة التخزين: ${data.storage}\n`;
+        description += `• ${t('tablet.storage')}: ${data.storage}\n`;
       }
       description += "\n";
     }
     
     // معلومات إضافية
     if (data.battery) {
-      description += `🔋 البطارية: ${data.battery} mAh\n`;
+      description += `🔋 ${t('tablet.battery')}: ${data.battery} mAh\n`;
     }
     if (data.operatingSystem) {
-      description += `💻 نظام التشغيل: ${data.operatingSystem}\n`;
+      description += `💻 ${t('tablet.operating_system')}: ${data.operatingSystem}\n`;
     }
     if (data.connectivity) {
-      description += `📶 الاتصال: ${data.connectivity}\n`;
+      description += `📶 ${t('tablet.connectivity')}: ${data.connectivity}\n`;
     }
     
     description += "\n";
     
     // التعديلات
     if (data.modifications && data.modifications.length > 0) {
-      description += "🛠️ التعديلات:\n";
+      description += `🛠️ ${t('description.modifications')}:\n`;
       data.modifications.forEach((mod: string) => {
         description += `• ${mod}\n`;
       });
@@ -73,7 +73,7 @@ const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescrip
     
     // الملحقات
     if (data.accessories && data.accessories.length > 0) {
-      description += "📦 الملحقات المرفقة:\n";
+      description += `📦 ${t('description.accessories')}:\n`;
       data.accessories.forEach((accessory: string) => {
         description += `• ${accessory}\n`;
       });
@@ -82,19 +82,19 @@ const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescrip
     
     // الكاميرات
     if (data.frontCamera || data.rearCamera) {
-      description += "📸 الكاميرات:\n";
+      description += `📸 ${t('tablet.cameras')}:\n`;
       if (data.frontCamera) {
-        description += `• الكاميرا الأمامية: ${data.frontCamera}\n`;
+        description += `• ${t('tablet.front_camera')}: ${data.frontCamera}\n`;
       }
       if (data.rearCamera) {
-        description += `• الكاميرا الخلفية: ${data.rearCamera}\n`;
+        description += `• ${t('tablet.rear_camera')}: ${data.rearCamera}\n`;
       }
       description += "\n";
     }
     
     // الألوان
     if (data.colors && data.colors.length > 0) {
-      description += `🎨 الألوان المتاحة: ${data.colors.join(", ")}\n\n`;
+      description += `🎨 ${t('description.available_colors')}: ${data.colors.join(", ")}\n\n`;
     }
     
     // الحالة والسعر
@@ -118,24 +118,24 @@ const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescrip
     
     // سبب البيع
     if (data.sellReason) {
-      description += `💭 سبب البيع: ${data.sellReason}\n\n`;
+      description += `💭 ${t('description.sell_reason')}: ${data.sellReason}\n\n`;
     }
     
     // وصف إضافي
     if (data.description) {
-      description += `📝 تفاصيل إضافية:\n${data.description}\n\n`;
+      description += `📝 ${t('description.additional_details')}:\n${data.description}\n\n`;
     }
     
     // العملاء غير المرغوب فيهم
     if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += "🚫 يُرجى من الفئات التالية عدم التواصل:\n";
+      description += `🚫 ${t('description.unwanted_customers')}:\n`;
       data.unwantedCustomers.forEach((customer: string) => {
         description += `• ${customer}\n`;
       });
       description += "\n";
     }
     
-    description += "📞 للاستفسار والتواصل، يرجى الاتصال";
+    description += `📞 ${t('description.contact_info')}`;
     
     return description;
   };
@@ -175,8 +175,8 @@ const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescrip
           <ChevronRight className="w-5 h-5 text-accent-foreground" />
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-foreground">📱 وصف التابلت</h2>
-          <p className="text-muted-foreground text-sm">الوصف المُنشأ لجهازك اللوحي</p>
+          <h2 className="text-2xl font-bold text-foreground">📱 {t('description.tablet_description')}</h2>
+          <p className="text-muted-foreground text-sm">{t('description.generated_description')}</p>
         </div>
       </div>
       
@@ -189,23 +189,23 @@ const TabletDescriptionPage = ({ data, onBack, onNewDescription }: TabletDescrip
       <div className="flex flex-col gap-3">
         <Button onClick={handleSave} className="w-full">
           <Save className="w-4 h-4 mr-2" />
-          حفظ الوصف
+          {t('actions.save')}
         </Button>
         
         <Button onClick={handleCopy} variant="outline" className="w-full">
           <Copy className="w-4 h-4 mr-2" />
-          نسخ الوصف
+          {t('actions.copy')}
         </Button>
         
         <Button onClick={handleRegenerate} variant="outline" className="w-full">
           <RotateCcw className="w-4 h-4 mr-2" />
-          إعادة إنشاء
+          {t('actions.regenerate')}
         </Button>
       </div>
       
       <div className="mt-8 text-center">
         <p className="text-xs text-muted-foreground">
-          هذا الوصف تم إنشاؤه تلقائياً ويمكنك تعديله حسب حاجتك
+          {t('description.auto_generated_note')}
         </p>
       </div>
     </div>

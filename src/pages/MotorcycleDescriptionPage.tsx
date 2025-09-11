@@ -20,66 +20,43 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
     
     // معلومات أساسية
     if (data.type) {
-      const typeMap: { [key: string]: string } = {
-        "Sport": "رياضية",
-        "Cruiser": "تجوال",
-        "Touring": "سياحية",
-        "Scooter": "سكوتر",
-        "Off-road": "طرق وعرة",
-        "Naked": "عارية",
-        "Adventure": "مغامرة"
-      };
-      description += `🏷️ النوع: ${typeMap[data.type] || data.type}\n`;
+      description += `🏷️ ${t('motorcycle.type')}: ${opt('motorcycle_type_' + data.type.toLowerCase(), t)}\n`;
     }
     if (data.brand) {
       const brandName = data.brand === "other" ? data.customBrand : data.brand;
       if (brandName) {
-        description += `🏭 الماركة: ${brandName}\n`;
+        description += `🏭 ${t('form.brand')}: ${brandName}\n`;
       }
     }
     if (data.model) {
-      description += `📝 الموديل: ${data.model}\n`;
+      description += `📝 ${t('form.model')}: ${data.model}\n`;
     }
     if (data.year) {
-      description += `📅 سنة الصنع: ${data.year}\n`;
+      description += `📅 ${t('form.year')}: ${data.year}\n`;
     }
     
     description += "\n";
     
     // المواصفات التقنية
-    description += "⚙️ المواصفات التقنية:\n";
+    description += `⚙️ ${t('description.technical_specs')}:\n`;
     if (data.engineCapacity) {
-      description += `• سعة المحرك: ${data.engineCapacity}\n`;
+      description += `• ${t('motorcycle.engine_capacity')}: ${data.engineCapacity}\n`;
     }
     if (data.engineType) {
-      const engineMap: { [key: string]: string } = {
-        "2-stroke": "شوطين",
-        "4-stroke": "أربعة أشواط"
-      };
-      description += `• نوع المحرك: ${engineMap[data.engineType] || data.engineType}\n`;
+      description += `• ${t('motorcycle.engine_type')}: ${opt('engine_type_' + data.engineType.replace('-', '_'), t)}\n`;
     }
     if (data.transmission) {
-      const transmissionMap: { [key: string]: string } = {
-        "manual": "يدوي",
-        "automatic": "أوتوماتيك",
-        "semi-automatic": "شبه أوتوماتيك"
-      };
-      description += `• ناقل الحركة: ${transmissionMap[data.transmission] || data.transmission}\n`;
+      description += `• ${t('motorcycle.transmission')}: ${opt('transmission_' + data.transmission, t)}\n`;
     }
     if (data.fuelType) {
-      const fuelMap: { [key: string]: string } = {
-        "gasoline": "بنزين",
-        "electric": "كهربائي",
-        "hybrid": "هجين"
-      };
-      description += `• نوع الوقود: ${fuelMap[data.fuelType] || data.fuelType}\n`;
+      description += `• ${t('motorcycle.fuel_type')}: ${opt('fuel_type_' + data.fuelType, t)}\n`;
     }
     
     description += "\n";
     
     // التعديلات
     if (data.modifications && data.modifications.length > 0) {
-      description += "🛠️ التعديلات:\n";
+      description += `🛠️ ${t('description.modifications')}:\n`;
       data.modifications.forEach((mod: string) => {
         description += `• ${mod}\n`;
       });
@@ -88,7 +65,7 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
     
     // الملحقات
     if (data.accessories && data.accessories.length > 0) {
-      description += "📦 الملحقات المرفقة:\n";
+      description += `📦 ${t('description.accessories')}:\n`;
       data.accessories.forEach((accessory: string) => {
         description += `• ${accessory}\n`;
       });
@@ -97,25 +74,25 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
     
     // الأداء والاستهلاك
     if (data.maxSpeed || data.fuelConsumption || data.fuelTankCapacity) {
-      description += "🚀 الأداء والاستهلاك:\n";
+      description += `🚀 ${t('motorcycle.performance')}:\n`;
       if (data.maxSpeed) {
-        description += `• السرعة القصوى: ${data.maxSpeed} كم/ساعة\n`;
+        description += `• ${t('motorcycle.max_speed')}: ${data.maxSpeed} ${t('motorcycle.kmh')}\n`;
       }
       if (data.fuelConsumption) {
-        description += `• استهلاك الوقود: ${data.fuelConsumption} كم/لتر\n`;
+        description += `• ${t('motorcycle.fuel_consumption')}: ${data.fuelConsumption} ${t('motorcycle.km_per_liter')}\n`;
       }
       if (data.fuelTankCapacity) {
-        description += `• سعة خزان الوقود: ${data.fuelTankCapacity} لتر\n`;
+        description += `• ${t('motorcycle.fuel_tank_capacity')}: ${data.fuelTankCapacity} ${t('motorcycle.liter')}\n`;
       }
       description += "\n";
     }
     
     // معلومات إضافية
     if (data.mileage) {
-      description += `🛣️ المسافة المقطوعة: ${data.mileage} كم\n`;
+      description += `🛣️ ${t('motorcycle.mileage')}: ${data.mileage} ${t('motorcycle.km')}\n`;
     }
     if (data.color) {
-      description += `🎨 اللون: ${data.color}\n`;
+      description += `🎨 ${t('form.color')}: ${data.color}\n`;
     }
     
     // الحالة والسعر
@@ -139,24 +116,24 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
     
     // سبب البيع
     if (data.sellReason) {
-      description += `💭 سبب البيع: ${data.sellReason}\n\n`;
+      description += `💭 ${t('description.sell_reason')}: ${data.sellReason}\n\n`;
     }
     
     // وصف إضافي
     if (data.description) {
-      description += `📝 تفاصيل إضافية:\n${data.description}\n\n`;
+      description += `📝 ${t('description.additional_details')}:\n${data.description}\n\n`;
     }
     
     // العملاء غير المرغوب فيهم
     if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += "🚫 يُرجى من الفئات التالية عدم التواصل:\n";
+      description += `🚫 ${t('description.unwanted_customers')}:\n`;
       data.unwantedCustomers.forEach((customer: string) => {
         description += `• ${customer}\n`;
       });
       description += "\n";
     }
     
-    description += "📞 للاستفسار والتواصل، يرجى الاتصال";
+    description += `📞 ${t('description.contact_info')}`;
     
     return description;
   };
@@ -196,8 +173,8 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
           <ChevronRight className="w-5 h-5 text-accent-foreground" />
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-foreground">🏍️ وصف الدراجة النارية</h2>
-          <p className="text-muted-foreground text-sm">الوصف المُنشأ لدراجتك النارية</p>
+          <h2 className="text-2xl font-bold text-foreground">🏍️ {t('description.motorcycle_description')}</h2>
+          <p className="text-muted-foreground text-sm">{t('description.generated_description')}</p>
         </div>
       </div>
       
@@ -210,23 +187,23 @@ const MotorcycleDescriptionPage = ({ data, onBack, onNewDescription }: Motorcycl
       <div className="flex flex-col gap-3">
         <Button onClick={handleSave} className="w-full">
           <Save className="w-4 h-4 mr-2" />
-          حفظ الوصف
+          {t('actions.save')}
         </Button>
         
         <Button onClick={handleCopy} variant="outline" className="w-full">
           <Copy className="w-4 h-4 mr-2" />
-          نسخ الوصف
+          {t('actions.copy')}
         </Button>
         
         <Button onClick={handleRegenerate} variant="outline" className="w-full">
           <RotateCcw className="w-4 h-4 mr-2" />
-          إعادة إنشاء
+          {t('actions.regenerate')}
         </Button>
       </div>
       
       <div className="mt-8 text-center">
         <p className="text-xs text-muted-foreground">
-          هذا الوصف تم إنشاؤه تلقائياً ويمكنك تعديله حسب حاجتك
+          {t('description.auto_generated_note')}
         </p>
       </div>
     </div>
