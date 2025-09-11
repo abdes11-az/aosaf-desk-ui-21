@@ -19,8 +19,12 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     let description = "";
 
     // العنوان الرئيسي
-    if (data.model && data.year) {
-      description += `🚗 ${data.model} موديل ${data.year}\n\n`;
+    let carTitle = "🚗 ";
+    if (data.make) carTitle += data.make;
+    if (data.model) carTitle += (data.make ? " " : "") + data.model;
+    if (data.year) carTitle += " موديل " + data.year;
+    if (carTitle !== "🚗 ") {
+      description += carTitle + "\n\n";
     }
 
     // المعلومات الأساسية
