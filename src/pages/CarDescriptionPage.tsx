@@ -18,13 +18,13 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
   const generateComprehensiveDescription = (data: any) => {
     let description = "";
 
-    // العنوان الرئيسي
-    let carTitle = "🚗 ";
-    if (data.make) carTitle += data.make;
-    if (data.model) carTitle += (data.make ? " " : "") + data.model;
-    if (data.year) carTitle += " موديل " + data.year;
-    if (carTitle !== "🚗 ") {
-      description += carTitle + "\n\n";
+    // العنوان الرئيسي - تنسيق واضح ومفهوم
+    if (data.make || data.model || data.year) {
+      description += `🚗 سيارة `;
+      if (data.make) description += `${data.make} `;
+      if (data.model) description += `${data.model} `;
+      if (data.year) description += `- موديل ${data.year}`;
+      description += "\n\n";
     }
 
     // المعلومات الأساسية
