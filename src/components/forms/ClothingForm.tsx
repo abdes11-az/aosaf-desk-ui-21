@@ -353,81 +353,81 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            👤 معلومات البائع
+            👤 {t('common.seller_info')}
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="city">المدينة</Label>
+              <Label htmlFor="city">{t('description.city')}</Label>
               <Input
                 id="city"
                 value={formData.city}
                 onChange={(e) => updateData({ ...formData, city: e.target.value })}
-                placeholder="أدخل اسم المدينة"
+                placeholder={t('placeholders.enter_city')}
               />
             </div>
             <div>
-              <Label htmlFor="sellerType">نوع البائع</Label>
+              <Label htmlFor="sellerType">{t('description.seller_type')}</Label>
               <Select value={formData.sellerType} onValueChange={(value) => updateData({ ...formData, sellerType: value })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="اختر..." />
+                  <SelectValue placeholder={t('placeholders.choose')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="شخص">شخص</SelectItem>
-                  <SelectItem value="محل">محل</SelectItem>
-                  <SelectItem value="شركة">شركة</SelectItem>
-                  <SelectItem value="وسيط">وسيط</SelectItem>
+                  <SelectItem value="شخص">{t('options.person')}</SelectItem>
+                  <SelectItem value="محل">{t('options.shop')}</SelectItem>
+                  <SelectItem value="شركة">{t('options.company')}</SelectItem>
+                  <SelectItem value="وسيط">{t('options.broker')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <Label htmlFor="deliveryMethod">طريقة التسليم</Label>
+              <Label htmlFor="deliveryMethod">{t('description.delivery_method')}</Label>
               <Select value={formData.deliveryMethod} onValueChange={(value) => updateData({ ...formData, deliveryMethod: value })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="اختر..." />
+                  <SelectValue placeholder={t('placeholders.choose')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="استلام شخصي">استلام شخصي</SelectItem>
-                  <SelectItem value="توصيل">توصيل</SelectItem>
-                  <SelectItem value="شحن">شحن</SelectItem>
-                  <SelectItem value="كلاهما">كلاهما</SelectItem>
+                  <SelectItem value="استلام شخصي">{t('options.personal_pickup')}</SelectItem>
+                  <SelectItem value="توصيل">{t('options.delivery')}</SelectItem>
+                  <SelectItem value="شحن">{t('options.shipping')}</SelectItem>
+                  <SelectItem value="كلاهما">{t('options.both')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <Label htmlFor="price">السعر</Label>
+              <Label htmlFor="price">{t('form.price')}</Label>
               <Input
                 id="price"
                 value={formData.price}
                 onChange={(e) => updateData({ ...formData, price: e.target.value })}
-                placeholder="أدخل السعر"
+                placeholder={t('placeholders.enter_price')}
               />
             </div>
             <div>
-              <Label htmlFor="negotiable">السعر قابل للتفاوض</Label>
+              <Label htmlFor="negotiable">{t('form.negotiable')}</Label>
               <Select value={formData.negotiable} onValueChange={(value) => updateData({ ...formData, negotiable: value })}>
                 <SelectTrigger>
-                  <SelectValue placeholder="اختر..." />
+                  <SelectValue placeholder={t('placeholders.choose')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="نعم">نعم</SelectItem>
-                  <SelectItem value="لا">لا</SelectItem>
-                  <SelectItem value="ضمن حدود معقولة">ضمن حدود معقولة</SelectItem>
+                  <SelectItem value="نعم">{t('options.yes')}</SelectItem>
+                  <SelectItem value="لا">{t('options.no')}</SelectItem>
+                  <SelectItem value="ضمن حدود معقولة">{t('options.within_reasonable_limits')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             <div>
-              <Label htmlFor="contactMethod">طريقة التواصل</Label>
+              <Label htmlFor="contactMethod">{t('description.contact_method')}</Label>
               <Input
                 id="contactMethod"
                 value={formData.contactMethod}
                 onChange={(e) => updateData({ ...formData, contactMethod: e.target.value })}
-                placeholder="رقم الهاتف أو واتساب..."
+                placeholder={t('placeholders.phone_whatsapp')}
               />
             </div>
             <div>
-              <Label htmlFor="warranty">الضمان</Label>
+              <Label htmlFor="warranty">{t('description.warranty')}</Label>
               <Select value={formData.warranty} onValueChange={(value) => updateData({ ...formData, warranty: value })}>
                 <SelectTrigger>
                   <SelectValue placeholder="اختر..." />
