@@ -388,26 +388,26 @@ const TabletForm = ({ data, onChange }: TabletFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            💭 علاش باغي تبيع
+            💭 {t('form.sell_reason')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            <Label>علاش باغي تبيع</Label>
+            <Label>{t('form.sell_reason')}</Label>
             <Select value={formData.sellReason} onValueChange={(value) => updateData({ ...formData, sellReason: value })}>
               <SelectTrigger>
-                <SelectValue placeholder="اختر سبب البيع" />
+                <SelectValue placeholder={t('placeholders.choose_sell_reason')} />
               </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="شراء تابلت جديد">شراء تابلت جديد</SelectItem>
-                <SelectItem value="عدم الاستخدام">عدم الاستخدام</SelectItem>
-                <SelectItem value="الحاجة للمال">الحاجة للمال</SelectItem>
-                <SelectItem value="شراء لابتوب بدلاً منه">شراء لابتوب بدلاً منه</SelectItem>
-                <SelectItem value="تغيير في احتياجات العمل">تغيير في احتياجات العمل</SelectItem>
-                <SelectItem value="السفر">السفر</SelectItem>
-                <SelectItem value="تصغير الأجهزة">تصغير الأجهزة</SelectItem>
-                <SelectItem value="مشاكل في الجهاز">مشاكل في الجهاز</SelectItem>
-                <SelectItem value="أسباب شخصية">أسباب شخصية</SelectItem>
+                <SelectContent>
+                  <SelectItem value="شراء تابلت جديد">{t('sell_reasons.tablet.buy_new_tablet')}</SelectItem>
+                  <SelectItem value="عدم الاستخدام">{t('sell_reasons.tablet.no_use')}</SelectItem>
+                  <SelectItem value="الحاجة للمال">{t('sell_reasons.tablet.need_money')}</SelectItem>
+                  <SelectItem value="شراء لابتوب بدلاً منه">{t('sell_reasons.tablet.buy_laptop')}</SelectItem>
+                  <SelectItem value="تغيير في احتياجات العمل">{t('sell_reasons.tablet.work_needs_change')}</SelectItem>
+                  <SelectItem value="السفر">{t('sell_reasons.tablet.travel')}</SelectItem>
+                  <SelectItem value="تصغير الأجهزة">{t('sell_reasons.tablet.downsize_devices')}</SelectItem>
+                  <SelectItem value="مشاكل في الجهاز">{t('sell_reasons.tablet.device_problems')}</SelectItem>
+                  <SelectItem value="أسباب شخصية">{t('sell_reasons.tablet.personal_reasons')}</SelectItem>
               </SelectContent>
             </Select>
           </div>

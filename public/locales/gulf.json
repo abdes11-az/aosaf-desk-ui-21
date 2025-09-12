@@ -340,7 +340,8 @@
     "additional_notes": "ضيف أي ملاحظات زيادة هني...",
     "choose": "اختر...",
     "number": "ادخل الرقم...",
-    "enter_client_type": "ادخل نوع العميل اللي تبيه..."
+    "enter_client_type": "ادخل نوع العميل اللي تبيه...",
+    "choose_sell_reason": "اختر ليش تبي تبيع"
   },
   "options": {
     "yes": "إي",
@@ -383,6 +384,19 @@
     "navy": "كحلي",
     "gold": "ذهبي",
     "silver": "فضي"
+  },
+  "sell_reasons": {
+    "tablet": {
+      "buy_new_tablet": "شراء تابلت جديد",
+      "no_use": "ما استخدمه",
+      "need_money": "محتاج فلوس",
+      "buy_laptop": "بشتري لاب توب بداله",
+      "work_needs_change": "تغييرات في الشغل",
+      "travel": "مسافر",
+      "downsize_devices": "تقليل الأجهزة",
+      "device_problems": "فيه مشاكل",
+      "personal_reasons": "أسباب شخصية"
+    }
   },
   "settings": {
     "title": "الإعدادات",
