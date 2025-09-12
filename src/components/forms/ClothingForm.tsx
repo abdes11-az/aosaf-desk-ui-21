@@ -297,28 +297,28 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            💭 سبب البيع
+            💭 {t('form.sell_reason')}
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            <Label>سبب البيع</Label>
+            <Label>{t('form.sell_reason')}</Label>
             <Select value={formData.sellReason} onValueChange={(value) => updateData({ ...formData, sellReason: value })}>
               <SelectTrigger>
-                <SelectValue placeholder="اختر سبب البيع" />
+                <SelectValue placeholder={t('placeholders.choose_sell_reason')} />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="تغيير المقاس">تغيير المقاس</SelectItem>
-                <SelectItem value="عدم الاستخدام">عدم الاستخدام</SelectItem>
-                <SelectItem value="تغيير الستايل">تغيير الستايل</SelectItem>
-                <SelectItem value="شراء ملابس جديدة">شراء ملابس جديدة</SelectItem>
-                <SelectItem value="تنظيف الخزانة">تنظيف الخزانة</SelectItem>
-                <SelectItem value="الحاجة للمال">الحاجة للمال</SelectItem>
-                <SelectItem value="تغيير الوزن">تغيير الوزن</SelectItem>
-                <SelectItem value="انتهاء الموسم">انتهاء الموسم</SelectItem>
-                <SelectItem value="عدم الراحة">عدم الراحة</SelectItem>
-                <SelectItem value="تكرار القطع">تكرار القطع</SelectItem>
-                <SelectItem value="أسباب شخصية">أسباب شخصية</SelectItem>
+                <SelectItem value="تغيير المقاس">{t('sell_reasons.clothing.size_change')}</SelectItem>
+                <SelectItem value="عدم الاستخدام">{t('sell_reasons.clothing.no_use')}</SelectItem>
+                <SelectItem value="تغيير الستايل">{t('sell_reasons.clothing.style_change')}</SelectItem>
+                <SelectItem value="شراء ملابس جديدة">{t('sell_reasons.clothing.buy_new_clothes')}</SelectItem>
+                <SelectItem value="تنظيف الخزانة">{t('sell_reasons.clothing.closet_cleanup')}</SelectItem>
+                <SelectItem value="الحاجة للمال">{t('sell_reasons.clothing.need_money')}</SelectItem>
+                <SelectItem value="تغيير الوزن">{t('sell_reasons.clothing.weight_change')}</SelectItem>
+                <SelectItem value="انتهاء الموسم">{t('sell_reasons.clothing.season_end')}</SelectItem>
+                <SelectItem value="عدم الراحة">{t('sell_reasons.clothing.not_comfortable')}</SelectItem>
+                <SelectItem value="تكرار القطع">{t('sell_reasons.clothing.duplicate_items')}</SelectItem>
+                <SelectItem value="أسباب شخصية">{t('sell_reasons.clothing.personal_reasons')}</SelectItem>
               </SelectContent>
             </Select>
           </div>

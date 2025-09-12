@@ -396,6 +396,19 @@
       "downsize_devices": "تقليل الأجهزة",
       "device_problems": "فيه مشاكل",
       "personal_reasons": "أسباب شخصية"
+    },
+    "clothing": {
+      "size_change": "تغيير المقاس",
+      "no_use": "ما ألبسها",
+      "style_change": "تغيير الستايل",
+      "buy_new_clothes": "شراء ملابس جديدة",
+      "closet_cleanup": "تنظيف الخزانة",
+      "need_money": "محتاج فلوس",
+      "weight_change": "تغيير الوزن",
+      "season_end": "انتهى الموسم",
+      "not_comfortable": "مو مرتاح فيها",
+      "duplicate_items": "تكرار القطع",
+      "personal_reasons": "أسباب شخصية"
     }
   },
   "settings": {
