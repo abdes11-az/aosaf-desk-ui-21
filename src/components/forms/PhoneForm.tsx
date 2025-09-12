@@ -218,7 +218,7 @@ const PhoneForm = ({ onBack, onGenerateDescription }: PhoneFormProps) => {
                 />
               </div>
               <div>
-                <Label htmlFor="ram">{t('phone.ram')}</Label>
+                <Label htmlFor="ram">الذاكرة العشوائية RAM</Label>
                 <Input
                   id="ram"
                   placeholder="مثال: 8GB"
