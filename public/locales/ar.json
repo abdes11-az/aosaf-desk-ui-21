@@ -376,7 +376,21 @@
     "both": "كلاهما",
     "within_reasonable_limits": "ضمن حدود معقولة",
     "by_type": "حسب النوع",
-    "partially": "جزئياً"
+    "partially": "جزئياً",
+    "mountain": "دراجة جبلية",
+    "road": "دراجة طريق",
+    "hybrid": "دراجة هجين",
+    "electric": "دراجة كهربائية",
+    "bmx": "دراجة BMX",
+    "city": "دراجة مدينة",
+    "aluminum": "ألومنيوم",
+    "carbon": "كاربون",
+    "steel": "حديد",
+    "titanium": "تيتانيوم",
+    "disc": "مكابح قرصية",
+    "v_brake": "مكابح V-Brake",
+    "hydraulic": "مكابح هيدروليكية",
+    "rim": "مكابح حافة العجلة"
   },
   "colors": {
     "black": "أسود",

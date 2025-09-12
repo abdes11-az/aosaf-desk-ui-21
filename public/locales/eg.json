@@ -375,7 +375,21 @@
     "both": "الاتنين",
     "within_reasonable_limits": "في حدود معقولة",
     "by_type": "حسب النوع",
-    "partially": "جزئياً"
+    "partially": "جزئياً",
+    "mountain": "عجلة جبلية",
+    "road": "عجلة طريق",
+    "hybrid": "عجلة هجين", 
+    "electric": "عجلة كهربائية",
+    "bmx": "عجلة BMX",
+    "city": "عجلة مدينة",
+    "aluminum": "ألومنيوم",
+    "carbon": "كاربون",
+    "steel": "حديد", 
+    "titanium": "تيتانيوم",
+    "disc": "فرامل قرصية",
+    "v_brake": "فرامل V-Brake",
+    "hydraulic": "فرامل هيدروليكية",
+    "rim": "فرامل حافة الكاوتش"
   },
   "colors": {
     "black": "اسود",
