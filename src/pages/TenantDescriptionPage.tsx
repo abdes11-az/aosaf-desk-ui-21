@@ -63,8 +63,7 @@ const TenantDescriptionPage = ({ tenantData, onBack, onNewDescription }: TenantD
       description += `${data.additionalNotes}\n\n`;
     }
 
-    description += "---\n";
-    description += t('description.generated_by_app');
+    description += "---";
 
     return description;
   };
