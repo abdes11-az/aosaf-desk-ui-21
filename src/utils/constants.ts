@@ -31,7 +31,8 @@ export const APP_CONFIG = {
 // أنواع البيانات المدعومة
 export const SUPPORTED_ITEM_TYPES = [
   'car', 'phone', 'real-estate', 'tenant', 
-  'free-writing', 'clothing', 'questions'
+  'free-writing', 'tablet', 'bicycle', 
+  'motorcycle', 'clothing', 'questions'
 ] as const;
 
 export type SupportedItemType = typeof SUPPORTED_ITEM_TYPES[number];

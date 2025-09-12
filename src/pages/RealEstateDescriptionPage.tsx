@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { saveDescription, generateTitleFromData } from "@/utils/saveSystem";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { opt } from "@/utils/i18nHelpers";
 
 interface RealEstateDescriptionPageProps {
   realEstateData: any;
@@ -30,7 +29,7 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
           area: "📐 المساحة:",
           floors: "🏢 عدد الطوابق:",
           currentFloor: "📍 الطابق لي عليه:",
-          clientType: "👤 نوع الكليان لي بغيت:",
+          clientType: "👤 نوع العميل:",
           roomsTitle: "🛏️ البيوت:",
           bedrooms: "🛏️ بيوت النعاس:",
           livingRooms: "🛋️ الصالونات:",
@@ -230,7 +229,7 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     if (data.area) description += `${texts.area} ${data.area}\n`;
     if (data.floors) description += `${texts.floors} ${data.floors}\n`;
     if (data.currentFloor) description += `${texts.currentFloor} ${data.currentFloor}\n`;
-    if (data.clientType) description += `${texts.clientType} ${opt(data.clientType, t)}\n`;
+    if (data.clientType) description += `${texts.clientType} ${data.clientType}\n`;
     description += "\n";
 
     // تفاصيل الغرف
