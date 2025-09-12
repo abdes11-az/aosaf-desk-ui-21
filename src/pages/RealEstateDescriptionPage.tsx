@@ -12,61 +12,258 @@ interface RealEstateDescriptionPageProps {
 
 const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }: RealEstateDescriptionPageProps) => {
   const { toast } = useToast();
-  const { t } = useLanguage();
+  const { t, dialect } = useLanguage();
+  
   const generateRealEstateDescription = (data: any) => {
     let description = "";
 
+    // شكل الوصف حسب اللهجة
+    const getDialectText = () => {
+      if (dialect === 'moroccan') {
+        return {
+          mainTitle: (propertyType: string, district: string, city: string) => 
+            `🏠 ${propertyType}${district && city ? ` فـ ${district}, ${city}` : ''}`,
+          basicInfo: "📋 المعلومات الأساسية:",
+          city: "📍 المدينة:",
+          district: "🏘️ الحي:",
+          area: "📐 المساحة:",
+          floors: "🏢 عدد الطوابق:",
+          currentFloor: "📍 الطابق لي عليه:",
+          clientType: "👤 نوع العميل:",
+          roomsTitle: "🛏️ البيوت:",
+          bedrooms: "🛏️ بيوت النعاس:",
+          livingRooms: "🛋️ الصالونات:",
+          bathrooms: "🚿 الحمامات:",
+          kitchens: "🍳 الكوزينات:",
+          balcony: "🌅 البلكون:",
+          roof: "🏠 السطح:",
+          finishTitle: "✨ التشطيبات:",
+          flooring: "🏠 الرضية:",
+          walls: "🧱 الحيطان:",
+          kitchen: "🍳 الكوزينة:",
+          bathroom: "🚿 دورات الما:",
+          doors: "🚪 البيبان:",
+          windows: "🪟 الشراجم:",
+          airConditioning: "❄️ التبريد:",
+          facilitiesTitle: "🏢 المرافق والخدمات:",
+          elevator: "🛗 الاسونسور:",
+          parking: "🚗 البلاصات ديال الطونوبيل:",
+          furnished: "🪑 مفروش:",
+          nearbyServices: "الخدمات لي قريبة:",
+          neighborhoodTitle: "🏘️ فكرة على الجيران والبلاصة:",
+          neighborhoodType: "🏠 نوع الحي:",
+          neighborsType: "👨‍👩‍👦 شنو كيبانو الجيران:",
+          noiseLevel: "🔊 مستوى الهدوء:",
+          safetyLevel: "🛡️ الأمان فالمنطقة:",
+          priceTitle: "💰 الثمن والتواصل:",
+          price: "💰 الثمن:",
+          negotiable: (neg: string) => neg === "نعم" ? "فيه متنقص" : "ماشي قابل للتفاوض",
+          readyToMove: "🗝️ جاهز للانتقال:",
+          contactMethod: "📞 كيفاش نتواصلو:",
+          inspectionTimes: "⏰ أوقات المعاينة:",
+          sellReason: "📝 علاش باغي نبيع:",
+          unwantedCustomers: "🚫 العملاء لي ماباغيش نتعامل معاهم:",
+          additionalNotes: "📝 ملاحظات زايدة:",
+          contactFooter: "للتواصل والاستفسار، عافاك اتصل ولا صيفط رسالة واتساب.",
+          thanks: "شكراً على الاهتمام! 🙏"
+        };
+      } else if (dialect === 'egyptian') {
+        return {
+          mainTitle: (propertyType: string, district: string, city: string) => 
+            `🏠 ${propertyType}${district && city ? ` في ${district}, ${city}` : ''}`,
+          basicInfo: "📋 المعلومات الأساسية:",
+          city: "📍 المدينة:",
+          district: "🏘️ المنطقة:",
+          area: "📐 المساحة:",
+          floors: "🏢 عدد الأدوار:",
+          currentFloor: "📍 الدور الحالي:",
+          clientType: "👤 نوع العميل:",
+          roomsTitle: "🛏️ الغرف:",
+          bedrooms: "🛏️ غرف النوم:",
+          livingRooms: "🛋️ غرف المعيشة:",
+          bathrooms: "🚿 الحمامات:",
+          kitchens: "🍳 المطابخ:",
+          balcony: "🌅 البلكونة:",
+          roof: "🏠 السطح:",
+          finishTitle: "✨ التشطيبات:",
+          flooring: "🏠 الأرضيات:",
+          walls: "🧱 الحوائط:",
+          kitchen: "🍳 المطبخ:",
+          bathroom: "🚿 الحمام:",
+          doors: "🚪 الأبواب:",
+          windows: "🪟 الشبابيك:",
+          airConditioning: "❄️ التكييف:",
+          facilitiesTitle: "🏢 المرافق والخدمات:",
+          elevator: "🛗 الأسانسير:",
+          parking: "🚗 موقف السيارات:",
+          furnished: "🪑 مفروش:",
+          nearbyServices: "الخدمات القريبة:",
+          neighborhoodTitle: "🏘️ معلومات عن الحي:",
+          neighborhoodType: "🏠 نوع الحي:",
+          neighborsType: "👨‍👩‍👦 الجيران:",
+          noiseLevel: "🔊 مستوى الهدوء:",
+          safetyLevel: "🛡️ الأمان:",
+          priceTitle: "💰 السعر والتواصل:",
+          price: "💰 السعر:",
+          negotiable: (neg: string) => neg === "نعم" ? "قابل للتفاوض" : "غير قابل للتفاوض",
+          readyToMove: "🗝️ جاهز للانتقال:",
+          contactMethod: "📞 طريقة التواصل:",
+          inspectionTimes: "⏰ مواعيد المعاينة:",
+          sellReason: "📝 سبب البيع:",
+          unwantedCustomers: "🚫 العملاء غير المرغوبين:",
+          additionalNotes: "📝 ملاحظات إضافية:",
+          contactFooter: "للتواصل والاستفسار، برجاء الاتصال أو إرسال رسالة واتساب.",
+          thanks: "شكراً للاهتمام! 🙏"
+        };
+      } else if (dialect === 'gulf') {
+        return {
+          mainTitle: (propertyType: string, district: string, city: string) => 
+            `🏠 ${propertyType}${district && city ? ` في ${district}, ${city}` : ''}`,
+          basicInfo: "📋 المعلومات الأساسية:",
+          city: "📍 المدينة:",
+          district: "🏘️ المنطقة:",
+          area: "📐 المساحة:",
+          floors: "🏢 عدد الأدوار:",
+          currentFloor: "📍 الدور:",
+          clientType: "👤 نوع العميل:",
+          roomsTitle: "🛏️ الغرف:",
+          bedrooms: "🛏️ غرف النوم:",
+          livingRooms: "🛋️ الصالات:",
+          bathrooms: "🚿 دورات المياه:",
+          kitchens: "🍳 المطابخ:",
+          balcony: "🌅 البلكونة:",
+          roof: "🏠 السطح:",
+          finishTitle: "✨ التشطيبات:",
+          flooring: "🏠 الأرضيات:",
+          walls: "🧱 الجدران:",
+          kitchen: "🍳 المطبخ:",
+          bathroom: "🚿 دورة المياه:",
+          doors: "🚪 الأبواب:",
+          windows: "🪟 النوافذ:",
+          airConditioning: "❄️ التكييف:",
+          facilitiesTitle: "🏢 المرافق والخدمات:",
+          elevator: "🛗 المصعد:",
+          parking: "🚗 موقف السيارات:",
+          furnished: "🪑 مفروش:",
+          nearbyServices: "الخدمات القريبة:",
+          neighborhoodTitle: "🏘️ معلومات عن المنطقة:",
+          neighborhoodType: "🏠 نوع المنطقة:",
+          neighborsType: "👨‍👩‍👦 الجيران:",
+          noiseLevel: "🔊 مستوى الهدوء:",
+          safetyLevel: "🛡️ الأمان:",
+          priceTitle: "💰 السعر والتواصل:",
+          price: "💰 السعر:",
+          negotiable: (neg: string) => neg === "نعم" ? "قابل للتفاوض" : "غير قابل للتفاوض",
+          readyToMove: "🗝️ جاهز للانتقال:",
+          contactMethod: "📞 طريقة التواصل:",
+          inspectionTimes: "⏰ مواعيد المعاينة:",
+          sellReason: "📝 سبب البيع:",
+          unwantedCustomers: "🚫 العملاء غير المرغوبين:",
+          additionalNotes: "📝 ملاحظات إضافية:",
+          contactFooter: "للتواصل والاستفسار، يرجى الاتصال أو إرسال رسالة واتساب.",
+          thanks: "شكراً للاهتمام! 🙏"
+        };
+      } else {
+        // الفصحى (standard)
+        return {
+          mainTitle: (propertyType: string, district: string, city: string) => 
+            `🏠 ${propertyType}${district && city ? ` في ${district}, ${city}` : ''}`,
+          basicInfo: "📋 المعلومات الأساسية:",
+          city: "📍 المدينة:",
+          district: "🏘️ المنطقة:",
+          area: "📐 المساحة:",
+          floors: "🏢 عدد الطوابق:",
+          currentFloor: "📍 الطابق الحالي:",
+          clientType: "👤 نوع العميل:",
+          roomsTitle: "🛏️ الغرف:",
+          bedrooms: "🛏️ غرف النوم:",
+          livingRooms: "🛋️ غرف المعيشة:",
+          bathrooms: "🚿 الحمامات:",
+          kitchens: "🍳 المطابخ:",
+          balcony: "🌅 الشرفة:",
+          roof: "🏠 السطح:",
+          finishTitle: "✨ التشطيبات:",
+          flooring: "🏠 الأرضيات:",
+          walls: "🧱 الجدران:",
+          kitchen: "🍳 المطبخ:",
+          bathroom: "🚿 الحمام:",
+          doors: "🚪 الأبواب:",
+          windows: "🪟 النوافذ:",
+          airConditioning: "❄️ التكييف:",
+          facilitiesTitle: "🏢 المرافق والخدمات:",
+          elevator: "🛗 المصعد:",
+          parking: "🚗 موقف السيارات:",
+          furnished: "🪑 مفروش:",
+          nearbyServices: "الخدمات القريبة:",
+          neighborhoodTitle: "🏘️ معلومات عن المنطقة:",
+          neighborhoodType: "🏠 نوع المنطقة:",
+          neighborsType: "👨‍👩‍👦 الجيران:",
+          noiseLevel: "🔊 مستوى الهدوء:",
+          safetyLevel: "🛡️ الأمان:",
+          priceTitle: "💰 السعر والتواصل:",
+          price: "💰 السعر:",
+          negotiable: (neg: string) => neg === "نعم" ? "قابل للتفاوض" : "غير قابل للتفاوض",
+          readyToMove: "🗝️ جاهز للانتقال:",
+          contactMethod: "📞 طريقة التواصل:",
+          inspectionTimes: "⏰ مواعيد المعاينة:",
+          sellReason: "📝 سبب البيع:",
+          unwantedCustomers: "🚫 العملاء غير المرغوبين:",
+          additionalNotes: "📝 ملاحظات إضافية:",
+          contactFooter: "للتواصل والاستفسار، يرجى الاتصال أو إرسال رسالة واتساب.",
+          thanks: "شكراً للاهتمام! 🙏"
+        };
+      }
+    };
+
+    const texts = getDialectText();
+
     // العنوان الرئيسي
     if (data.propertyType) {
-      description += `🏠 ${data.propertyType}`;
-      if (data.district && data.city) {
-        description += ` فـ ${data.district}, ${data.city}`;
-      }
-      description += "\n\n";
+      description += texts.mainTitle(data.propertyType, data.district, data.city) + "\n\n";
     }
 
     // المعلومات الأساسية
-    description += "📋 المعلومات الأساسية:\n";
-    if (data.city) description += `📍 المدينة: ${data.city}\n`;
-    if (data.district) description += `🏘️ الحي: ${data.district}\n`;
-    if (data.area) description += `📐 المساحة: ${data.area}\n`;
-    if (data.floors) description += `🏢 عدد الطوابق: ${data.floors}\n`;
-    if (data.currentFloor) description += `📍 الطابق لي عليه: ${data.currentFloor}\n`;
-    if (data.clientType) description += `👤 نوع العميل: ${data.clientType}\n`;
+    description += texts.basicInfo + "\n";
+    if (data.city) description += `${texts.city} ${data.city}\n`;
+    if (data.district) description += `${texts.district} ${data.district}\n`;
+    if (data.area) description += `${texts.area} ${data.area}\n`;
+    if (data.floors) description += `${texts.floors} ${data.floors}\n`;
+    if (data.currentFloor) description += `${texts.currentFloor} ${data.currentFloor}\n`;
+    if (data.clientType) description += `${texts.clientType} ${data.clientType}\n`;
     description += "\n";
 
     // تفاصيل الغرف
-    description += "🛏️ البيوت:\n";
-    if (data.bedrooms) description += `🛏️ بيوت النعاس: ${data.bedrooms}\n`;
-    if (data.livingRooms) description += `🛋️ الصالونات: ${data.livingRooms}\n`;
-    if (data.bathrooms) description += `🚿 الحمامات: ${data.bathrooms}\n`;
-    if (data.kitchens) description += `🍳 الكوزينات: ${data.kitchens}\n`;
-    if (data.hasBalcony) description += `🌅 البلكون: ${data.hasBalcony}\n`;
-    if (data.hasRoof) description += `🏠 السطح: ${data.hasRoof}\n`;
+    description += texts.roomsTitle + "\n";
+    if (data.bedrooms) description += `${texts.bedrooms} ${data.bedrooms}\n`;
+    if (data.livingRooms) description += `${texts.livingRooms} ${data.livingRooms}\n`;
+    if (data.bathrooms) description += `${texts.bathrooms} ${data.bathrooms}\n`;
+    if (data.kitchens) description += `${texts.kitchens} ${data.kitchens}\n`;
+    if (data.hasBalcony) description += `${texts.balcony} ${data.hasBalcony}\n`;
+    if (data.hasRoof) description += `${texts.roof} ${data.hasRoof}\n`;
     description += "\n";
 
     // التشطيبات
     if (data.flooring || data.wallFinish || data.kitchenFinish || data.bathroomFinish || data.doors || data.windows) {
-      description += "✨ التشطيبات:\n";
-      if (data.flooring) description += `🏠 الرضية: ${data.flooring}\n`;
-      if (data.wallFinish) description += `🧱 الحيطان: ${data.wallFinish}\n`;
-      if (data.kitchenFinish) description += `🍳 الكوزينة: ${data.kitchenFinish}\n`;
-      if (data.bathroomFinish) description += `🚿 دورات الما: ${data.bathroomFinish}\n`;
-      if (data.doors) description += `🚪 البيبان: ${data.doors}\n`;
-      if (data.windows) description += `🪟 الشراجم: ${data.windows}\n`;
-      if (data.airConditioning) description += `❄️ التبريد: ${data.airConditioning}\n`;
+      description += texts.finishTitle + "\n";
+      if (data.flooring) description += `${texts.flooring} ${data.flooring}\n`;
+      if (data.wallFinish) description += `${texts.walls} ${data.wallFinish}\n`;
+      if (data.kitchenFinish) description += `${texts.kitchen} ${data.kitchenFinish}\n`;
+      if (data.bathroomFinish) description += `${texts.bathroom} ${data.bathroomFinish}\n`;
+      if (data.doors) description += `${texts.doors} ${data.doors}\n`;
+      if (data.windows) description += `${texts.windows} ${data.windows}\n`;
+      if (data.airConditioning) description += `${texts.airConditioning} ${data.airConditioning}\n`;
       description += "\n";
     }
 
     // المرافق
     if (data.hasElevator || data.hasParking || data.isFurnished || (data.nearbyServices && data.nearbyServices.length > 0)) {
-      description += "🏢 المرافق والخدمات:\n";
-      if (data.hasElevator) description += `🛗 الاسونسور: ${data.hasElevator}\n`;
-      if (data.hasParking) description += `🚗 البلاصات ديال الطونوبيل: ${data.hasParking}\n`;
-      if (data.isFurnished) description += `🪑 مفروش: ${data.isFurnished}\n`;
+      description += texts.facilitiesTitle + "\n";
+      if (data.hasElevator) description += `${texts.elevator} ${data.hasElevator}\n`;
+      if (data.hasParking) description += `${texts.parking} ${data.hasParking}\n`;
+      if (data.isFurnished) description += `${texts.furnished} ${data.isFurnished}\n`;
       
       if (data.nearbyServices && data.nearbyServices.length > 0) {
-        description += "الخدمات لي قريبة:\n";
+        description += texts.nearbyServices + "\n";
         data.nearbyServices.forEach((service: string) => {
           description += `• ${service}\n`;
         });
@@ -76,38 +273,38 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     
     // فكرة عن الجيران والمكان
     if (data.neighborhoodType || data.neighborsType || data.noiseLevel || data.safetyLevel) {
-      description += "🏘️ فكرة على الجيران والبلاصة:\n";
-      if (data.neighborhoodType) description += `🏠 نوع الحي: ${data.neighborhoodType}\n`;
-      if (data.neighborsType) description += `👨‍👩‍👦 شنو كيبانو الجيران: ${data.neighborsType}\n`;
-      if (data.noiseLevel) description += `🔊 مستوى الهدوء: ${data.noiseLevel}\n`;
-      if (data.safetyLevel) description += `🛡️ الأمان فالمنطقة: ${data.safetyLevel}\n`;
+      description += texts.neighborhoodTitle + "\n";
+      if (data.neighborhoodType) description += `${texts.neighborhoodType} ${data.neighborhoodType}\n`;
+      if (data.neighborsType) description += `${texts.neighborsType} ${data.neighborsType}\n`;
+      if (data.noiseLevel) description += `${texts.noiseLevel} ${data.noiseLevel}\n`;
+      if (data.safetyLevel) description += `${texts.safetyLevel} ${data.safetyLevel}\n`;
       description += "\n";
     }
     
     // السعر والتعامل
     if (data.price || data.isNegotiable || data.readyToMove || data.contactMethod) {
-      description += "💰 الثمن والتواصل:\n";
-      if (data.price) description += `💰 الثمن: ${data.price}`;
-      if (data.isNegotiable) description += ` - ${data.isNegotiable === "نعم" ? "فيه متنقص" : "ماشي قابل للتفاوض"}`;
+      description += texts.priceTitle + "\n";
+      if (data.price) description += `${texts.price} ${data.price}`;
+      if (data.isNegotiable) description += ` - ${texts.negotiable(data.isNegotiable)}`;
       if (data.price) description += "\n";
-      if (data.readyToMove) description += `🗝️ جاهز للانتقال: ${data.readyToMove}\n`;
-      if (data.contactMethod) description += `📞 كيفاش نتواصلو: ${data.contactMethod}\n`;
+      if (data.readyToMove) description += `${texts.readyToMove} ${data.readyToMove}\n`;
+      if (data.contactMethod) description += `${texts.contactMethod} ${data.contactMethod}\n`;
       description += "\n";
     }
     
     // أوقات المعاينة
     if (data.inspectionTimes) {
-      description += `⏰ أوقات المعاينة: ${data.inspectionTimes}\n\n`;
+      description += `${texts.inspectionTimes} ${data.inspectionTimes}\n\n`;
     }
     
     // سبب البيع
     if (data.sellReason) {
-      description += `📝 علاش باغي نبيع: ${data.sellReason}\n\n`;
+      description += `${texts.sellReason} ${data.sellReason}\n\n`;
     }
     
     // العملاء غير المرغوبين
     if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += "🚫 العملاء لي ماباغيش نتعامل معاهم:\n";
+      description += texts.unwantedCustomers + "\n";
       data.unwantedCustomers.forEach((customer: string) => {
         description += `• ${customer}\n`;
       });
@@ -116,11 +313,11 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
 
     // ملاحظات إضافية
     if (data.additionalNotes) {
-      description += `📝 ملاحظات زايدة:\n${data.additionalNotes}\n\n`;
+      description += `${texts.additionalNotes}\n${data.additionalNotes}\n\n`;
     }
 
-    description += "للتواصل والاستفسار، عافاك اتصل ولا صيفط رسالة واتساب.\n";
-    description += "شكراً على الاهتمام! 🙏";
+    description += texts.contactFooter + "\n";
+    description += texts.thanks;
 
     return description;
   };
