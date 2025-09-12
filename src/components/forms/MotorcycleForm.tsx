@@ -344,12 +344,12 @@ const MotorcycleForm = ({ data, onChange }: MotorcycleFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            💭 سبب البيع
+            💭 علاش باغي تبيع
           </CardTitle>
         </CardHeader>
         <CardContent>
           <div>
-            <Label>سبب البيع</Label>
+            <Label>علاش باغي تبيع</Label>
             <Select value={formData.sellReason} onValueChange={(value) => updateData({ ...formData, sellReason: value })}>
               <SelectTrigger>
                 <SelectValue placeholder="اختر سبب البيع" />
