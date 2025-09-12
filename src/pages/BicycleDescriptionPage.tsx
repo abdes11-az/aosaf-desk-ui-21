@@ -20,66 +20,46 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     
     // معلومات أساسية
     if (data.type) {
-      const typeMap: { [key: string]: string } = {
-        "mountain": "دراجة جبلية",
-        "road": "دراجة طريق",
-        "hybrid": "دراجة هجين",
-        "electric": "دراجة كهربائية",
-        "bmx": "دراجة BMX",
-        "city": "دراجة مدينة"
-      };
-      description += `🏷️ النوع: ${typeMap[data.type] || data.type}\n`;
+      description += `🏷️ ${t('bicycle.type')}: ${opt(data.type, t)}\n`;
     }
     if (data.brand) {
       const brandName = data.brand === "other" ? data.customBrand : data.brand;
       if (brandName) {
-        description += `🏭 الماركة: ${brandName}\n`;
+        description += `🏭 ${t('bicycle.brand')}: ${brandName}\n`;
       }
     }
     if (data.model) {
-      description += `📝 الموديل: ${data.model}\n`;
+      description += `📝 ${t('bicycle.model')}: ${data.model}\n`;
     }
     
     description += "\n";
     
     // المواصفات التقنية
-    description += "⚙️ المواصفات:\n";
+    description += `⚙️ ${t('bicycle.specifications')}:\n`;
     if (data.frameSize) {
-      description += `• حجم الإطار: ${data.frameSize}\n`;
+      description += `• ${t('bicycle.frame_size')}: ${data.frameSize}\n`;
     }
     if (data.material) {
-      const materialMap: { [key: string]: string } = {
-        "aluminum": "ألومنيوم",
-        "carbon": "كاربون",
-        "steel": "حديد",
-        "titanium": "تيتانيوم"
-      };
-      description += `• مادة الإطار: ${materialMap[data.material] || data.material}\n`;
+      description += `• ${t('bicycle.frame_material')}: ${opt(data.material, t)}\n`;
     }
     if (data.gearSystem) {
-      description += `• نظام السرعات: ${data.gearSystem} سرعة\n`;
+      description += `• ${t('bicycle.gear_system')}: ${data.gearSystem} ${t('bicycle.speed')}\n`;
     }
     if (data.brakeType) {
-      const brakeMap: { [key: string]: string } = {
-        "disc": "مكابح قرصية",
-        "v-brake": "مكابح V-Brake",
-        "hydraulic": "مكابح هيدروليكية",
-        "rim": "مكابح حافة العجلة"
-      };
-      description += `• نوع المكابح: ${brakeMap[data.brakeType] || data.brakeType}\n`;
+      description += `• ${t('bicycle.brake_type')}: ${opt(data.brakeType, t)}\n`;
     }
     if (data.wheelSize) {
-      description += `• حجم العجلات: ${data.wheelSize}\n`;
+      description += `• ${t('bicycle.wheel_size')}: ${data.wheelSize}\n`;
     }
     if (data.weight) {
-      description += `• الوزن: ${data.weight} كغ\n`;
+      description += `• ${t('bicycle.weight')}: ${data.weight} ${t('bicycle.kg')}\n`;
     }
     
     description += "\n";
     
     // التعديلات
     if (data.modifications && data.modifications.length > 0) {
-      description += "🛠️ التعديلات:\n";
+      description += `🛠️ ${t('bicycle.modifications')}:\n`;
       data.modifications.forEach((mod: string) => {
         description += `• ${mod}\n`;
       });
@@ -88,7 +68,7 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     
     // الملحقات
     if (data.accessories && data.accessories.length > 0) {
-      description += "📦 الملحقات المرفقة:\n";
+      description += `📦 ${t('bicycle.accessories')}:\n`;
       data.accessories.forEach((accessory: string) => {
         description += `• ${accessory}\n`;
       });
@@ -97,7 +77,7 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     
     // معلومات إضافية
     if (data.color) {
-      description += `🎨 اللون: ${data.color}\n`;
+      description += `🎨 ${t('bicycle.color')}: ${data.color}\n`;
     }
     
     // الحالة والسعر
@@ -107,56 +87,38 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     
     // معلومات البائع
     if (data.city || data.sellerType || data.deliveryMethod || data.negotiable || data.contactMethod || data.warranty || data.acceptExchange) {
-      description += "\n👤 معلومات البائع:\n";
-      if (data.city) description += `📍 المدينة: ${data.city}\n`;
-      if (data.sellerType) description += `👥 نوع البائع: ${data.sellerType}\n`;
-      if (data.deliveryMethod) description += `🚚 طريقة التسليم: ${data.deliveryMethod}\n`;
-      if (data.negotiable) description += `💰 السعر قابل للتفاوض: ${data.negotiable}\n`;
-      if (data.contactMethod) description += `📞 طريقة التواصل: ${data.contactMethod}\n`;
-      if (data.warranty) description += `🛡️ الضمان: ${data.warranty}\n`;
-      if (data.warranty === "متوفر" && data.warrantyDuration) description += `⏰ مدة الضمان: ${data.warrantyDuration}\n`;
-      if (data.acceptExchange) description += `🔄 يقبل التبديل: ${data.acceptExchange}\n`;
-      description += "\n";
-      description += "\n👤 معلومات البائع:\n";
-      if (data.city) description += `📍 المدينة: ${data.city}\n`;
-      if (data.sellerType) description += `👥 نوع البائع: ${data.sellerType}\n`;
-      if (data.deliveryMethod) description += `🚚 طريقة التسليم: ${data.deliveryMethod}\n`;
-      if (data.negotiable) description += `💰 السعر قابل للتفاوض: ${data.negotiable}\n`;
-      if (data.contactMethod) description += `📞 طريقة التواصل: ${data.contactMethod}\n`;
-      if (data.warranty) description += `🛡️ الضمان: ${data.warranty}\n`;
-      if (data.acceptExchange) description += `🔄 يقبل التبديل: ${data.acceptExchange}\n`;
+      description += `\n👤 ${t('common.seller_info')}:\n`;
+      if (data.city) description += `📍 ${t('common.city')}: ${data.city}\n`;
+      if (data.sellerType) description += `👥 ${t('common.seller_type')}: ${opt(data.sellerType, t)}\n`;
+      if (data.deliveryMethod) description += `🚚 ${t('common.delivery_method')}: ${opt(data.deliveryMethod, t)}\n`;
+      if (data.negotiable) description += `💰 ${t('common.negotiable')}: ${yn(data.negotiable, t)}\n`;
+      if (data.contactMethod) description += `📞 ${t('common.contact_method')}: ${opt(data.contactMethod, t)}\n`;
+      if (data.warranty) description += `🛡️ ${t('common.warranty')}: ${yn(data.warranty, t)}\n`;
+      if (data.warranty && isYes(data.warranty) && data.warrantyDuration) description += `⏰ ${t('common.warranty_duration')}: ${data.warrantyDuration}\n`;
+      if (data.acceptExchange) description += `🔄 ${t('common.accept_exchange')}: ${yn(data.acceptExchange, t)}\n`;
       description += "\n";
     }
     
     // سبب البيع
     if (data.sellReason) {
-      description += `💭 سبب البيع: ${data.sellReason}\n\n`;
+      description += `💭 ${t('common.sell_reason')}: ${data.sellReason}\n\n`;
     }
     
     // وصف إضافي
     if (data.description) {
-      description += `📝 تفاصيل إضافية:\n${data.description}\n\n`;
+      description += `📝 ${t('common.additional_notes')}:\n${data.description}\n\n`;
     }
     
     // العملاء غير المرغوب فيهم
     if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += "🚫 يُرجى من الفئات التالية عدم التواصل:\n";
+      description += `🚫 ${t('common.unwanted_customers')}:\n`;
       data.unwantedCustomers.forEach((customer: string) => {
         description += `• ${customer}\n`;
       });
       description += "\n";
     }
     
-    // العملاء غير المرغوب فيهم
-    if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += "🚫 يُرجى من الفئات التالية عدم التواصل:\n";
-      data.unwantedCustomers.forEach((customer: string) => {
-        description += `• ${customer}\n`;
-      });
-      description += "\n";
-    }
-    
-    description += "📞 للاستفسار والتواصل، يرجى الاتصال";
+    description += t('common.contact_footer');
     
     return description;
   };
