@@ -20,7 +20,7 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     if (data.propertyType) {
       description += `🏠 ${data.propertyType}`;
       if (data.district && data.city) {
-        description += ` في ${data.district}, ${data.city}`;
+        description += ` فـ ${data.district}, ${data.city}`;
       }
       description += "\n\n";
     }
@@ -31,42 +31,42 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     if (data.district) description += `🏘️ الحي: ${data.district}\n`;
     if (data.area) description += `📐 المساحة: ${data.area}\n`;
     if (data.floors) description += `🏢 عدد الطوابق: ${data.floors}\n`;
-    if (data.currentFloor) description += `📍 الطابق الحالي: ${data.currentFloor}\n`;
-    if (data.clientType) description += `👤 ${t('realestate.client_type')}: ${data.clientType}\n`;
+    if (data.currentFloor) description += `📍 الطابق لي عليه: ${data.currentFloor}\n`;
+    if (data.clientType) description += `👤 نوع العميل: ${data.clientType}\n`;
     description += "\n";
 
     // تفاصيل الغرف
-    description += "🛏️ توزيع الغرف:\n";
-    if (data.bedrooms) description += `🛏️ غرف النوم: ${data.bedrooms}\n`;
-    if (data.livingRooms) description += `🛋️ الصالات: ${data.livingRooms}\n`;
+    description += "🛏️ البيوت:\n";
+    if (data.bedrooms) description += `🛏️ بيوت النعاس: ${data.bedrooms}\n`;
+    if (data.livingRooms) description += `🛋️ الصالونات: ${data.livingRooms}\n`;
     if (data.bathrooms) description += `🚿 الحمامات: ${data.bathrooms}\n`;
-    if (data.kitchens) description += `🍳 المطابخ: ${data.kitchens}\n`;
-    if (data.hasBalcony) description += `🌅 الشرفة: ${data.hasBalcony}\n`;
+    if (data.kitchens) description += `🍳 الكوزينات: ${data.kitchens}\n`;
+    if (data.hasBalcony) description += `🌅 البلكون: ${data.hasBalcony}\n`;
     if (data.hasRoof) description += `🏠 السطح: ${data.hasRoof}\n`;
     description += "\n";
 
     // التشطيبات
     if (data.flooring || data.wallFinish || data.kitchenFinish || data.bathroomFinish || data.doors || data.windows) {
       description += "✨ التشطيبات:\n";
-      if (data.flooring) description += `🏠 الأرضيات: ${data.flooring}\n`;
-      if (data.wallFinish) description += `🧱 الجدران: ${data.wallFinish}\n`;
-      if (data.kitchenFinish) description += `🍳 المطبخ: ${data.kitchenFinish}\n`;
-      if (data.bathroomFinish) description += `🚿 دورات المياه: ${data.bathroomFinish}\n`;
-      if (data.doors) description += `🚪 الأبواب: ${data.doors}\n`;
-      if (data.windows) description += `🪟 النوافذ: ${data.windows}\n`;
-      if (data.airConditioning) description += `❄️ التكييف: ${data.airConditioning}\n`;
+      if (data.flooring) description += `🏠 الرضية: ${data.flooring}\n`;
+      if (data.wallFinish) description += `🧱 الحيطان: ${data.wallFinish}\n`;
+      if (data.kitchenFinish) description += `🍳 الكوزينة: ${data.kitchenFinish}\n`;
+      if (data.bathroomFinish) description += `🚿 دورات الما: ${data.bathroomFinish}\n`;
+      if (data.doors) description += `🚪 البيبان: ${data.doors}\n`;
+      if (data.windows) description += `🪟 الشراجم: ${data.windows}\n`;
+      if (data.airConditioning) description += `❄️ التبريد: ${data.airConditioning}\n`;
       description += "\n";
     }
 
     // المرافق
     if (data.hasElevator || data.hasParking || data.isFurnished || (data.nearbyServices && data.nearbyServices.length > 0)) {
       description += "🏢 المرافق والخدمات:\n";
-      if (data.hasElevator) description += `🛗 المصعد: ${data.hasElevator}\n`;
-      if (data.hasParking) description += `🚗 المواقف: ${data.hasParking}\n`;
+      if (data.hasElevator) description += `🛗 الاسونسور: ${data.hasElevator}\n`;
+      if (data.hasParking) description += `🚗 البلاصات ديال الطونوبيل: ${data.hasParking}\n`;
       if (data.isFurnished) description += `🪑 مفروش: ${data.isFurnished}\n`;
       
       if (data.nearbyServices && data.nearbyServices.length > 0) {
-        description += "الخدمات القريبة:\n";
+        description += "الخدمات لي قريبة:\n";
         data.nearbyServices.forEach((service: string) => {
           description += `• ${service}\n`;
         });
@@ -76,22 +76,22 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     
     // فكرة عن الجيران والمكان
     if (data.neighborhoodType || data.neighborsType || data.noiseLevel || data.safetyLevel) {
-      description += "🏘️ فكرة عن الجيران والمكان:\n";
+      description += "🏘️ فكرة على الجيران والبلاصة:\n";
       if (data.neighborhoodType) description += `🏠 نوع الحي: ${data.neighborhoodType}\n`;
-      if (data.neighborsType) description += `👨‍👩‍👦 طبيعة الجيران: ${data.neighborsType}\n`;
+      if (data.neighborsType) description += `👨‍👩‍👦 شنو كيبانو الجيران: ${data.neighborsType}\n`;
       if (data.noiseLevel) description += `🔊 مستوى الهدوء: ${data.noiseLevel}\n`;
-      if (data.safetyLevel) description += `🛡️ الأمان في المنطقة: ${data.safetyLevel}\n`;
+      if (data.safetyLevel) description += `🛡️ الأمان فالمنطقة: ${data.safetyLevel}\n`;
       description += "\n";
     }
     
     // السعر والتعامل
     if (data.price || data.isNegotiable || data.readyToMove || data.contactMethod) {
-      description += "💰 السعر والتواصل:\n";
-      if (data.price) description += `💰 السعر: ${data.price}`;
-      if (data.isNegotiable) description += ` - ${data.isNegotiable === "نعم" ? "قابل للتفاوض" : "غير قابل للتفاوض"}`;
+      description += "💰 الثمن والتواصل:\n";
+      if (data.price) description += `💰 الثمن: ${data.price}`;
+      if (data.isNegotiable) description += ` - ${data.isNegotiable === "نعم" ? "فيه متنقص" : "ماشي قابل للتفاوض"}`;
       if (data.price) description += "\n";
       if (data.readyToMove) description += `🗝️ جاهز للانتقال: ${data.readyToMove}\n`;
-      if (data.contactMethod) description += `📞 طريقة التواصل: ${data.contactMethod}\n`;
+      if (data.contactMethod) description += `📞 كيفاش نتواصلو: ${data.contactMethod}\n`;
       description += "\n";
     }
     
@@ -102,26 +102,25 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     
     // سبب البيع
     if (data.sellReason) {
-      description += `📝 سبب البيع: ${data.sellReason}\n\n`;
+      description += `📝 علاش باغي نبيع: ${data.sellReason}\n\n`;
     }
     
     // العملاء غير المرغوبين
     if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += "🚫 العملاء غير المرغوب فيهم:\n";
+      description += "🚫 العملاء لي ماباغيش نتعامل معاهم:\n";
       data.unwantedCustomers.forEach((customer: string) => {
         description += `• ${customer}\n`;
       });
       description += "\n";
     }
 
-
     // ملاحظات إضافية
     if (data.additionalNotes) {
-      description += `📝 ملاحظات إضافية:\n${data.additionalNotes}\n\n`;
+      description += `📝 ملاحظات زايدة:\n${data.additionalNotes}\n\n`;
     }
 
-    description += "للتواصل والاستفسار، يُرجى الاتصال أو إرسال رسالة واتساب.\n";
-    description += "شكراً لاهتمامكم! 🙏";
+    description += "للتواصل والاستفسار، عافاك اتصل ولا صيفط رسالة واتساب.\n";
+    description += "شكراً على الاهتمام! 🙏";
 
     return description;
   };
