@@ -269,7 +269,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
                 />
               </div>
               <div>
-                <Label htmlFor="bathrooms">الحمامات</Label>
+                <Label htmlFor="bathrooms">{t('realestate.bathrooms')}</Label>
                 <Input
                   id="bathrooms"
                   placeholder={t('placeholders.additional_details')}
@@ -278,7 +278,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
                 />
               </div>
               <div>
-                <Label htmlFor="kitchens">الكوزينات</Label>
+                <Label htmlFor="kitchens">{t('realestate.kitchens')}</Label>
                 <Input
                   id="kitchens"
                   placeholder={t('placeholders.additional_details')}
@@ -289,7 +289,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="hasBalcony">كاين بلكون</Label>
+                <Label htmlFor="hasBalcony">{t('realestate.has_balcony')}</Label>
                 <Select value={formData.hasBalcony} onValueChange={(value) => updateField("hasBalcony", value)}>
                   <SelectTrigger>
                     <SelectValue placeholder={t('options.choose')} />
