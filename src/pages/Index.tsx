@@ -23,17 +23,11 @@ const Index = () => {
     phoneFormData,
     realEstateFormData,
     tenantFormData,
-    tabletFormData,
-    bicycleFormData,
-    motorcycleFormData,
     clothingFormData,
     handleCarFormSubmit,
     handlePhoneFormSubmit,
     handleRealEstateFormSubmit,
     handleTenantFormSubmit,
-    handleTabletFormSubmit,
-    handleBicycleFormSubmit,
-    handleMotorcycleFormSubmit,
     handleClothingFormSubmit,
     handleNewCarDescription,
     handleNewPhoneDescription,
@@ -63,9 +57,6 @@ const Index = () => {
           phoneFormData={phoneFormData}
           realEstateFormData={realEstateFormData}
           tenantFormData={tenantFormData}
-          tabletFormData={tabletFormData}
-          bicycleFormData={bicycleFormData}
-          motorcycleFormData={motorcycleFormData}
           clothingFormData={clothingFormData}
           onNavigate={handleNavigate}
           onBack={handleBack}
@@ -76,9 +67,6 @@ const Index = () => {
           onPhoneFormSubmit={handlePhoneFormSubmit}
           onRealEstateFormSubmit={handleRealEstateFormSubmit}
           onTenantFormSubmit={handleTenantFormSubmit}
-          onTabletFormSubmit={handleTabletFormSubmit}
-          onBicycleFormSubmit={handleBicycleFormSubmit}
-          onMotorcycleFormSubmit={handleMotorcycleFormSubmit}
           onClothingFormSubmit={handleClothingFormSubmit}
           onNewCarDescription={handleNewCarDescription}
           onNewPhoneDescription={handleNewPhoneDescription}

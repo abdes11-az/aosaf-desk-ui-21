@@ -5,9 +5,6 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
   const [phoneFormData, setPhoneFormData] = useState<any>(null);
   const [realEstateFormData, setRealEstateFormData] = useState<any>(null);
   const [tenantFormData, setTenantFormData] = useState<any>(null);
-  const [tabletFormData, setTabletFormData] = useState<any>(null);
-  const [bicycleFormData, setBicycleFormData] = useState<any>(null);
-  const [motorcycleFormData, setMotorcycleFormData] = useState<any>(null);
   const [clothingFormData, setClothingFormData] = useState<any>(null);
 
   const handleCarFormSubmit = (data: any) => {
@@ -30,20 +27,6 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
     setCurrentPage('tenant-description');
   };
 
-  const handleTabletFormSubmit = (data: any) => {
-    setTabletFormData(data);
-    setCurrentPage('tablet-description');
-  };
-
-  const handleBicycleFormSubmit = (data: any) => {
-    setBicycleFormData(data);
-    setCurrentPage('bicycle-description');
-  };
-
-  const handleMotorcycleFormSubmit = (data: any) => {
-    setMotorcycleFormData(data);
-    setCurrentPage('motorcycle-description');
-  };
 
   const handleClothingFormSubmit = (data: any) => {
     setClothingFormData(data);
@@ -71,17 +54,11 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
     phoneFormData,
     realEstateFormData,
     tenantFormData,
-    tabletFormData,
-    bicycleFormData,
-    motorcycleFormData,
     clothingFormData,
     handleCarFormSubmit,
     handlePhoneFormSubmit,
     handleRealEstateFormSubmit,
     handleTenantFormSubmit,
-    handleTabletFormSubmit,
-    handleBicycleFormSubmit,
-    handleMotorcycleFormSubmit,
     handleClothingFormSubmit,
     handleNewCarDescription,
     handleNewPhoneDescription,
