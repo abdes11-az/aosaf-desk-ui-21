@@ -245,13 +245,13 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              🛏️ توزيع البيوت
+              🛏️ {t('realestate.room_distribution')}
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div>
-                <Label htmlFor="bedrooms">بيوت النعاس</Label>
+                <Label htmlFor="bedrooms">{t('realestate.bedrooms')}</Label>
                 <Input
                   id="bedrooms"
                   placeholder={t('placeholders.additional_details')}
@@ -260,7 +260,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
                 />
               </div>
               <div>
-                <Label htmlFor="livingRooms">الصالونات</Label>
+                <Label htmlFor="livingRooms">{t('realestate.living_rooms')}</Label>
                 <Input
                   id="livingRooms"
                   placeholder={t('placeholders.additional_details')}
