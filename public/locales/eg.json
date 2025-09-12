@@ -32,7 +32,7 @@
     "real_estate": "عقارات",
     "phones": "موبايلات",
     "tablet": "التابلت",
-    "bicycle": "عجل",
+    
     "motorcycle": "موتوسيكل",
     "clothing": "هدوم",
     "tenant": "ملف المستأجر",
@@ -226,29 +226,6 @@
       "led_light": "إضاءة LED"
     },
     "available_colors": "الألوان المتاحة"
-  },
-  "bicycle": {
-    "title": "تفاصيل العجلة",
-    "basic_info": "المعلومات الأساسية",
-    "type": "نوع العجلة",
-    "brand": "الماركة",
-    "model": "الموديل",
-    "specifications": "المواصفات",
-    "frame_size": "حجم الإطار",
-    "frame_material": "مادة الإطار",
-    "gear_system": "نظام السرعات",
-    "speed": "سرعة",
-    "brake_type": "نوع الفرامل",
-    "wheel_size": "حجم الكاوتش",
-    "weight": "الوزن",
-    "kg": "كيلو",
-    "modifications": "التعديلات",
-    "accessories": "الملحقات",
-    "color": "اللون",
-    "technical_details": "التفاصيل التقنية",
-    "condition_section": "حالة العجلة",
-    "additional_equipment": "التجهيزات الإضافية",
-    "unwanted_customers": "العملاء غير المرغوبين"
   },
   "motorcycle": {
     "title": "تفاصيل الموتوسيكل",

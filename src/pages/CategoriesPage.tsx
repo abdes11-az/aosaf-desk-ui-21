@@ -32,11 +32,6 @@ const CategoriesPage = ({ onNavigate, onBack }: CategoriesPageProps) => {
       title: t('categories.tablet')
     },
     {
-      id: 'bicycle',
-      icon: '🚲',
-      title: t('categories.bicycle')
-    },
-    {
       id: 'motorcycle',
       icon: '🏍️',
       title: t('categories.motorcycle')

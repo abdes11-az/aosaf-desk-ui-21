@@ -12,7 +12,7 @@ import PhoneForm from "@/components/forms/PhoneForm";
 import RealEstateForm from "@/components/forms/RealEstateForm";
 import TenantForm from "@/components/forms/TenantForm";
 import TabletFormWrapper from "@/components/forms/TabletFormWrapper";
-import BicycleFormWrapper from "@/components/forms/BicycleFormWrapper";
+
 import MotorcycleFormWrapper from "@/components/forms/MotorcycleFormWrapper";
 import ClothingFormWrapper from "@/components/forms/ClothingFormWrapper";
 import CarDescriptionPage from "@/pages/CarDescriptionPage";
@@ -20,7 +20,7 @@ import PhoneDescriptionPage from "@/pages/PhoneDescriptionPage";
 import RealEstateDescriptionPage from "@/pages/RealEstateDescriptionPage";
 import TenantDescriptionPage from "@/pages/TenantDescriptionPage";
 import TabletDescriptionPage from "@/pages/TabletDescriptionPage";
-import BicycleDescriptionPage from "@/pages/BicycleDescriptionPage";
+
 import MotorcycleDescriptionPage from "@/pages/MotorcycleDescriptionPage";
 import ClothingDescriptionPage from "@/pages/ClothingDescriptionPage";
 import FreeWritingPage from "@/pages/FreeWritingPage";
@@ -39,7 +39,7 @@ interface PageRendererProps {
   realEstateFormData: any;
   tenantFormData: any;
   tabletFormData: any;
-  bicycleFormData: any;
+  
   motorcycleFormData: any;
   clothingFormData: any;
   onNavigate: (page: string, category?: string) => void;
@@ -52,7 +52,7 @@ interface PageRendererProps {
   onRealEstateFormSubmit: (data: any) => void;
   onTenantFormSubmit: (data: any) => void;
   onTabletFormSubmit: (data: any) => void;
-  onBicycleFormSubmit: (data: any) => void;
+  
   onMotorcycleFormSubmit: (data: any) => void;
   onClothingFormSubmit: (data: any) => void;
   onNewCarDescription: () => void;
@@ -70,7 +70,7 @@ const PageRenderer = ({
   realEstateFormData,
   tenantFormData,
   tabletFormData,
-  bicycleFormData,
+  
   motorcycleFormData,
   clothingFormData,
   onNavigate,
@@ -83,7 +83,7 @@ const PageRenderer = ({
   onRealEstateFormSubmit,
   onTenantFormSubmit,
   onTabletFormSubmit,
-  onBicycleFormSubmit,
+  
   onMotorcycleFormSubmit,
   onClothingFormSubmit,
   onNewCarDescription,
@@ -116,8 +116,6 @@ const PageRenderer = ({
       return <TenantForm onBack={onBack} onGenerateDescription={onTenantFormSubmit} />;
     case 'tablet-form':
       return <TabletFormWrapper onBack={onBack} onGenerateDescription={onTabletFormSubmit} />;
-    case 'bicycle-form':
-      return <BicycleFormWrapper onBack={onBack} onGenerateDescription={onBicycleFormSubmit} />;
     case 'motorcycle-form':
       return <MotorcycleFormWrapper onBack={onBack} onGenerateDescription={onMotorcycleFormSubmit} />;
     case 'clothing-form':
@@ -156,8 +154,6 @@ const PageRenderer = ({
       );
     case 'tablet-description':
       return <TabletDescriptionPage data={tabletFormData} onBack={onBack} onNewDescription={() => onNavigate('tablet-form')} />;
-    case 'bicycle-description':
-      return <BicycleDescriptionPage data={bicycleFormData} onBack={onBack} onNewDescription={() => onNavigate('bicycle-form')} />;
     case 'motorcycle-description':
       return <MotorcycleDescriptionPage data={motorcycleFormData} onBack={onBack} onNewDescription={() => onNavigate('motorcycle-form')} />;
     case 'clothing-description':

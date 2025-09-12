@@ -21,8 +21,6 @@ export const useNavigation = () => {
         setCurrentPage('tenant-form');
       } else if (category === 'tablet') {
         setCurrentPage('tablet-form');
-      } else if (category === 'bicycle') {
-        setCurrentPage('bicycle-form');
       } else if (category === 'motorcycle') {
         setCurrentPage('motorcycle-form');
       } else if (category === 'clothing') {
@@ -42,13 +40,11 @@ export const useNavigation = () => {
       setCurrentPage('tenant-form');
     } else if (currentPage === 'tablet-description') {
       setCurrentPage('tablet-form');
-    } else if (currentPage === 'bicycle-description') {
-      setCurrentPage('bicycle-form');
     } else if (currentPage === 'motorcycle-description') {
       setCurrentPage('motorcycle-form');
     } else if (currentPage === 'clothing-description') {
       setCurrentPage('clothing-form');
-    } else if (currentPage === 'car-form' || currentPage === 'phone-form' || currentPage === 'real-estate-form' || currentPage === 'tenant-form' || currentPage === 'tablet-form' || currentPage === 'bicycle-form' || currentPage === 'motorcycle-form' || currentPage === 'clothing-form') {
+    } else if (currentPage === 'car-form' || currentPage === 'phone-form' || currentPage === 'real-estate-form' || currentPage === 'tenant-form' || currentPage === 'tablet-form' || currentPage === 'motorcycle-form' || currentPage === 'clothing-form') {
       setCurrentPage('create-description');
     } else if (currentPage === 'car-questions' || currentPage === 'phone-questions' || currentPage === 'real-estate-questions') {
       setCurrentPage('question-bank');

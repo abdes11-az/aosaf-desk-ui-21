@@ -6,7 +6,7 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
   const [realEstateFormData, setRealEstateFormData] = useState<any>(null);
   const [tenantFormData, setTenantFormData] = useState<any>(null);
   const [tabletFormData, setTabletFormData] = useState<any>(null);
-  const [bicycleFormData, setBicycleFormData] = useState<any>(null);
+  
   const [motorcycleFormData, setMotorcycleFormData] = useState<any>(null);
   const [clothingFormData, setClothingFormData] = useState<any>(null);
 
@@ -35,10 +35,6 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
     setCurrentPage('tablet-description');
   };
 
-  const handleBicycleFormSubmit = (data: any) => {
-    setBicycleFormData(data);
-    setCurrentPage('bicycle-description');
-  };
 
   const handleMotorcycleFormSubmit = (data: any) => {
     setMotorcycleFormData(data);
@@ -72,7 +68,7 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
     realEstateFormData,
     tenantFormData,
     tabletFormData,
-    bicycleFormData,
+    
     motorcycleFormData,
     clothingFormData,
     handleCarFormSubmit,
@@ -80,7 +76,7 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
     handleRealEstateFormSubmit,
     handleTenantFormSubmit,
     handleTabletFormSubmit,
-    handleBicycleFormSubmit,
+    
     handleMotorcycleFormSubmit,
     handleClothingFormSubmit,
     handleNewCarDescription,
