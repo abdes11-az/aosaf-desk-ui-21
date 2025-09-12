@@ -164,8 +164,6 @@ const PageRenderer = ({
       return <ClothingDescriptionPage data={clothingFormData} onBack={onBack} onNewDescription={() => onNavigate('clothing-form')} />;
     case 'free-writing':
       return <FreeWritingPage onBack={onBack} />;
-    case 'description':
-      return <DescriptionPage category={selectedCategory} onBack={onBack} />;
     case 'saved':
       return <SavedPage onViewItem={onViewSavedItem} />;
     case 'view-saved-item':
