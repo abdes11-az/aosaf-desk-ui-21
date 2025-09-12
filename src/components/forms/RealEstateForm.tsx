@@ -31,7 +31,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
     currentFloor: "",
     clientType: "",
     
-    // توزيع الغرف
+    // توزيع البيوت
     bedrooms: "",
     livingRooms: "",
     bathrooms: "",
@@ -241,17 +241,17 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
           </CardContent>
         </Card>
 
-        {/* توزيع الغرف */}
+        {/* توزيع البيوت */}
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              🛏️ {t('realestate.room_distribution')}
+              🛏️ توزيع البيوت
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div>
-                <Label htmlFor="bedrooms">{t('realestate.bedrooms')}</Label>
+                <Label htmlFor="bedrooms">بيوت النعاس</Label>
                 <Input
                   id="bedrooms"
                   placeholder={t('placeholders.additional_details')}
@@ -260,7 +260,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
                 />
               </div>
               <div>
-                <Label htmlFor="livingRooms">{t('realestate.living_rooms')}</Label>
+                <Label htmlFor="livingRooms">الصالونات</Label>
                 <Input
                   id="livingRooms"
                   placeholder={t('placeholders.additional_details')}
@@ -269,7 +269,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
                 />
               </div>
               <div>
-                <Label htmlFor="bathrooms">{t('realestate.bathrooms')}</Label>
+                <Label htmlFor="bathrooms">الحمامات</Label>
                 <Input
                   id="bathrooms"
                   placeholder={t('placeholders.additional_details')}
@@ -278,7 +278,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
                 />
               </div>
               <div>
-                <Label htmlFor="kitchens">{t('realestate.kitchens')}</Label>
+                <Label htmlFor="kitchens">الكوزينات</Label>
                 <Input
                   id="kitchens"
                   placeholder={t('placeholders.additional_details')}
@@ -289,7 +289,7 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="hasBalcony">{t('realestate.has_balcony')}</Label>
+                <Label htmlFor="hasBalcony">كاين بلكون</Label>
                 <Select value={formData.hasBalcony} onValueChange={(value) => updateField("hasBalcony", value)}>
                   <SelectTrigger>
                     <SelectValue placeholder={t('options.choose')} />
