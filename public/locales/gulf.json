@@ -193,8 +193,38 @@
     "front_camera": "الكاميرا الأمامية (ميجابكسل)",
     "rear_camera": "الكاميرا الخلفية (ميجابكسل)",
     "connectivity": "الاتصال",
-    "modifications": "التعديلات",
-    "accessories": "الملحقات",
+    "modifications": {
+      "none": "ما في تعديلات",
+      "screen": "تغيير الشاشة",
+      "battery": "تغيير البطارية",
+      "charging_port": "تغيير منفذ الشحن",
+      "speakers": "تغيير السماعات",
+      "screen_protector": "إضافة واقي شاشة",
+      "back_cover": "تغيير الغطاء الخلفي",
+      "os_update": "تحديث النظام",
+      "memory": "إضافة ذاكرة",
+      "camera": "تغيير الكاميرا",
+      "motherboard": "إصلاح اللوحة الأم",
+      "other": "تعديلات ثانية"
+    },
+    "accessories": {
+      "original_charger": "شاحن أصلي",
+      "usb_cable": "كابل USB",
+      "headphones": "سماعات",
+      "digital_pen": "قلم رقمي",
+      "keyboard": "كيبورد",
+      "mouse": "ماوس",
+      "case": "جنطة حماية",
+      "screen_protector": "واقي شاشة",
+      "stand": "حامل تابلت",
+      "car_charger": "شاحن سيارة",
+      "power_bank": "باور بانك",
+      "memory_card": "كارت ذاكرة",
+      "usb_adapter": "محول USB",
+      "bluetooth_speaker": "سماعة بلوتوث",
+      "external_camera": "كاميرا خارجية",
+      "led_light": "إضاءة LED"
+    },
     "available_colors": "الألوان المتاحة"
   },
   "bicycle": {
@@ -240,7 +270,35 @@
     "season": "الموسم",
     "country_of_origin": "بلد الصنع",
     "modifications": "التعديلات",
-    "available_colors": "الألوان المتاحة"
+    "available_colors": "الألوان المتاحة",
+    "gender_options": {
+      "men": "رجالي",
+      "women": "حريمي",
+      "kids": "عيال",
+      "unisex": "للجنسين"
+    },
+    "style_options": {
+      "formal": "رسمي",
+      "casual": "كاجوال",
+      "sport": "رياضي",
+      "elegant": "أنيق",
+      "vintage": "كلاسيكي",
+      "modern": "عصري"
+    },
+    "modifications": {
+      "none": "ما في تعديلات",
+      "length": "تعديل الطول",
+      "resize": "تضييق أو توسيع",
+      "buttons": "تغيير الأزرار",
+      "embroidery": "إضافة تطريز",
+      "zipper": "تغيير السحاب",
+      "tear_repair": "إصلاح تمزق",
+      "lining": "تغيير البطانة",
+      "pockets": "إضافة جيوب",
+      "collar": "تعديل الياقة",
+      "sleeves": "تغيير الأكمام",
+      "other": "تعديلات ثانية"
+    }
   },
   "common": {
     "seller_info": "معلومات البائع",
@@ -308,6 +366,23 @@
     "within_reasonable_limits": "في حدود معقولة",
     "by_type": "حسب النوع",
     "partially": "جزئياً"
+  },
+  "colors": {
+    "black": "أسود",
+    "white": "أبيض",
+    "blue": "أزرق",
+    "red": "أحمر",
+    "green": "أخضر",
+    "yellow": "أصفر",
+    "pink": "وردي",
+    "purple": "بنفسجي",
+    "orange": "برتقالي",
+    "gray": "رمادي",
+    "brown": "بني",
+    "beige": "بيج",
+    "navy": "كحلي",
+    "gold": "ذهبي",
+    "silver": "فضي"
   },
   "settings": {
     "title": "الإعدادات",

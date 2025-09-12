@@ -80,41 +80,42 @@ const TabletForm = ({ data, onChange }: TabletFormProps) => {
   };
 
   const availableColors = [
-    "أسود", "فضي", "ذهبي", "أزرق", "أحمر", "وردي", "أخضر", "رمادي", "أبيض"
+    t('colors.black'), t('colors.silver'), t('colors.gold'), t('colors.blue'), 
+    t('colors.red'), t('colors.pink'), t('colors.green'), t('colors.gray'), t('colors.white')
   ];
 
   const availableModifications = [
-    "لا توجد تعديلات",
-    "تغيير الشاشة",
-    "تغيير البطارية", 
-    "تغيير منفذ الشحن",
-    "تغيير السماعات",
-    "إضافة واقي شاشة",
-    "تغيير الغطاء الخلفي",
-    "تحديث نظام التشغيل",
-    "إضافة ذاكرة إضافية",
-    "تغيير الكاميرا",
-    "إصلاح اللوحة الأم",
-    "تعديلات أخرى"
+    t('tablet.modifications.none'),
+    t('tablet.modifications.screen'),
+    t('tablet.modifications.battery'),
+    t('tablet.modifications.charging_port'),
+    t('tablet.modifications.speakers'),
+    t('tablet.modifications.screen_protector'),
+    t('tablet.modifications.back_cover'),
+    t('tablet.modifications.os_update'),
+    t('tablet.modifications.memory'),
+    t('tablet.modifications.camera'),
+    t('tablet.modifications.motherboard'),
+    t('tablet.modifications.other')
   ];
 
   const availableAccessories = [
-    "شاحن أصلي",
-    "كابل USB",
-    "سماعات",
-    "قلم رقمي",
-    "لوحة مفاتيح",
-    "ماوس",
-    "حقيبة حماية",
-    "واقي شاشة",
-    "حامل تابلت",
-    "شاحن سيارة",
-    "باور بانك",
-    "كارت ذاكرة",
-    "محول USB",
-    "سماعة بلوتوث",
-    "كاميرا خارجية",
-    "إضاءة LED"
+    t('tablet.accessories.original_charger'),
+    t('tablet.accessories.usb_cable'),
+    t('tablet.accessories.headphones'),
+    t('tablet.accessories.digital_pen'),
+    t('tablet.accessories.keyboard'),
+    t('tablet.accessories.mouse'),
+    t('tablet.accessories.case'),
+    t('tablet.accessories.screen_protector'),
+    t('tablet.accessories.stand'),
+    t('tablet.accessories.car_charger'),
+    t('tablet.accessories.power_bank'),
+    t('tablet.accessories.memory_card'),
+    t('tablet.accessories.usb_adapter'),
+    t('tablet.accessories.bluetooth_speaker'),
+    t('tablet.accessories.external_camera'),
+    t('tablet.accessories.led_light')
   ];
 
   const availableUnwantedCustomers = [
@@ -192,7 +193,7 @@ const TabletForm = ({ data, onChange }: TabletFormProps) => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="new">{t('options.new')}</SelectItem>
-                  <SelectItem value="like-new">كالجديد</SelectItem>
+                  <SelectItem value="like-new">{t('options.like_new')}</SelectItem>
                   <SelectItem value="excellent">{t('options.excellent')}</SelectItem>
                   <SelectItem value="good">{t('options.good')}</SelectItem>
                   <SelectItem value="fair">{t('options.fair')}</SelectItem>

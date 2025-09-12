@@ -67,23 +67,25 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
   };
 
   const availableColors = [
-    "أسود", "أبيض", "أزرق", "أحمر", "أخضر", "أصفر", "وردي", "بنفسجي", 
-    "برتقالي", "رمادي", "بني", "بيج", "كحلي", "ذهبي", "فضي"
+    t('colors.black'), t('colors.white'), t('colors.blue'), t('colors.red'), 
+    t('colors.green'), t('colors.yellow'), t('colors.pink'), t('colors.purple'), 
+    t('colors.orange'), t('colors.gray'), t('colors.brown'), t('colors.beige'), 
+    t('colors.navy'), t('colors.gold'), t('colors.silver')
   ];
 
   const availableModifications = [
-    "لا توجد تعديلات",
-    "تعديل الطول",
-    "تضييق أو توسيع",
-    "تغيير الأزرار",
-    "إضافة تطريز",
-    "تغيير السحاب",
-    "إصلاح تمزق",
-    "تغيير البطانة",
-    "إضافة جيوب",
-    "تعديل الياقة",
-    "تغيير الأكمام",
-    "تعديلات أخرى"
+    t('clothing.modifications.none'),
+    t('clothing.modifications.length'),
+    t('clothing.modifications.resize'),
+    t('clothing.modifications.buttons'),
+    t('clothing.modifications.embroidery'),
+    t('clothing.modifications.zipper'),
+    t('clothing.modifications.tear_repair'),
+    t('clothing.modifications.lining'),
+    t('clothing.modifications.pockets'),
+    t('clothing.modifications.collar'),
+    t('clothing.modifications.sleeves'),
+    t('clothing.modifications.other')
   ];
 
   const availableUnwantedCustomers = [
@@ -129,10 +131,10 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
                   <SelectValue placeholder={t('options.choose')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="men">رجالي</SelectItem>
-                  <SelectItem value="women">نسائي</SelectItem>
-                  <SelectItem value="kids">أطفال</SelectItem>
-                  <SelectItem value="unisex">للجنسين</SelectItem>
+                  <SelectItem value="men">{t('clothing.gender_options.men')}</SelectItem>
+                  <SelectItem value="women">{t('clothing.gender_options.women')}</SelectItem>
+                  <SelectItem value="kids">{t('clothing.gender_options.kids')}</SelectItem>
+                  <SelectItem value="unisex">{t('clothing.gender_options.unisex')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -198,12 +200,12 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
                   <SelectValue placeholder={t('options.choose')} />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="formal">رسمي</SelectItem>
-                  <SelectItem value="casual">كاجوال</SelectItem>
-                  <SelectItem value="sport">رياضي</SelectItem>
-                  <SelectItem value="elegant">أنيق</SelectItem>
-                  <SelectItem value="vintage">كلاسيكي</SelectItem>
-                  <SelectItem value="modern">عصري</SelectItem>
+                  <SelectItem value="formal">{t('clothing.style_options.formal')}</SelectItem>
+                  <SelectItem value="casual">{t('clothing.style_options.casual')}</SelectItem>
+                  <SelectItem value="sport">{t('clothing.style_options.sport')}</SelectItem>
+                  <SelectItem value="elegant">{t('clothing.style_options.elegant')}</SelectItem>
+                  <SelectItem value="vintage">{t('clothing.style_options.vintage')}</SelectItem>
+                  <SelectItem value="modern">{t('clothing.style_options.modern')}</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -234,7 +236,7 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="new">{t('options.new')}</SelectItem>
-                  <SelectItem value="like-new">كالجديد</SelectItem>
+                  <SelectItem value="like-new">{t('options.like_new')}</SelectItem>
                   <SelectItem value="excellent">{t('options.excellent')}</SelectItem>
                   <SelectItem value="good">{t('options.good')}</SelectItem>
                   <SelectItem value="fair">{t('options.fair')}</SelectItem>
