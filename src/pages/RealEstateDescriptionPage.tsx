@@ -30,7 +30,7 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
           area: "📐 المساحة:",
           floors: "🏢 عدد الطوابق:",
           currentFloor: "📍 الطابق لي عليه:",
-          clientType: "👤 نوع العميل:",
+          clientType: "👤 نوع الكليان لي بغيت:",
           roomsTitle: "🛏️ البيوت:",
           bedrooms: "🛏️ بيوت النعاس:",
           livingRooms: "🛋️ الصالونات:",
