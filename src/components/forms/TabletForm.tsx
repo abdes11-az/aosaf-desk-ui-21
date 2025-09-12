@@ -447,12 +447,12 @@ const TabletForm = ({ data, onChange }: TabletFormProps) => {
         <CardContent className="space-y-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <Label htmlFor="city">{t('form.city')}</Label>
+              <Label htmlFor="city">المدينة</Label>
               <Input
                 id="city"
                 value={formData.city}
                 onChange={(e) => updateData({ ...formData, city: e.target.value })}
-                placeholder="أدخل اسم المدينة"
+                placeholder="دخل اسم المدينة"
               />
             </div>
             <div>
@@ -484,16 +484,16 @@ const TabletForm = ({ data, onChange }: TabletFormProps) => {
               </Select>
             </div>
             <div>
-              <Label htmlFor="price">السعر</Label>
+              <Label htmlFor="price">الثمن</Label>
               <Input
                 id="price"
                 value={formData.price}
                 onChange={(e) => updateData({ ...formData, price: e.target.value })}
-                placeholder="أدخل السعر"
+                placeholder="دخل الثمن"
               />
             </div>
             <div>
-              <Label htmlFor="negotiable">السعر قابل للتفاوض</Label>
+              <Label htmlFor="negotiable">الثمن فيه متنقص</Label>
               <Select value={formData.negotiable} onValueChange={(value) => updateData({ ...formData, negotiable: value })}>
                 <SelectTrigger>
                   <SelectValue placeholder="اختر..." />
@@ -506,12 +506,12 @@ const TabletForm = ({ data, onChange }: TabletFormProps) => {
               </Select>
             </div>
             <div>
-              <Label htmlFor="contactMethod">طريقة التواصل</Label>
+              <Label htmlFor="contactMethod">كيفاش نتواصلو</Label>
               <Input
                 id="contactMethod"
                 value={formData.contactMethod}
                 onChange={(e) => updateData({ ...formData, contactMethod: e.target.value })}
-                placeholder="رقم الهاتف أو واتساب..."
+                placeholder="رقم التيليفون ولا واتساب..."
               />
             </div>
             <div>
