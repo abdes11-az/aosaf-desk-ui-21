@@ -228,32 +228,6 @@
     "available_colors": "الألوان المتاحة"
   },
   "bicycle": {
-    "description_title": "عجلة للبيع",
-    "description_page_title": "وصف العجلة",
-    "description_page_subtitle": "الوصف المُنشأ لعجلتك",
-    "type": "النوع",
-    "brand": "الماركة",
-    "model": "الموديل",
-    "specifications": "المواصفات",
-    "frame_size": "حجم الإطار",
-    "frame_material": "خامة الإطار",
-    "gear_system": "نظام السرعات",
-    "speed": "سرعة",
-    "brake_type": "نوع الفرامل",
-    "wheel_size": "حجم الكفرات",
-    "weight": "الوزن",
-    "kg": "كيلو",
-    "modifications": "التعديلات",
-    "accessories": "الاكسسوارات اللي معاها",
-    "color": "اللون",
-    "aluminum": "ألومنيوم",
-    "carbon": "كاربون",
-    "steel": "حديد",
-    "titanium": "تيتانيوم",
-    "disc_brakes": "فرامل أقراص",
-    "v_brakes": "فرامل V-Brake",
-    "hydraulic_brakes": "فرامل هيدروليك",
-    "rim_brakes": "فرامل حافة الكفر",
     "title": "تفاصيل العجلة",
     "basic_info": "المعلومات الأساسية",
     "bicycle_type": "نوع العجلة",
@@ -521,32 +495,9 @@
     "general_section_desc": "القسم العام",
     "residential_section_desc": "القسم السكني",
     "commercial_section_desc": "القسم التجاري",
-    "additional_details": "تفاصيل إضافية",
-    "contact_footer": "للاستفسار والتواصل، اتصل بقى",
-    "auto_generated_note": "الوصف ده اتعمل أوتوماتيك وممكن تعدله زي ما تحب",
     "contact_section_desc": "معلومات التواصل",
     "save_file": "احفظ الملف",
     "copy_text": "انسخ النص",
     "edit_info": "عدل المعلومات"
-  },
-  "realEstate": {
-    "description": {
-      "title": "وصف العقار",
-      "subtitle": "وصف شامل للعقار بتاعك"
-    }
-  },
-  "common": {
-    "saveDescription": "احفظ الوصف",
-    "copyText": "انسخ النص",
-    "editInformation": "عدل المعلومات",
-    "descriptionNote": "تم عمل الوصف ده على أساس المعلومات اللي دخلتها • ممكن تعدل أي تفاصيل لو محتاج",
-    "copySuccess": "تم النسخ بنجاح",
-    "copySuccessDesc": "تم نسخ الوصف للحافظة",
-    "copyError": "غلط في النسخ",
-    "copyErrorDesc": "فشل في نسخ النص للحافظة",
-    "saveSuccess": "تم الحفظ بنجاح",
-    "saveSuccessDesc": "تم حفظ الوصف في قائمة المحفوظات",
-    "saveError": "غلط في الحفظ",
-    "saveErrorDesc": "فشل في حفظ الوصف"
   }
 }

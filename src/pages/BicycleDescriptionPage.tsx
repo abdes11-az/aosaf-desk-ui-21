@@ -16,70 +16,70 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
   const { t } = useLanguage();
 
   const generateDescription = () => {
-    let description = `🚲 ${t('bicycle.description_title')}\n\n`;
+    let description = `🚲 ${t('bicycle.title')}\n\n`;
     
     // معلومات أساسية
     if (data.type) {
       const typeMap: { [key: string]: string } = {
-        "mountain": t('bicycle.mountain'),
-        "road": t('bicycle.road'),
-        "hybrid": t('bicycle.hybrid'),
-        "electric": t('bicycle.electric'),
-        "bmx": t('bicycle.bmx'),
-        "city": t('bicycle.city')
+        "mountain": "دراجة جبلية",
+        "road": "دراجة طريق",
+        "hybrid": "دراجة هجين",
+        "electric": "دراجة كهربائية",
+        "bmx": "دراجة BMX",
+        "city": "دراجة مدينة"
       };
-      description += `🏷️ ${t('bicycle.type')}: ${typeMap[data.type] || data.type}\n`;
+      description += `🏷️ النوع: ${typeMap[data.type] || data.type}\n`;
     }
     if (data.brand) {
       const brandName = data.brand === "other" ? data.customBrand : data.brand;
       if (brandName) {
-        description += `🏭 ${t('bicycle.brand')}: ${brandName}\n`;
+        description += `🏭 الماركة: ${brandName}\n`;
       }
     }
     if (data.model) {
-      description += `📝 ${t('bicycle.model')}: ${data.model}\n`;
+      description += `📝 الموديل: ${data.model}\n`;
     }
     
     description += "\n";
     
     // المواصفات التقنية
-    description += `⚙️ ${t('bicycle.specifications')}:\n`;
+    description += "⚙️ المواصفات:\n";
     if (data.frameSize) {
-      description += `• ${t('bicycle.frame_size')}: ${data.frameSize}\n`;
+      description += `• حجم الإطار: ${data.frameSize}\n`;
     }
     if (data.material) {
       const materialMap: { [key: string]: string } = {
-        "aluminum": t('bicycle.aluminum'),
-        "carbon": t('bicycle.carbon'),
-        "steel": t('bicycle.steel'),
-        "titanium": t('bicycle.titanium')
+        "aluminum": "ألومنيوم",
+        "carbon": "كاربون",
+        "steel": "حديد",
+        "titanium": "تيتانيوم"
       };
-      description += `• ${t('bicycle.frame_material')}: ${materialMap[data.material] || data.material}\n`;
+      description += `• مادة الإطار: ${materialMap[data.material] || data.material}\n`;
     }
     if (data.gearSystem) {
-      description += `• ${t('bicycle.gear_system')}: ${data.gearSystem} ${t('bicycle.speed')}\n`;
+      description += `• نظام السرعات: ${data.gearSystem} سرعة\n`;
     }
     if (data.brakeType) {
       const brakeMap: { [key: string]: string } = {
-        "disc": t('bicycle.disc_brakes'),
-        "v-brake": t('bicycle.v_brakes'),
-        "hydraulic": t('bicycle.hydraulic_brakes'),
-        "rim": t('bicycle.rim_brakes')
+        "disc": "مكابح قرصية",
+        "v-brake": "مكابح V-Brake",
+        "hydraulic": "مكابح هيدروليكية",
+        "rim": "مكابح حافة العجلة"
       };
-      description += `• ${t('bicycle.brake_type')}: ${brakeMap[data.brakeType] || data.brakeType}\n`;
+      description += `• نوع المكابح: ${brakeMap[data.brakeType] || data.brakeType}\n`;
     }
     if (data.wheelSize) {
-      description += `• ${t('bicycle.wheel_size')}: ${data.wheelSize}\n`;
+      description += `• حجم العجلات: ${data.wheelSize}\n`;
     }
     if (data.weight) {
-      description += `• ${t('bicycle.weight')}: ${data.weight} ${t('bicycle.kg')}\n`;
+      description += `• الوزن: ${data.weight} كغ\n`;
     }
     
     description += "\n";
     
     // التعديلات
     if (data.modifications && data.modifications.length > 0) {
-      description += `🛠️ ${t('bicycle.modifications')}:\n`;
+      description += "🛠️ التعديلات:\n";
       data.modifications.forEach((mod: string) => {
         description += `• ${mod}\n`;
       });
@@ -88,7 +88,7 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     
     // الملحقات
     if (data.accessories && data.accessories.length > 0) {
-      description += `📦 ${t('bicycle.accessories')}:\n`;
+      description += "📦 الملحقات المرفقة:\n";
       data.accessories.forEach((accessory: string) => {
         description += `• ${accessory}\n`;
       });
@@ -97,7 +97,7 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     
     // معلومات إضافية
     if (data.color) {
-      description += `🎨 ${t('bicycle.color')}: ${data.color}\n`;
+      description += `🎨 اللون: ${data.color}\n`;
     }
     
     // الحالة والسعر
@@ -107,38 +107,56 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
     
     // معلومات البائع
     if (data.city || data.sellerType || data.deliveryMethod || data.negotiable || data.contactMethod || data.warranty || data.acceptExchange) {
-      description += `\n👤 ${t('description.seller_info')}:\n`;
-      if (data.city) description += `📍 ${t('description.city')}: ${data.city}\n`;
-      if (data.sellerType) description += `👥 ${t('description.seller_type')}: ${data.sellerType}\n`;
-      if (data.deliveryMethod) description += `🚚 ${t('description.delivery_method')}: ${data.deliveryMethod}\n`;
-      if (data.negotiable) description += `💰 ${t('description.negotiable')}: ${data.negotiable}\n`;
-      if (data.contactMethod) description += `📞 ${t('description.contact_method')}: ${data.contactMethod}\n`;
-      if (data.warranty) description += `🛡️ ${t('description.warranty')}: ${data.warranty}\n`;
-      if (data.warranty === yn("yes", t) && data.warrantyDuration) description += `⏰ ${t('description.warranty_duration')}: ${data.warrantyDuration}\n`;
-      if (data.acceptExchange) description += `🔄 ${t('description.accept_exchange')}: ${data.acceptExchange}\n`;
+      description += "\n👤 معلومات البائع:\n";
+      if (data.city) description += `📍 المدينة: ${data.city}\n`;
+      if (data.sellerType) description += `👥 نوع البائع: ${data.sellerType}\n`;
+      if (data.deliveryMethod) description += `🚚 طريقة التسليم: ${data.deliveryMethod}\n`;
+      if (data.negotiable) description += `💰 السعر قابل للتفاوض: ${data.negotiable}\n`;
+      if (data.contactMethod) description += `📞 طريقة التواصل: ${data.contactMethod}\n`;
+      if (data.warranty) description += `🛡️ الضمان: ${data.warranty}\n`;
+      if (data.warranty === "متوفر" && data.warrantyDuration) description += `⏰ مدة الضمان: ${data.warrantyDuration}\n`;
+      if (data.acceptExchange) description += `🔄 يقبل التبديل: ${data.acceptExchange}\n`;
+      description += "\n";
+      description += "\n👤 معلومات البائع:\n";
+      if (data.city) description += `📍 المدينة: ${data.city}\n`;
+      if (data.sellerType) description += `👥 نوع البائع: ${data.sellerType}\n`;
+      if (data.deliveryMethod) description += `🚚 طريقة التسليم: ${data.deliveryMethod}\n`;
+      if (data.negotiable) description += `💰 السعر قابل للتفاوض: ${data.negotiable}\n`;
+      if (data.contactMethod) description += `📞 طريقة التواصل: ${data.contactMethod}\n`;
+      if (data.warranty) description += `🛡️ الضمان: ${data.warranty}\n`;
+      if (data.acceptExchange) description += `🔄 يقبل التبديل: ${data.acceptExchange}\n`;
       description += "\n";
     }
     
     // سبب البيع
     if (data.sellReason) {
-      description += `💭 ${t('description.sell_reason')}: ${data.sellReason}\n\n`;
+      description += `💭 سبب البيع: ${data.sellReason}\n\n`;
     }
     
     // وصف إضافي
     if (data.description) {
-      description += `📝 ${t('description.additional_details')}:\n${data.description}\n\n`;
+      description += `📝 تفاصيل إضافية:\n${data.description}\n\n`;
     }
     
     // العملاء غير المرغوب فيهم
     if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += `🚫 ${t('description.unwanted_customers')}:\n`;
+      description += "🚫 يُرجى من الفئات التالية عدم التواصل:\n";
       data.unwantedCustomers.forEach((customer: string) => {
         description += `• ${customer}\n`;
       });
       description += "\n";
     }
     
-    description += `📞 ${t('description.contact_footer')}`;
+    // العملاء غير المرغوب فيهم
+    if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
+      description += "🚫 يُرجى من الفئات التالية عدم التواصل:\n";
+      data.unwantedCustomers.forEach((customer: string) => {
+        description += `• ${customer}\n`;
+      });
+      description += "\n";
+    }
+    
+    description += "📞 للاستفسار والتواصل، يرجى الاتصال";
     
     return description;
   };
@@ -178,8 +196,8 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
           <ChevronRight className="w-5 h-5 text-accent-foreground" />
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-foreground">🚲 {t('bicycle.description_page_title')}</h2>
-          <p className="text-muted-foreground text-sm">{t('bicycle.description_page_subtitle')}</p>
+          <h2 className="text-2xl font-bold text-foreground">🚲 وصف الدراجة</h2>
+          <p className="text-muted-foreground text-sm">الوصف المُنشأ لدراجتك الهوائية</p>
         </div>
       </div>
       
@@ -192,23 +210,23 @@ const BicycleDescriptionPage = ({ data, onBack, onNewDescription }: BicycleDescr
       <div className="flex flex-col gap-3">
         <Button onClick={handleSave} className="w-full">
           <Save className="w-4 h-4 mr-2" />
-          {t('buttons.save_description')}
+          حفظ الوصف
         </Button>
         
         <Button onClick={handleCopy} variant="outline" className="w-full">
           <Copy className="w-4 h-4 mr-2" />
-          {t('buttons.copy_text')}
+          نسخ الوصف
         </Button>
         
         <Button onClick={handleRegenerate} variant="outline" className="w-full">
           <RotateCcw className="w-4 h-4 mr-2" />
-          {t('buttons.edit_info')}
+          إعادة إنشاء
         </Button>
       </div>
       
       <div className="mt-8 text-center">
         <p className="text-xs text-muted-foreground">
-          {t('description.auto_generated_note')}
+          هذا الوصف تم إنشاؤه تلقائياً ويمكنك تعديله حسب حاجتك
         </p>
       </div>
     </div>
