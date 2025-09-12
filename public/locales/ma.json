@@ -499,5 +499,25 @@
     "save_file": "احفظ الملف",
     "copy_text": "انسخ النص",
     "edit_info": "بدل المعلومات"
+  },
+  "realEstate": {
+    "description": {
+      "title": "وصف العقار",
+      "subtitle": "وصف شامل للملك ديالك"
+    }
+  },
+  "common": {
+    "saveDescription": "احفظ الوصف",
+    "copyText": "كوپي النص",
+    "editInformation": "عدل المعلومات",
+    "descriptionNote": "تم إنشاء هاد الوصف على أساس المعلومات لي دخلتي • يمكنك تعدل أي حاجة حسب الحاجة",
+    "copySuccess": "تم الكوپي بنجاح",
+    "copySuccessDesc": "تم كوپي الوصف للحافظة",
+    "copyError": "خطأ فالكوپي",
+    "copyErrorDesc": "فشل فكوپي النص للحافظة",
+    "saveSuccess": "تم الحفظ بنجاح",
+    "saveSuccessDesc": "تم حفظ الوصف فلائحة المحفوظات",
+    "saveError": "خطأ فالحفظ",
+    "saveErrorDesc": "فشل فحفظ الوصف"
   }
 }
