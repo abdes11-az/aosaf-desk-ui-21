@@ -328,15 +328,15 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     try {
       await navigator.clipboard.writeText(generatedDescription);
       toast({
-        title: t('common.copySuccess'),
-        description: t('common.copySuccessDesc'),
+        title: "تم النسخ بنجاح",
+        description: "تم نسخ الوصف إلى الحافظة",
       });
     } catch (err) {
       console.error("فشل في نسخ النص:", err);
       toast({
         variant: "destructive",
-        title: t('common.copyError'),
-        description: t('common.copyErrorDesc'),
+        title: "خطأ في النسخ",
+        description: "فشل في نسخ النص إلى الحافظة",
       });
     }
   };
@@ -346,15 +346,15 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
       const title = generateTitleFromData('real-estate', realEstateData);
       saveDescription('real-estate', title, generatedDescription, realEstateData);
       toast({
-        title: t('common.saveSuccess'),
-        description: t('common.saveSuccessDesc'),
+        title: "تم الحفظ بنجاح",
+        description: "تم حفظ الوصف في قائمة المحفوظات",
       });
     } catch (err) {
       console.error("فشل في حفظ الوصف:", err);
       toast({
         variant: "destructive",
-        title: t('common.saveError'),
-        description: t('common.saveErrorDesc'),
+        title: "خطأ في الحفظ",
+        description: "فشل في حفظ الوصف",
       });
     }
   };
@@ -371,8 +371,8 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
         <div className="flex items-center gap-2">
           <span className="text-2xl">🏠</span>
           <div>
-            <h2 className="text-xl font-bold text-foreground">{t('realEstate.description.title')}</h2>
-            <p className="text-muted-foreground text-sm">{t('realEstate.description.subtitle')}</p>
+            <h2 className="text-xl font-bold text-foreground">وصف العقار</h2>
+            <p className="text-muted-foreground text-sm">وصف شامل لعقارك</p>
           </div>
         </div>
       </div>
@@ -386,23 +386,23 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
       <div className="space-y-3">
         <Button onClick={handleSave} className="w-full bg-success hover:bg-success/90 text-success-foreground">
           <Star className="w-4 h-4 ml-2" />
-          {t('common.saveDescription')}
+          حفظ الوصف
         </Button>
         
         <Button onClick={handleCopy} variant="outline" className="w-full">
           <Copy className="w-4 h-4 ml-2" />
-          {t('common.copyText')}
+          نسخ النص
         </Button>
         
         <Button onClick={onNewDescription} variant="outline" className="w-full">
           <RotateCcw className="w-4 h-4 ml-2" />
-          {t('common.editInformation')}
+          تعديل المعلومات
         </Button>
       </div>
       
       <div className="mt-8 bg-accent rounded-lg p-4">
         <p className="text-xs text-muted-foreground text-center">
-          {t('common.descriptionNote')}
+          تم إنشاء هذا الوصف بناءً على المعلومات المُدخلة • يمكنك تعديل أي تفاصيل حسب الحاجة
         </p>
       </div>
     </div>

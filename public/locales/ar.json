@@ -492,25 +492,5 @@
     "save_file": "حفظ الملف",
     "copy_text": "نسخ النص",
     "edit_info": "تعديل المعلومات"
-  },
-  "realEstate": {
-    "description": {
-      "title": "وصف العقار",
-      "subtitle": "وصف شامل لعقارك"
-    }
-  },
-  "common": {
-    "saveDescription": "حفظ الوصف",
-    "copyText": "نسخ النص",
-    "editInformation": "تعديل المعلومات",
-    "descriptionNote": "تم إنشاء هذا الوصف بناءً على المعلومات المُدخلة • يمكنك تعديل أي تفاصيل حسب الحاجة",
-    "copySuccess": "تم النسخ بنجاح",
-    "copySuccessDesc": "تم نسخ الوصف إلى الحافظة",
-    "copyError": "خطأ في النسخ",
-    "copyErrorDesc": "فشل في نسخ النص إلى الحافظة",
-    "saveSuccess": "تم الحفظ بنجاح",
-    "saveSuccessDesc": "تم حفظ الوصف في قائمة المحفوظات",
-    "saveError": "خطأ في الحفظ",
-    "saveErrorDesc": "فشل في حفظ الوصف"
   }
 }
