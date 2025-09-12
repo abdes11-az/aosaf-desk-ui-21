@@ -76,53 +76,6 @@ export const opt = (v: any, t: TranslationFunction): string => {
     case 'جزئيا':
     case 'partially':
       return t('options.partially');
-
-    // Bicycle types
-    case 'mountain':
-    case 'جبلية':
-      return t('options.mountain');
-    case 'road':
-    case 'طريق':
-      return t('options.road');
-    case 'hybrid':
-    case 'هجين':
-      return t('options.hybrid');
-    case 'electric':
-    case 'كهربائية':
-      return t('options.electric');
-    case 'bmx':
-      return t('options.bmx');
-    case 'city':
-    case 'مدينة':
-      return t('options.city');
-
-    // Frame materials
-    case 'aluminum':
-    case 'ألومنيوم':
-      return t('options.aluminum');
-    case 'carbon':
-    case 'كاربون':
-      return t('options.carbon');
-    case 'steel':
-    case 'حديد':
-      return t('options.steel');
-    case 'titanium':
-    case 'تيتانيوم':
-      return t('options.titanium');
-
-    // Brake types
-    case 'disc':
-    case 'قرصية':
-      return t('options.disc');
-    case 'v-brake':
-    case 'v-برك':
-      return t('options.v_brake');
-    case 'hydraulic':
-    case 'هيدروليكية':
-      return t('options.hydraulic');
-    case 'rim':
-    case 'حافة العجلة':
-      return t('options.rim');
   }
   if (isYes(n) || isNo(n)) return yn(n, t);
   return typeof v === 'string' ? v : String(v ?? '');

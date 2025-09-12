@@ -7,7 +7,7 @@ import { getSavedDescriptions, deleteSavedDescription } from "@/utils/saveSystem
 
 interface SavedItem {
   id: string;
-  type: 'car' | 'phone' | 'real-estate' | 'questions' | 'tenant' | 'free-writing' | 'tablet' | 'motorcycle' | 'clothing';
+  type: 'car' | 'phone' | 'real-estate' | 'questions' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing';
   title: string;
   description: string;
   data?: any;
@@ -24,9 +24,7 @@ const SavedPage = ({ onViewItem }: SavedPageProps) => {
 
   const loadSavedItems = () => {
     const items = getSavedDescriptions();
-    // تصفية الدراجات المحفوظة مسبقاً
-    const filteredItems = items.filter(item => item.type !== 'bicycle') as SavedItem[];
-    setSavedItems(filteredItems);
+    setSavedItems(items);
   };
 
   useEffect(() => {
@@ -57,7 +55,7 @@ const SavedPage = ({ onViewItem }: SavedPageProps) => {
       case 'tenant': return '📋';
       case 'free-writing': return '✍️';
       case 'tablet': return '📱';
-      
+      case 'bicycle': return '🚲';
       case 'motorcycle': return '🏍️';
       case 'clothing': return '👕';
       default: return '📄';
@@ -73,7 +71,7 @@ const SavedPage = ({ onViewItem }: SavedPageProps) => {
       case 'tenant': return 'مستأجر';
       case 'free-writing': return 'كتابة حرة';
       case 'tablet': return 'تابلت';
-      
+      case 'bicycle': return 'دراجة هوائية';
       case 'motorcycle': return 'دراجة نارية';
       case 'clothing': return 'ملابس';
       default: return 'عام';

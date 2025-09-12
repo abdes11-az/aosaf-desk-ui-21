@@ -32,7 +32,7 @@
     "real_estate": "عقارات",
     "phones": "تيليفونات",
     "tablet": "التابلت",
-    
+    "bicycle": "بيسيكليتات",
     "motorcycle": "موطو",
     "clothing": "حوايج",
     "tenant": "ملف المكري",
@@ -227,6 +227,20 @@
     },
     "available_colors": "الألوان المتاحة"
   },
+  "bicycle": {
+    "title": "تفاصيل البيسيكليت",
+    "basic_info": "المعلومات الأساسية",
+    "bicycle_type": "نوع البيسيكليت",
+    "technical_details": "التفاصيل التقنية",
+    "frame_size": "حجم الإطار",
+    "material": "مادة الإطار",
+    "gear_system": "نظام السرعات",
+    "brake_type": "نوع الفرامل",
+    "weight": "الوزن (كغ)",
+    "wheel_size": "حجم الروايض",
+    "modifications": "التعديلات",
+    "accessories": "الملحقات"
+  },
   "motorcycle": {
     "title": "تفاصيل الموطو",
     "basic_info": "المعلومات الأساسية",
@@ -352,21 +366,7 @@
     "both": "بجوج",
     "within_reasonable_limits": "في حدود معقولة",
     "by_type": "حسب النوع",
-    "partially": "جزئياً",
-    "mountain": "بيسيكليت جبلية",
-    "road": "بيسيكليت طريق", 
-    "hybrid": "بيسيكليت هجين",
-    "electric": "بيسيكليت كهربائية",
-    "bmx": "بيسيكليت BMX",
-    "city": "بيسيكليت مدينة",
-    "aluminum": "ألومنيوم",
-    "carbon": "كاربون", 
-    "steel": "حديد",
-    "titanium": "تيتانيوم",
-    "disc": "فرامل قرصية",
-    "v_brake": "فرامل V-Brake",
-    "hydraulic": "فرامل هيدروليكية",
-    "rim": "فرامل حافة الروايض"
+    "partially": "جزئياً"
   },
   "colors": {
     "black": "كحل",

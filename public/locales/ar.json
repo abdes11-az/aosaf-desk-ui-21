@@ -32,7 +32,7 @@
     "real_estate": "عقارات",
     "phones": "هواتف",
     "tablet": "تابلت",
-    
+    "bicycle": "دراجات هوائية",
     "motorcycle": "دراجات نارية",
     "clothing": "ملابس",
     "tenant": "ملف المستأجر",
@@ -229,6 +229,11 @@
       "external_camera": "كاميرا خارجية",
       "led_light": "إضاءة LED"
     },
+    "technical_details": "التفاصيل التقنية",
+    "condition_section": "حالة الدراجة",
+    "additional_equipment": "التجهيزات الإضافية",
+    "unwanted_customers": "العملاء غير المرغوبين"
+  },
   "motorcycle": {
     "title": "تفاصيل الدراجة النارية",
     "basic_info": "المعلومات الأساسية",
@@ -354,21 +359,7 @@
     "both": "كلاهما",
     "within_reasonable_limits": "ضمن حدود معقولة",
     "by_type": "حسب النوع",
-    "partially": "جزئياً",
-    "mountain": "دراجة جبلية",
-    "road": "دراجة طريق",
-    "hybrid": "دراجة هجين",
-    "electric": "دراجة كهربائية",
-    "bmx": "دراجة BMX",
-    "city": "دراجة مدينة",
-    "aluminum": "ألومنيوم",
-    "carbon": "كاربون",
-    "steel": "حديد",
-    "titanium": "تيتانيوم",
-    "disc": "مكابح قرصية",
-    "v_brake": "مكابح V-Brake",
-    "hydraulic": "مكابح هيدروليكية",
-    "rim": "مكابح حافة العجلة"
+    "partially": "جزئياً"
   },
   "colors": {
     "black": "أسود",
