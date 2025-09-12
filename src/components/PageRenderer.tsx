@@ -1,4 +1,5 @@
 import { ChevronRight } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 import HomePage from "@/pages/HomePage";
 import CategoriesPage from "@/pages/CategoriesPage";
 import DescriptionPage from "@/pages/DescriptionPage";
@@ -90,6 +91,8 @@ const PageRenderer = ({
   onNewRealEstateDescription,
   onNewTenantDescription
 }: PageRendererProps) => {
+  const { t } = useLanguage();
+  
   switch (currentPage) {
     case 'home':
       return <HomePage onNavigate={onNavigate} />;
@@ -184,7 +187,7 @@ const PageRenderer = ({
               </span>
               <div>
                 <h2 className="text-xl font-bold text-foreground">{viewingItem?.title}</h2>
-                <p className="text-muted-foreground text-sm">وصف محفوظ</p>
+                <p className="text-muted-foreground text-sm">{t('app.saved_description')}</p>
               </div>
             </div>
           </div>

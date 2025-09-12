@@ -1,4 +1,13 @@
 {
+  "app": {
+    "title": "أوصاف",
+    "loading": "يحمل...",
+    "offline_mode": "وضع بدون نت",
+    "saved_description": "وصف محفوظ",
+    "install_app": "نزل التطبيق",
+    "install_description": "خذ تجربة أفضل واستخدم التطبيق بدون نت",
+    "install": "نزل"
+  },
   "nav": {
     "home": "الرئيسية",
     "saved": "الحفظ",

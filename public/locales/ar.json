@@ -1,4 +1,13 @@
 {
+  "app": {
+    "title": "أوصاف",
+    "loading": "جاري التحميل...",
+    "offline_mode": "وضع بدون انترنت",
+    "saved_description": "وصف محفوظ",
+    "install_app": "ثبت التطبيق",
+    "install_description": "احصل على تجربة أفضل واستخدم التطبيق بدون انترنت",
+    "install": "تثبيت"
+  },
   "nav": {
     "home": "الرئيسية",
     "saved": "الحفظ",
@@ -184,22 +193,16 @@
     "front_camera": "الكاميرا الأمامية (ميغابكسل)",
     "rear_camera": "الكاميرا الخلفية (ميغابكسل)",
     "connectivity": "الاتصال",
+    "buying_car": "شراء سيارة",
+    "hobby_change": "تغيير الهواية", 
+    "space_issues": "ضيق المساحة",
+    "personal_reasons": "أسباب شخصية",
     "modifications": "التعديلات",
     "accessories": "الملحقات",
-    "available_colors": "الألوان المتاحة"
-  },
-  "bicycle": {
-    "title": "تفاصيل الدراجة الهوائية",
-    "basic_info": "المعلومات الأساسية",
-    "bicycle_type": "نوع الدراجة",
     "technical_details": "التفاصيل التقنية",
-    "frame_size": "حجم الإطار",
-    "material": "مادة الإطار",
-    "gear_system": "نظام السرعات",
-    "brake_type": "نوع المكابح",
-    "weight": "الوزن (كغ)",
-    "wheel_size": "حجم العجلات",
-    "modifications": "التعديلات",
+    "condition_section": "حالة الدراجة",
+    "additional_equipment": "التجهيزات الإضافية",
+    "unwanted_customers": "العملاء غير المرغوبين"
     "accessories": "الملحقات"
   },
   "motorcycle": {

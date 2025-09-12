@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Download, X } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -11,6 +12,7 @@ interface BeforeInstallPromptEvent extends Event {
 export const PWAInstallPrompt = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e: Event) => {
@@ -80,10 +82,10 @@ export const PWAInstallPrompt = () => {
           </div>
           <div className="flex-1">
             <h3 className="text-sm font-semibold text-foreground mb-1">
-              ثبت التطبيق
+              {t('app.install_app')}
             </h3>
             <p className="text-xs text-muted-foreground mb-3">
-              احصل على تجربة أفضل واستخدم التطبيق بدون انترنت
+              {t('app.install_description')}
             </p>
             <div className="flex gap-2">
               <Button 
@@ -91,7 +93,7 @@ export const PWAInstallPrompt = () => {
                 onClick={handleInstall}
                 className="flex-1"
               >
-                تثبيت
+                {t('app.install')}
               </Button>
               <Button 
                 size="sm" 

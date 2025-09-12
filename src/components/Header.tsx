@@ -17,7 +17,7 @@ const Header = () => {
   return (
     <header className="app-header">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-foreground">أوصاف</h1>
+        <h1 className="text-xl font-bold text-foreground">{t('app.title')}</h1>
         <Popover>
           <PopoverTrigger asChild>
             <button className="touch-button bg-accent hover:bg-surface-hover">
