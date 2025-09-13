@@ -304,7 +304,7 @@ const RealEstateDescriptionPage = ({ realEstateData, onBack, onNewDescription }:
     }
     
     // العملاء غير المرغوبين
-    if (data.unwantedCustomers && data.unwantedCustomers.trim()) {
+    if (data.unwantedCustomers && typeof data.unwantedCustomers === 'string' && data.unwantedCustomers.trim()) {
       description += `${texts.unwantedCustomers} ${data.unwantedCustomers}\n\n`;
     }
 
