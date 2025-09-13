@@ -24,18 +24,15 @@ const Index = () => {
     realEstateFormData,
     tenantFormData,
     clothingFormData,
-    productFormData,
     handleCarFormSubmit,
     handlePhoneFormSubmit,
     handleRealEstateFormSubmit,
     handleTenantFormSubmit,
     handleClothingFormSubmit,
-    handleProductFormSubmit,
     handleNewCarDescription,
     handleNewPhoneDescription,
     handleNewRealEstateDescription,
-    handleNewTenantDescription,
-    handleNewProductDescription
+    handleNewTenantDescription
   } = useFormHandlers(setCurrentPage);
 
   const handleQuestionBankCategory = (category: string) => {
@@ -61,7 +58,6 @@ const Index = () => {
           realEstateFormData={realEstateFormData}
           tenantFormData={tenantFormData}
           clothingFormData={clothingFormData}
-          productFormData={productFormData}
           onNavigate={handleNavigate}
           onBack={handleBack}
           onQuestionBankCategory={handleQuestionBankCategory}
@@ -72,12 +68,10 @@ const Index = () => {
           onRealEstateFormSubmit={handleRealEstateFormSubmit}
           onTenantFormSubmit={handleTenantFormSubmit}
           onClothingFormSubmit={handleClothingFormSubmit}
-          onProductFormSubmit={handleProductFormSubmit}
           onNewCarDescription={handleNewCarDescription}
           onNewPhoneDescription={handleNewPhoneDescription}
           onNewRealEstateDescription={handleNewRealEstateDescription}
           onNewTenantDescription={handleNewTenantDescription}
-          onNewProductDescription={handleNewProductDescription}
         />
       </main>
       <BottomNav activeTab={activeTab} onTabChange={handleTabChange} />

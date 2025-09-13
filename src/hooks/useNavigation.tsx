@@ -27,8 +27,6 @@ export const useNavigation = () => {
         setCurrentPage('motorcycle-form');
       } else if (category === 'clothing') {
         setCurrentPage('clothing-form');
-      } else if (category === 'product') {
-        setCurrentPage('product-form');
       }
     }
   };
@@ -50,9 +48,7 @@ export const useNavigation = () => {
       setCurrentPage('motorcycle-form');
     } else if (currentPage === 'clothing-description') {
       setCurrentPage('clothing-form');
-    } else if (currentPage === 'product-description') {
-      setCurrentPage('product-form');
-    } else if (currentPage === 'car-form' || currentPage === 'phone-form' || currentPage === 'real-estate-form' || currentPage === 'tenant-form' || currentPage === 'tablet-form' || currentPage === 'bicycle-form' || currentPage === 'motorcycle-form' || currentPage === 'clothing-form' || currentPage === 'product-form') {
+    } else if (currentPage === 'car-form' || currentPage === 'phone-form' || currentPage === 'real-estate-form' || currentPage === 'tenant-form' || currentPage === 'tablet-form' || currentPage === 'bicycle-form' || currentPage === 'motorcycle-form' || currentPage === 'clothing-form') {
       setCurrentPage('create-description');
     } else if (currentPage === 'car-questions' || currentPage === 'phone-questions' || currentPage === 'real-estate-questions') {
       setCurrentPage('question-bank');
