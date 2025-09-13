@@ -99,12 +99,8 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     description += "\n";
 
     // العملاء غير المرغوبين
-    if (data.unwantedCustomers && data.unwantedCustomers.length > 0) {
-      description += `🚫 ${t('description.unwanted_customers')}:\n`;
-      data.unwantedCustomers.forEach((customer: string) => {
-        description += `• ${customer}\n`;
-      });
-      description += "\n";
+    if (data.unwantedCustomers && data.unwantedCustomers.trim()) {
+      description += `🚫 ${t('description.unwanted_customers')}: ${data.unwantedCustomers}\n\n`;
     }
 
     // ملاحظات إضافية
