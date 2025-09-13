@@ -18,7 +18,6 @@ import RealEstateDescriptionPage from "@/pages/RealEstateDescriptionPage";
 import TenantDescriptionPage from "@/pages/TenantDescriptionPage";
 import ClothingDescriptionPage from "@/pages/ClothingDescriptionPage";
 import ProductForm from "@/components/forms/ProductForm";
-import ProductDescriptionPage from "@/pages/ProductDescriptionPage";
 import FreeWritingPage from "@/pages/FreeWritingPage";
 import SavedPage from "@/pages/SavedPage";
 import SettingsPage from "@/pages/SettingsPage";
@@ -35,7 +34,6 @@ interface PageRendererProps {
   realEstateFormData: any;
   tenantFormData: any;
   clothingFormData: any;
-  productFormData: any;
   onNavigate: (page: string, category?: string) => void;
   onBack: () => void;
   onQuestionBankCategory: (category: string) => void;
@@ -46,12 +44,10 @@ interface PageRendererProps {
   onRealEstateFormSubmit: (data: any) => void;
   onTenantFormSubmit: (data: any) => void;
   onClothingFormSubmit: (data: any) => void;
-  onProductFormSubmit: (data: any) => void;
   onNewCarDescription: () => void;
   onNewPhoneDescription: () => void;
   onNewRealEstateDescription: () => void;
   onNewTenantDescription: () => void;
-  onNewProductDescription: () => void;
 }
 
 const PageRenderer = ({
@@ -63,7 +59,6 @@ const PageRenderer = ({
   realEstateFormData,
   tenantFormData,
   clothingFormData,
-  productFormData,
   onNavigate,
   onBack,
   onQuestionBankCategory,
@@ -74,12 +69,10 @@ const PageRenderer = ({
   onRealEstateFormSubmit,
   onTenantFormSubmit,
   onClothingFormSubmit,
-  onProductFormSubmit,
   onNewCarDescription,
   onNewPhoneDescription,
   onNewRealEstateDescription,
-  onNewTenantDescription,
-  onNewProductDescription
+  onNewTenantDescription
 }: PageRendererProps) => {
   const { t } = useLanguage();
   
@@ -141,15 +134,7 @@ const PageRenderer = ({
     case 'clothing-description':
       return <ClothingDescriptionPage data={clothingFormData} onBack={onBack} onNewDescription={() => onNavigate('clothing-form')} />;
     case 'product-form':
-      return <ProductForm onSubmit={onProductFormSubmit} onBack={onBack} />;
-    case 'product-description':
-      return (
-        <ProductDescriptionPage
-          formData={productFormData}
-          onBack={onBack}
-          onNewProduct={onNewProductDescription}
-        />
-      );
+      return <ProductForm onBack={onBack} />;
     case 'free-writing':
       return <FreeWritingPage onBack={onBack} />;
     case 'description':
