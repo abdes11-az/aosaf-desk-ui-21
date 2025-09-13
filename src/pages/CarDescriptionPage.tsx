@@ -82,6 +82,7 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     if (data.documentsReady) description += `📋 ${t('car.documents_ready')}: ${data.documentsReady}\n`;
     if (data.taxAmount) description += `💳 ${t('car.tax_amount')}: ${data.taxAmount}\n`;
     if (data.insuranceAmount) description += `🛡️ ${t('car.insurance_amount')}: ${data.insuranceAmount}\n`;
+    if (data.phoneNumber) description += `📞 ${t('placeholders.phone_whatsapp')}: ${data.phoneNumber}\n`;
     description += "\n";
 
     // السعر وسبب البيع

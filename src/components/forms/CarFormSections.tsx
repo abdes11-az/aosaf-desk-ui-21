@@ -307,6 +307,15 @@ export const OwnerInfoSection = ({ formData, updateField }: FormSectionProps) =>
           />
         </div>
         <div>
+          <Label htmlFor="phoneNumber">{t('placeholders.phone_whatsapp')}</Label>
+          <Input
+            id="phoneNumber"
+            placeholder={t('placeholders.phone_whatsapp')}
+            value={formData.phoneNumber}
+            onChange={(e) => updateField("phoneNumber", e.target.value)}
+          />
+        </div>
+        <div>
           <Label htmlFor="price">{t('form.price')}</Label>
           <Input
             id="price"

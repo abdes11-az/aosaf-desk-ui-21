@@ -83,6 +83,7 @@ const CarForm = ({ onBack, onGenerateDescription }: CarFormProps) => {
     documentsReady: "",
     taxAmount: "",
     insuranceAmount: "",
+    phoneNumber: "",
     price: "",
     negotiable: "",
     additionalNotes: ""
