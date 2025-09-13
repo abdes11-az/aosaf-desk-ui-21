@@ -87,7 +87,7 @@ const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDes
     description += "\n";
     
     // التعديلات
-    if (data.modifications && data.modifications.trim()) {
+    if (data.modifications && typeof data.modifications === 'string' && data.modifications.trim()) {
       description += `🛠️ التعديلات: ${data.modifications}\n\n`;
     }
     

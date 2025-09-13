@@ -45,7 +45,7 @@ const PhoneDescriptionPage = ({ phoneData, onBack, onNewDescription }: PhoneDesc
     description += "\n";
 
     // التعديلات
-    if (data.modifications && data.modifications.trim()) {
+    if (data.modifications && typeof data.modifications === 'string' && data.modifications.trim()) {
       description += `🛠️ ${t('description.modifications')}: ${data.modifications}\n\n`;
     }
 
@@ -86,7 +86,7 @@ const PhoneDescriptionPage = ({ phoneData, onBack, onNewDescription }: PhoneDesc
     description += "\n";
 
     // العملاء غير المرغوبين
-    if (data.unwantedCustomers && data.unwantedCustomers.trim()) {
+    if (data.unwantedCustomers && typeof data.unwantedCustomers === 'string' && data.unwantedCustomers.trim()) {
       description += `🚫 ${t('description.unwanted_customers')}: ${data.unwantedCustomers}\n\n`;
     }
 
