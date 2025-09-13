@@ -61,20 +61,12 @@ export const TechnicalDetailsSection = ({ formData, updateField }: FormSectionPr
         </div>
         <div>
           <Label htmlFor="steering">{t('car.steering')}</Label>
-          <Select value={formData.steering} onValueChange={(value) => updateField("steering", value)}>
-            <SelectTrigger>
-              <SelectValue placeholder={t('options.choose')} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="المقود العادي">المقود العادي</SelectItem>
-              <SelectItem value="المقود الهيدروليكي">المقود الهيدروليكي</SelectItem>
-              <SelectItem value="المقود الكهربائي">المقود الكهربائي</SelectItem>
-              <SelectItem value="المقود الإلكتروني">المقود الإلكتروني</SelectItem>
-              <SelectItem value="المقود متعدد الوظائف">المقود متعدد الوظائف</SelectItem>
-              <SelectItem value="المقود الرياضي">المقود الرياضي</SelectItem>
-              <SelectItem value="المقود الذكي">المقود الذكي</SelectItem>
-            </SelectContent>
-          </Select>
+          <Input
+            id="steering"
+            placeholder="أدخل نوع المقود (مثال: هيدروليكي، كهربائي، ذكي...)"
+            value={formData.steering}
+            onChange={(e) => updateField("steering", e.target.value)}
+          />
         </div>
         <div>
           <Label htmlFor="airbags">{t('car.airbags')}</Label>
