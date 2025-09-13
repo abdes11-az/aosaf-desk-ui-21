@@ -1,5 +1,6 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import i18n from '../i18n';
 
 type Dialect = 'standard' | 'moroccan' | 'egyptian' | 'gulf';
 
@@ -12,14 +13,39 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { t, i18n } = useTranslation();
+  const [isI18nReady, setIsI18nReady] = useState(false);
+  const [currentDialect, setCurrentDialect] = useState<Dialect>('standard');
+
+  useEffect(() => {
+    const checkI18nReady = () => {
+      if (i18n.isInitialized) {
+        setIsI18nReady(true);
+        setCurrentDialect((i18n.language || 'standard') as Dialect);
+      } else {
+        // إذا لم يكن جاهزاً بعد، انتظر قليلاً وحاول مرة أخرى
+        setTimeout(checkI18nReady, 100);
+      }
+    };
+
+    checkI18nReady();
+  }, []);
 
   const setDialect = (dialect: Dialect) => {
-    i18n.changeLanguage(dialect);
+    if (i18n.isInitialized) {
+      i18n.changeLanguage(dialect);
+      setCurrentDialect(dialect);
+    }
+  };
+
+  const t = (key: string): string => {
+    if (!isI18nReady || !i18n.isInitialized) {
+      return key; // إرجاع المفتاح نفسه إذا لم يكن i18n جاهزاً
+    }
+    return i18n.t(key) || key;
   };
 
   const contextValue: LanguageContextType = {
-    dialect: (i18n.language || 'standard') as Dialect,
+    dialect: currentDialect,
     setDialect,
     t
   };
