@@ -87,12 +87,8 @@ const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDes
     description += "\n";
     
     // التعديلات
-    if (data.modifications && data.modifications.length > 0) {
-      description += "🛠️ التعديلات:\n";
-      data.modifications.forEach((mod: string) => {
-        description += `• ${mod}\n`;
-      });
-      description += "\n";
+    if (data.modifications && data.modifications.trim()) {
+      description += `🛠️ التعديلات: ${data.modifications}\n\n`;
     }
     
     // الألوان
