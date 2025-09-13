@@ -1,12 +1,15 @@
 import { ChevronRight, Mail, MessageCircle, Phone } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ContactPageProps {
   onBack: () => void;
 }
 
 const ContactPage = ({ onBack }: ContactPageProps) => {
+  const { t } = useLanguage();
+  
   const contactMethods = [
     {
       icon: Mail,
@@ -43,8 +46,8 @@ const ContactPage = ({ onBack }: ContactPageProps) => {
         <div className="flex items-center gap-2">
           <span className="text-2xl">📞</span>
           <div>
-            <h2 className="text-xl font-bold text-foreground">اتصل بنا</h2>
-            <p className="text-muted-foreground text-sm">نحن هنا لمساعدتك والإجابة على استفساراتك</p>
+            <h2 className="text-xl font-bold text-foreground">{t('settings.contact')}</h2>
+            <p className="text-muted-foreground text-sm">{t('settings.contact_desc')}</p>
           </div>
         </div>
       </div>

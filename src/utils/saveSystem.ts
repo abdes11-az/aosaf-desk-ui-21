@@ -121,9 +121,9 @@ export const deleteSavedDescription = (id: string): void => {
 export const generateTitleFromData = (type: 'car' | 'phone' | 'real-estate' | 'tenant' | 'free-writing' | 'tablet' | 'bicycle' | 'motorcycle' | 'clothing', data: any): string => {
   switch (type) {
     case 'car':
-      return `${data.model || 'سيارة'} ${data.year || ''}`.trim();
+      return `${data.carType || data.model || 'سيارة'} ${data.year || ''}`.trim();
     case 'phone':
-      return `${data.brand || ''} ${data.model || 'هاتف'}`.trim();
+      return `${data.phoneName || data.brand || 'هاتف'}`.trim();
     case 'real-estate':
       return `${data.propertyType || 'عقار'} في ${data.district || data.city || ''}`.trim();
     case 'tenant':

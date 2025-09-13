@@ -16,7 +16,8 @@ import {
   CarConditionSection,
   UnwantedCustomersSection,
   AdditionalEquipmentSection,
-  OwnerInfoSection
+  OwnerInfoSection,
+  SellReasonSection
 } from "./CarFormSections";
 
 interface CarFormProps {
@@ -399,7 +400,12 @@ const CarForm = ({ onBack, onGenerateDescription }: CarFormProps) => {
           updateArrayField={updateArrayField}
         />
 
-        {/* Continue with more sections... */}
+        {/* سبب البيع وأوقات المعاينة */}
+        <SellReasonSection
+          formData={formData}
+          updateField={updateField}
+        />
+
         <div className="pt-6 border-t">
           <Button onClick={handleSubmit} className="w-full bg-primary hover:bg-primary-hover text-primary-foreground">
             {t('actions.generate')}

@@ -19,7 +19,15 @@ export const errorHandler = {
     
     // محاولة تنظيف التخزين التالف
     try {
-      localStorage.clear();
+      // تنظيف انتقائي بدلاً من مسح كل شيء
+      const keysToRemove = ['saved-descriptions'];
+      keysToRemove.forEach(key => {
+        try {
+          localStorage.removeItem(key);
+        } catch (e) {
+          console.warn(`فشل في حذف ${key}:`, e);
+        }
+      });
     } catch (clearError) {
       console.error('فشل في تنظيف التخزين:', clearError);
     }

@@ -39,6 +39,7 @@ const PhoneDescriptionPage = ({ phoneData, onBack, onNewDescription }: PhoneDesc
     if (data.batteryCapacity) description += `🔋 ${t('description.battery_capacity')}: ${data.batteryCapacity}\n`;
     if (data.batteryLifeNormal) description += `🔋 ${t('description.battery_life_normal')}: ${data.batteryLifeNormal}\n`;
     if (data.batteryLifeGaming) description += `🎮 ${t('description.battery_life_gaming')}: ${data.batteryLifeGaming}\n`;
+    if (data.batteryPercentageIphone) description += `🔋 ${t('description.battery_percentage_iphone')}: ${data.batteryPercentageIphone}\n`;
     if (data.fingerprintWorking) description += `👆 ${t('description.fingerprint')}: ${yn(data.fingerprintWorking, t)}\n`;
     if (data.waterResistant) description += `💧 ${t('description.water_resistant')}: ${yn(data.waterResistant, t)}\n`;
     if (data.networkStatus) description += `📶 ${t('description.network_status')}: ${data.networkStatus}\n`;

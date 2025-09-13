@@ -153,6 +153,10 @@ const PageRenderer = ({
                 {viewingItem?.type === 'car' ? '🚗' : 
                  viewingItem?.type === 'phone' ? '📱' : 
                  viewingItem?.type === 'tenant' ? '📋' : 
+                 viewingItem?.type === 'clothing' ? '👕' :
+                 viewingItem?.type === 'tablet' ? '📱' :
+                 viewingItem?.type === 'bicycle' ? '🚲' :
+                 viewingItem?.type === 'motorcycle' ? '🏍️' :
                  viewingItem?.type === 'free-writing' ? '✍️' : '🏠'}
               </span>
               <div>

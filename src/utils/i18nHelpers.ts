@@ -92,6 +92,7 @@ export const cond = (v: any, t: TranslationFunction): string => {
     case 'كالجديد':
     case 'شبه جديدة':
     case 'شبه جديد':
+    case 'like_new':
       return t('options.like_new');
     case 'excellent':
     case 'ممتاز':
@@ -109,6 +110,9 @@ export const cond = (v: any, t: TranslationFunction): string => {
     case 'مستعمل':
     case 'مستعملة':
       return t('options.used');
+    case 'مجدد':
+    case 'refurbished':
+      return 'مجدد';
     default:
       return typeof v === 'string' ? v : String(v ?? '');
   }

@@ -22,12 +22,14 @@ export const validators = {
 
   // التحقق من أرقام الهواتف
   phone: (value: string): boolean => {
+    if (!value || typeof value !== 'string') return false;
     const phoneRegex = /^[\+]?[0-9\s\-\(\)]{7,15}$/;
     return phoneRegex.test(value.trim());
   },
 
   // التحقق من البريد الإلكتروني
   email: (value: string): boolean => {
+    if (!value || typeof value !== 'string') return false;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(value.trim());
   },
@@ -46,6 +48,13 @@ export const validators = {
     if (!value) return true; // اختياري
     const areaRegex = /^[\d\s\u0600-\u06FFa-zA-Z\.]{1,50}$/;
     return areaRegex.test(value.trim());
+  },
+
+  // التحقق من الأرقام الموجبة
+  positiveNumber: (value: string): boolean => {
+    if (!value || typeof value !== 'string') return false;
+    const num = parseFloat(value);
+    return !isNaN(num) && num > 0;
   }
 };
 

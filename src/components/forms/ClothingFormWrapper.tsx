@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ClothingForm from "./ClothingForm";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface ClothingFormWrapperProps {
   onBack: () => void;
@@ -9,6 +10,7 @@ interface ClothingFormWrapperProps {
 }
 
 const ClothingFormWrapper = ({ onBack, onGenerateDescription }: ClothingFormWrapperProps) => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({});
 
   return (
@@ -21,13 +23,15 @@ const ClothingFormWrapper = ({ onBack, onGenerateDescription }: ClothingFormWrap
           <ChevronRight className="w-5 h-5 text-accent-foreground" />
         </button>
         <div>
-          <h2 className="text-2xl font-bold text-foreground">👕 وصف الملابس</h2>
-          <p className="text-muted-foreground text-sm">أدخل تفاصيل قطعة الملابس</p>
+          <h2 className="text-2xl font-bold text-foreground">👕 {t('clothing.title')}</h2>
+          <p className="text-muted-foreground text-sm">{t('form.fill_all_info')}</p>
         </div>
       </div>
       <ClothingForm data={formData} onChange={setFormData} />
       <div className="mt-8">
-        <Button onClick={() => onGenerateDescription(formData)} className="w-full">إنشاء الوصف</Button>
+        <Button onClick={() => onGenerateDescription(formData)} className="w-full">
+          {t('actions.generate')}
+        </Button>
       </div>
     </div>
   );

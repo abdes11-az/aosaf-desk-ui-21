@@ -36,6 +36,10 @@ export const sanitizeFormData = (data: any): any => {
         .filter(item => typeof item === 'string')
         .map(item => sanitizeInput(item))
         .slice(0, 50); // حد أقصى للعناصر
+    } else if (typeof value === 'number') {
+      sanitized[key] = value;
+    } else if (typeof value === 'boolean') {
+      sanitized[key] = value;
     } else {
       sanitized[key] = value;
     }

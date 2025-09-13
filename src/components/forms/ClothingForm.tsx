@@ -19,21 +19,24 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
     gender: "",
     category: "",
     brand: "",
-    sizes: "",
+    sizes: [] as string[],
     material: "",
     colors: [] as string[],
     style: "",
     season: "",
     countryOfOrigin: "",
     condition: "",
+    customSizes: "",
     
     description: "",
     city: "",
     sellerType: "",
     deliveryMethod: "",
+    price: "",
     negotiable: "",
     contactMethod: "",
     warranty: "",
+    warrantyDuration: "",
     acceptExchange: "",
     ...data
   });
@@ -79,8 +82,8 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
 
   const handleSizeChange = (size: string, checked: boolean) => {
     const newSizes = checked 
-      ? [...(formData.sizes || []), size]
-      : (formData.sizes || []).filter(s => s !== size);
+      ? [...(Array.isArray(formData.sizes) ? formData.sizes : []), size]
+      : (Array.isArray(formData.sizes) ? formData.sizes : []).filter(s => s !== size);
     updateData({ ...formData, sizes: newSizes });
   };
 
@@ -136,7 +139,7 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
                     <div key={size} className="flex items-center space-x-2 space-x-reverse">
                       <Checkbox
                         id={size}
-                        checked={formData.sizes.includes(size)}
+                        checked={Array.isArray(formData.sizes) && formData.sizes.includes(size)}
                         onCheckedChange={(checked) => handleSizeChange(size, checked as boolean)}
                       />
                       <Label htmlFor={size} className="text-sm">{size}</Label>
