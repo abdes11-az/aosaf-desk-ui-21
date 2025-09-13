@@ -26,7 +26,7 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
     season: "",
     countryOfOrigin: "",
     condition: "",
-    modifications: [] as string[],
+    
     description: "",
     city: "",
     sellerType: "",
@@ -35,8 +35,6 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
     contactMethod: "",
     warranty: "",
     acceptExchange: "",
-    sellReason: "",
-    unwantedCustomers: [] as string[],
     ...data
   });
 
@@ -52,19 +50,6 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
     updateData({ ...formData, colors: newColors });
   };
 
-  const handleModificationChange = (modification: string, checked: boolean) => {
-    const newModifications = checked 
-      ? [...formData.modifications, modification]
-      : formData.modifications.filter(m => m !== modification);
-    updateData({ ...formData, modifications: newModifications });
-  };
-
-  const handleUnwantedCustomerChange = (customer: string, checked: boolean) => {
-    const newUnwantedCustomers = checked 
-      ? [...formData.unwantedCustomers, customer]
-      : formData.unwantedCustomers.filter(c => c !== customer);
-    updateData({ ...formData, unwantedCustomers: newUnwantedCustomers });
-  };
 
   const availableColors = [
     t('colors.black'), t('colors.white'), t('colors.blue'), t('colors.red'), 
@@ -73,20 +58,6 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
     t('colors.navy'), t('colors.gold'), t('colors.silver')
   ];
 
-  const availableModifications = [
-    t('clothing.modifications.none'),
-    t('clothing.modifications.length'),
-    t('clothing.modifications.resize'),
-    t('clothing.modifications.buttons'),
-    t('clothing.modifications.embroidery'),
-    t('clothing.modifications.zipper'),
-    t('clothing.modifications.tear_repair'),
-    t('clothing.modifications.lining'),
-    t('clothing.modifications.pockets'),
-    t('clothing.modifications.collar'),
-    t('clothing.modifications.sleeves'),
-    t('clothing.modifications.other')
-  ];
 
   const availableUnwantedCustomers = [
     "👀 المهتمون بالسعر فقط دون نية للشراء",
@@ -247,28 +218,6 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
         </CardContent>
       </Card>
 
-      {/* التعديلات */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg flex items-center gap-2">
-            🛠️ التعديلات
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid grid-cols-2 gap-2">
-            {availableModifications.map((modification) => (
-              <div key={modification} className="flex items-center space-x-2 space-x-reverse">
-                <Checkbox
-                  id={modification}
-                  checked={formData.modifications.includes(modification)}
-                  onCheckedChange={(checked) => handleModificationChange(modification, checked as boolean)}
-                />
-                <Label htmlFor={modification} className="text-sm">{modification}</Label>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
 
       {/* الألوان المتاحة */}
       <Card>
@@ -293,61 +242,7 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
         </CardContent>
       </Card>
 
-      {/* سبب البيع */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg flex items-center gap-2">
-            💭 {t('form.sell_reason')}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div>
-            <Label>{t('form.sell_reason')}</Label>
-            <Select value={formData.sellReason} onValueChange={(value) => updateData({ ...formData, sellReason: value })}>
-              <SelectTrigger>
-                <SelectValue placeholder={t('placeholders.choose_sell_reason')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="تغيير المقاس">{t('sell_reasons.clothing.size_change')}</SelectItem>
-                <SelectItem value="عدم الاستخدام">{t('sell_reasons.clothing.no_use')}</SelectItem>
-                <SelectItem value="تغيير الستايل">{t('sell_reasons.clothing.style_change')}</SelectItem>
-                <SelectItem value="شراء ملابس جديدة">{t('sell_reasons.clothing.buy_new_clothes')}</SelectItem>
-                <SelectItem value="تنظيف الخزانة">{t('sell_reasons.clothing.closet_cleanup')}</SelectItem>
-                <SelectItem value="الحاجة للمال">{t('sell_reasons.clothing.need_money')}</SelectItem>
-                <SelectItem value="تغيير الوزن">{t('sell_reasons.clothing.weight_change')}</SelectItem>
-                <SelectItem value="انتهاء الموسم">{t('sell_reasons.clothing.season_end')}</SelectItem>
-                <SelectItem value="عدم الراحة">{t('sell_reasons.clothing.not_comfortable')}</SelectItem>
-                <SelectItem value="تكرار القطع">{t('sell_reasons.clothing.duplicate_items')}</SelectItem>
-                <SelectItem value="أسباب شخصية">{t('sell_reasons.clothing.personal_reasons')}</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-        </CardContent>
-      </Card>
 
-      {/* العملاء غير المرغوب فيهم */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg flex items-center gap-2">
-            🚫 {t('common.unwanted_customers_label')}
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Label className="text-base font-medium">{t('common.unwanted_customers_desc')}:</Label>
-          <div className="grid grid-cols-1 gap-2 mt-3">
-            {availableUnwantedCustomers.map((customer) => (
-              <div key={customer} className="flex items-center space-x-2 space-x-reverse">
-                <Checkbox
-                  id={customer}
-                  checked={formData.unwantedCustomers.includes(customer)}
-                  onCheckedChange={(checked) => handleUnwantedCustomerChange(customer, checked as boolean)}
-                />
-                <Label htmlFor={customer} className="text-sm">{customer}</Label>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
 
       {/* معلومات البائع */}
       <Card>

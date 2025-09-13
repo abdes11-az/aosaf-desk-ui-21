@@ -86,10 +86,6 @@ const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDes
     
     description += "\n";
     
-    // التعديلات
-    if (data.modifications && typeof data.modifications === 'string' && data.modifications.trim()) {
-      description += `🛠️ التعديلات: ${data.modifications}\n\n`;
-    }
     
     // الألوان
     if (data.colors && data.colors.length > 0) {
@@ -110,10 +106,6 @@ const ClothingDescriptionPage = ({ data, onBack, onNewDescription }: ClothingDes
       description += `💰 ${t('description.price')}: ${data.price}\n\n`;
     }
     
-    // سبب البيع
-    if (data.sellReason) {
-      description += `💭 سبب البيع: ${data.sellReason}\n\n`;
-    }
     
     // وصف إضافي
     if (data.description) {
