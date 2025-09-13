@@ -178,7 +178,7 @@ export const UnwantedCustomersSection = ({ formData, updateArrayField }: FormSec
     <Card>
       <CardHeader>
         <CardTitle className="text-lg flex items-center gap-2">
-          🚫 {t('car.unwanted_customers')}
+          🚫 {t('common.unwanted_customers_label')}
         </CardTitle>
       </CardHeader>
       <CardContent>

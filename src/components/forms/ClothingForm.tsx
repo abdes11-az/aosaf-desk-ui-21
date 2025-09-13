@@ -329,11 +329,11 @@ const ClothingForm = ({ data, onChange }: ClothingFormProps) => {
       <Card>
         <CardHeader>
           <CardTitle className="text-lg flex items-center gap-2">
-            🚫 العملاء غير المرغوب فيهم
+            🚫 {t('common.unwanted_customers_label')}
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <Label className="text-base font-medium">من لا تريد التعامل معه؟:</Label>
+          <Label className="text-base font-medium">{t('common.unwanted_customers_desc')}:</Label>
           <div className="grid grid-cols-1 gap-2 mt-3">
             {availableUnwantedCustomers.map((customer) => (
               <div key={customer} className="flex items-center space-x-2 space-x-reverse">

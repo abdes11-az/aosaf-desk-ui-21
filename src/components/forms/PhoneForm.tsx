@@ -590,12 +590,12 @@ const PhoneForm = ({ onBack, onGenerateDescription }: PhoneFormProps) => {
         <Card>
           <CardHeader>
             <CardTitle className="text-lg flex items-center gap-2">
-              🚫 {t('common.unwanted_customers')}
+              🚫 {t('common.unwanted_customers_label')}
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div>
-              <Label htmlFor="unwantedCustomers">{t('form.unwanted_customers')}</Label>
+              <Label htmlFor="unwantedCustomers">{t('common.unwanted_customers_desc')}</Label>
               <Textarea
                 id="unwantedCustomers"
                 placeholder="أدخل أنواع العملاء غير المرغوب فيهم..."
