@@ -6,6 +6,7 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
   const [realEstateFormData, setRealEstateFormData] = useState<any>(null);
   const [tenantFormData, setTenantFormData] = useState<any>(null);
   const [clothingFormData, setClothingFormData] = useState<any>(null);
+  const [productFormData, setProductFormData] = useState<any>(null);
 
   const handleCarFormSubmit = (data: any) => {
     setCarFormData(data);
@@ -33,6 +34,11 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
     setCurrentPage('clothing-description');
   };
 
+  const handleProductFormSubmit = (data: any) => {
+    setProductFormData(data);
+    setCurrentPage('product-description');
+  };
+
   const handleNewCarDescription = () => {
     setCurrentPage('car-form');
   };
@@ -49,20 +55,27 @@ export const useFormHandlers = (setCurrentPage: (page: string) => void) => {
     setCurrentPage('tenant-form');
   };
 
+  const handleNewProductDescription = () => {
+    setCurrentPage('product-form');
+  };
+
   return {
     carFormData,
     phoneFormData,
     realEstateFormData,
     tenantFormData,
     clothingFormData,
+    productFormData,
     handleCarFormSubmit,
     handlePhoneFormSubmit,
     handleRealEstateFormSubmit,
     handleTenantFormSubmit,
     handleClothingFormSubmit,
+    handleProductFormSubmit,
     handleNewCarDescription,
     handleNewPhoneDescription,
     handleNewRealEstateDescription,
-    handleNewTenantDescription
+    handleNewTenantDescription,
+    handleNewProductDescription
   };
 };

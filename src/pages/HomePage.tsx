@@ -16,6 +16,12 @@ const HomePage = ({ onNavigate }: HomePageProps) => {
       description: t('home.create_description_desc')
     },
     {
+      id: 'product-form',
+      icon: '🏷️',
+      title: 'إضافة منتج',
+      description: 'أضف منتج جديد مع الصور والتفاصيل'
+    },
+    {
       id: 'free-writing',
       icon: '✍️',
       title: t('home.free_writing'),
