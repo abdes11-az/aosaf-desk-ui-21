@@ -382,7 +382,6 @@ const CarForm = ({ onBack, onGenerateDescription }: CarFormProps) => {
         <UnwantedCustomersSection
           formData={formData}
           updateField={updateField}
-          updateArrayField={updateArrayField}
         />
 
         {/* التجهيزات الإضافية */}

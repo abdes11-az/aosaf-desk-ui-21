@@ -9,7 +9,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 interface FormSectionProps {
   formData: any;
   updateField: (field: string, value: any) => void;
-  updateArrayField: (field: string, value: string, checked: boolean) => void;
+  updateArrayField?: (field: string, value: string, checked: boolean) => void;
 }
 
 export const ModificationsSection = ({ formData, updateField }: FormSectionProps) => {
@@ -162,18 +162,9 @@ export const CarConditionSection = ({ formData, updateField }: FormSectionProps)
   );
 };
 
-export const UnwantedCustomersSection = ({ formData, updateArrayField }: FormSectionProps) => {
+export const UnwantedCustomersSection = ({ formData, updateField }: FormSectionProps) => {
   const { t } = useLanguage();
   
-  const unwantedTypes = [
-    "👀 المهتمون بالسعر فقط دون نية للشراء",
-    "😴 غير الجادين في اتخاذ القرار", 
-    "🔄 من يطلبون التبادل فقط",
-    "🏢 الوسطاء",
-    "👶 غير المؤهلين (الأطفال)",
-    "💭 من لا يملكون اهتمامًا حقيقيًا بالمنتج أو الخدمة"
-  ];
-
   return (
     <Card>
       <CardHeader>
@@ -182,19 +173,16 @@ export const UnwantedCustomersSection = ({ formData, updateArrayField }: FormSec
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-3">
-          {unwantedTypes.map((type) => (
-            <div key={type} className="flex items-center space-x-2 space-x-reverse">
-              <Checkbox
-                id={type}
-                checked={formData.unwantedCustomers.includes(type)}
-                onCheckedChange={(checked) => updateArrayField("unwantedCustomers", type, checked as boolean)}
-              />
-              <Label htmlFor={type} className="text-sm font-normal">
-                {type}
-              </Label>
-            </div>
-          ))}
+        <div>
+          <Label htmlFor="unwantedCustomers">اكتب أنواع العملاء غير المرغوب فيهم</Label>
+          <Textarea
+            id="unwantedCustomers"
+            placeholder="مثال: الوسطاء، غير الجادين، من يطلبون التبادل فقط..."
+            value={formData.unwantedCustomers}
+            onChange={(e) => updateField("unwantedCustomers", e.target.value)}
+            rows={3}
+            className="min-h-[80px]"
+          />
         </div>
       </CardContent>
     </Card>
