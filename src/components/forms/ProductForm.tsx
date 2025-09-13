@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Camera, Upload, X, Eye, Move } from "lucide-react";
 import { toast } from "sonner";
@@ -10,19 +11,22 @@ import { toast } from "sonner";
 interface ProductFormData {
   name: string;
   price: string;
+  currency: string;
   description: string;
   images: File[];
 }
 
 interface ProductFormProps {
+  onSubmit: (data: ProductFormData) => void;
   onBack: () => void;
 }
 
-const ProductForm = ({ onBack }: ProductFormProps) => {
+const ProductForm = ({ onSubmit, onBack }: ProductFormProps) => {
   const { t } = useLanguage();
   const [formData, setFormData] = useState<ProductFormData>({
     name: "",
     price: "",
+    currency: "ريال",
     description: "",
     images: []
   });
@@ -83,7 +87,7 @@ const ProductForm = ({ onBack }: ProductFormProps) => {
     }
   };
 
-  const handleSave = () => {
+  const handleSubmit = () => {
     if (!formData.name.trim()) {
       toast.error("يرجى إدخال اسم المنتج");
       return;
@@ -93,41 +97,18 @@ const ProductForm = ({ onBack }: ProductFormProps) => {
       return;
     }
     
-    try {
-      // إنشاء وصف بسيط للحفظ
-      let description = `🏷️ اسم المنتج: ${formData.name}\n`;
-      description += `💰 السعر: ${formData.price}\n`;
-      if (formData.description.trim()) {
-        description += `📝 الوصف: ${formData.description}\n`;
-      }
-      if (formData.images.length > 0) {
-        description += `📷 عدد الصور: ${formData.images.length}\n`;
-      }
-      
-      // حفظ في المحفوظات
-      const { saveItem } = require('@/utils/saveSystem');
-      saveItem({
-        id: `product_${Date.now()}`,
-        type: 'car', // استخدام car كنوع افتراضي
-        title: formData.name,
-        description: description,
-        data: formData,
-        date: new Date().toISOString()
-      });
-      
-      toast.success("تم حفظ المنتج بنجاح في المحفوظات");
-      
-      // مسح النموذج
-      setFormData({
-        name: "",
-        price: "",
-        description: "",
-        images: []
-      });
-    } catch (error) {
-      toast.error("حدث خطأ أثناء الحفظ");
-    }
+    onSubmit(formData);
   };
+
+  const currencies = [
+    { value: "ريال", label: "ريال سعودي" },
+    { value: "درهم", label: "درهم إماراتي" },
+    { value: "دينار", label: "دينار كويتي" },
+    { value: "جنيه", label: "جنيه مصري" },
+    { value: "درهم مغربي", label: "درهم مغربي" },
+    { value: "دولار", label: "دولار أمريكي" },
+    { value: "يورو", label: "يورو" }
+  ];
 
   return (
     <div className="page-content">
@@ -142,7 +123,7 @@ const ProductForm = ({ onBack }: ProductFormProps) => {
         </Button>
         <div>
           <h2 className="text-2xl font-bold text-foreground">إضافة منتج</h2>
-          <p className="text-muted-foreground text-sm">أضف تفاصيل منتجك واحفظه في المحفوظات</p>
+          <p className="text-muted-foreground text-sm">أضف تفاصيل منتجك الجديد</p>
         </div>
       </div>
 
@@ -161,14 +142,32 @@ const ProductForm = ({ onBack }: ProductFormProps) => {
             />
           </div>
 
-          <div>
-            <Label htmlFor="price">السعر *</Label>
-            <Input
-              id="price"
-              placeholder="أدخل السعر..."
-              value={formData.price}
-              onChange={(e) => updateField("price", e.target.value)}
-            />
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <Label htmlFor="price">السعر *</Label>
+              <Input
+                id="price"
+                type="number"
+                placeholder="أدخل السعر..."
+                value={formData.price}
+                onChange={(e) => updateField("price", e.target.value)}
+              />
+            </div>
+            <div>
+              <Label htmlFor="currency">العملة</Label>
+              <Select value={formData.currency} onValueChange={(value) => updateField("currency", value)}>
+                <SelectTrigger>
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {currencies.map((currency) => (
+                    <SelectItem key={currency.value} value={currency.value}>
+                      {currency.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           <div>
@@ -264,11 +263,11 @@ const ProductForm = ({ onBack }: ProductFormProps) => {
         </div>
 
         <Button 
-          onClick={handleSave}
+          onClick={handleSubmit}
           className="w-full"
           size="lg"
         >
-          حفظ المنتج
+          إنشاء وصف المنتج
         </Button>
       </div>
 
