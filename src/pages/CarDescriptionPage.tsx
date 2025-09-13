@@ -45,12 +45,8 @@ const CarDescriptionPage = ({ carData, onBack, onNewDescription }: CarDescriptio
     description += "\n";
 
     // التعديلات
-    if (data.modifications && data.modifications.length > 0) {
-      description += `🛠️ ${t('car.modifications')}:\n`;
-      data.modifications.forEach((mod: string) => {
-        description += `• ${mod}\n`;
-      });
-      description += "\n";
+    if (data.modifications && data.modifications.trim()) {
+      description += `🛠️ ${t('car.modifications')}: ${data.modifications}\n\n`;
     }
 
     // التفاصيل التقنية

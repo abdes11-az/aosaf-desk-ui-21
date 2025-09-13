@@ -45,12 +45,8 @@ const PhoneDescriptionPage = ({ phoneData, onBack, onNewDescription }: PhoneDesc
     description += "\n";
 
     // التعديلات
-    if (data.modifications && data.modifications.length > 0) {
-      description += `🛠️ ${t('description.modifications')}:\n`;
-      data.modifications.forEach((mod: string) => {
-        description += `• ${mod}\n`;
-      });
-      description += "\n";
+    if (data.modifications && data.modifications.trim()) {
+      description += `🛠️ ${t('description.modifications')}: ${data.modifications}\n\n`;
     }
 
     // الملحقات
