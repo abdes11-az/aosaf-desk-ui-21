@@ -12,19 +12,8 @@ interface FormSectionProps {
   updateArrayField: (field: string, value: string, checked: boolean) => void;
 }
 
-export const ModificationsSection = ({ formData, updateArrayField }: FormSectionProps) => {
+export const ModificationsSection = ({ formData, updateField }: FormSectionProps) => {
   const { t } = useLanguage();
-  
-  const modifications = [
-    "لا توجد تعديلات",
-    "تغيير المحرك", 
-    "تغيير ناقل الحركة",
-    "تغيير الهيكل",
-    "تغيير التعليق",
-    "تغيير الفرامل",
-    "تغييرات تجميلية",
-    "تغييرات أخرى"
-  ];
 
   return (
     <Card>
@@ -34,19 +23,15 @@ export const ModificationsSection = ({ formData, updateArrayField }: FormSection
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <div className="space-y-3">
-          {modifications.map((modification) => (
-            <div key={modification} className="flex items-center space-x-2 space-x-reverse">
-              <Checkbox
-                id={modification}
-                checked={formData.modifications.includes(modification)}
-                onCheckedChange={(checked) => updateArrayField("modifications", modification, checked as boolean)}
-              />
-              <Label htmlFor={modification} className="text-sm font-normal">
-                {modification}
-              </Label>
-            </div>
-          ))}
+        <div>
+          <Label htmlFor="modifications">{t('car.modifications')}</Label>
+          <Textarea
+            id="modifications"
+            placeholder="أدخل التعديلات المطلوبة..."
+            value={formData.modifications}
+            onChange={(e) => updateField("modifications", e.target.value)}
+            className="min-h-[100px]"
+          />
         </div>
       </CardContent>
     </Card>
@@ -303,16 +288,12 @@ export const OwnerInfoSection = ({ formData, updateField }: FormSectionProps) =>
         </div>
         <div>
           <Label htmlFor="ownership">{t('car.ownership')}</Label>
-          <Select value={formData.ownership} onValueChange={(value) => updateField("ownership", value)}>
-            <SelectTrigger>
-              <SelectValue placeholder={t('options.choose')} />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="ملك">ملك</SelectItem>
-              <SelectItem value="وكالة">وكالة</SelectItem>
-              <SelectItem value="وسيط">وسيط</SelectItem>
-            </SelectContent>
-          </Select>
+          <Input
+            id="ownership"
+            placeholder="أدخل نوع الملكية"
+            value={formData.ownership}
+            onChange={(e) => updateField("ownership", e.target.value)}
+          />
         </div>
         <div>
           <Label htmlFor="documentsReady">{t('car.documents_ready')}</Label>
@@ -370,18 +351,13 @@ export const OwnerInfoSection = ({ formData, updateField }: FormSectionProps) =>
       </div>
       <div>
         <Label htmlFor="sellReason">{t('form.sell_reason')}</Label>
-        <Select value={formData.sellReason} onValueChange={(value) => updateField("sellReason", value)}>
-          <SelectTrigger>
-            <SelectValue placeholder={t('options.choose')} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="شراء سيارة جديدة">شراء سيارة جديدة</SelectItem>
-            <SelectItem value="ظروف مالية">ظروف مالية</SelectItem>
-            <SelectItem value="السفر">السفر</SelectItem>
-            <SelectItem value="عدم الحاجة">عدم الحاجة</SelectItem>
-            <SelectItem value="أخرى">أخرى</SelectItem>
-          </SelectContent>
-        </Select>
+        <Textarea
+          id="sellReason"
+          placeholder="أدخل سبب البيع..."
+          value={formData.sellReason}
+          onChange={(e) => updateField("sellReason", e.target.value)}
+          className="min-h-[80px]"
+        />
       </div>
       <div>
         <Label htmlFor="inspectionTimes">{t('car.inspection_times')}</Label>

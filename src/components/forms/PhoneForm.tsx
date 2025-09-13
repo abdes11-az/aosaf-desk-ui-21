@@ -339,31 +339,15 @@ const PhoneForm = ({ onBack, onGenerateDescription }: PhoneFormProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Label className="text-base font-medium">{t('phone.modifications')}:</Label>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mt-3">
-              {modifications.map((modification) => (
-                <div key={modification} className="flex items-center space-x-2 space-x-reverse">
-                  <Checkbox
-                    id={modification}
-                    checked={formData.modifications.includes(modification)}
-                    onCheckedChange={(checked) => updateArrayField("modifications", modification, checked as boolean)}
-                  />
-                  <Label htmlFor={modification} className="text-sm cursor-pointer">
-                    {modification === "لا توجد تعديلات" && "✅ "}
-                    {modification === "تغيير الشاشة" && "📱 "}
-                    {modification === "تغيير البطارية" && "🔋 "}
-                    {modification === "تغيير منفذ الشحن" && "🔌 "}
-                    {modification === "تغيير الكاميرا" && "📷 "}
-                    {modification === "تجديد الجهاز" && "🔧 "}
-                    {modification === "تغيير السماعة" && "🔊 "}
-                    {modification === "تغيير الميكروفون" && "🎤 "}
-                    {modification === "إصلاح اللوحة الأم" && "⚡ "}
-                    {modification === "تحديث النظام" && "💾 "}
-                    {modification === "تغييرات أخرى" && "🔄 "}
-                    {modification}
-                  </Label>
-                </div>
-              ))}
+            <div>
+              <Label htmlFor="modifications">{t('phone.modifications')}</Label>
+              <Textarea
+                id="modifications"
+                placeholder="أدخل التعديلات التي تمت على الهاتف..."
+                value={formData.modifications}
+                onChange={(e) => updateField("modifications", e.target.value)}
+                className="min-h-[100px]"
+              />
             </div>
           </CardContent>
         </Card>
@@ -565,19 +549,13 @@ const PhoneForm = ({ onBack, onGenerateDescription }: PhoneFormProps) => {
           <CardContent>
             <div>
               <Label htmlFor="sellReason">{t('form.sell_reason')}</Label>
-              <Select value={formData.sellReason} onValueChange={(value) => updateField("sellReason", value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder={t('options.choose')} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="شراء هاتف جديد">شراء هاتف جديد</SelectItem>
-                  <SelectItem value="عدم الحاجة">عدم الحاجة</SelectItem>
-                  <SelectItem value="ظروف مالية">ظروف مالية</SelectItem>
-                  <SelectItem value="السفر">السفر</SelectItem>
-                  <SelectItem value="مشاكل في الجهاز">مشاكل في الجهاز</SelectItem>
-                  <SelectItem value="أخرى">أخرى</SelectItem>
-                </SelectContent>
-              </Select>
+              <Textarea
+                id="sellReason"
+                placeholder="أدخل سبب البيع..."
+                value={formData.sellReason}
+                onChange={(e) => updateField("sellReason", e.target.value)}
+                className="min-h-[80px]"
+              />
             </div>
           </CardContent>
         </Card>
@@ -616,26 +594,15 @@ const PhoneForm = ({ onBack, onGenerateDescription }: PhoneFormProps) => {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <Label className="text-base font-medium">{t('common.unwanted_customers_desc')}:</Label>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
-              {unwantedCustomers.map((customer) => (
-                <div key={customer} className="flex items-center space-x-2 space-x-reverse">
-                  <Checkbox
-                    id={customer}
-                    checked={formData.unwantedCustomers.includes(customer)}
-                    onCheckedChange={(checked) => updateArrayField("unwantedCustomers", customer, checked as boolean)}
-                  />
-                  <Label htmlFor={customer} className="text-sm cursor-pointer">
-                    {customer === "السائلين عن السعر فقط" && "🤔 "}
-                    {customer === "غير الجادين" && "😴 "}
-                    {customer === "طالبي التبادل فقط" && "🔄 "}
-                    {customer === "الوسطاء" && "🏢 "}
-                    {customer === "الأطفال" && "👶 "}
-                    {customer === "غير المهتمين حقاً" && "💭 "}
-                    {customer}
-                  </Label>
-                </div>
-              ))}
+            <div>
+              <Label htmlFor="unwantedCustomers">{t('form.unwanted_customers')}</Label>
+              <Textarea
+                id="unwantedCustomers"
+                placeholder="أدخل أنواع العملاء غير المرغوب فيهم..."
+                value={formData.unwantedCustomers}
+                onChange={(e) => updateField("unwantedCustomers", e.target.value)}
+                className="min-h-[100px]"
+              />
             </div>
           </CardContent>
         </Card>

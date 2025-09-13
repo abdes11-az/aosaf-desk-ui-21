@@ -256,17 +256,12 @@ const CarForm = ({ onBack, onGenerateDescription }: CarFormProps) => {
               </div>
               <div>
                 <Label htmlFor="condition">{t('form.condition')}</Label>
-                <Select value={formData.condition} onValueChange={(value) => updateField("condition", value)}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={t('options.choose')} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="جديدة">{t('options.new')}</SelectItem>
-                    <SelectItem value="مستعملة">{t('options.used')}</SelectItem>
-                    <SelectItem value="شبه جديدة">شبه جديدة</SelectItem>
-                    <SelectItem value="عملت حادث">عملت حادث</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  id="condition"
+                  placeholder="أدخل حالة السيارة"
+                  value={formData.condition}
+                  onChange={(e) => updateField("condition", e.target.value)}
+                />
               </div>
             </div>
           </CardContent>

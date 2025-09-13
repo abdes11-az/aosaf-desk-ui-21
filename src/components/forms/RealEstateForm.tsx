@@ -490,24 +490,13 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
           <CardContent>
             <div>
               <Label htmlFor="sellReason">{t('form.sell_reason')}</Label>
-              <Select value={formData.sellReason} onValueChange={(value) => updateField("sellReason", value)}>
-                <SelectTrigger>
-                  <SelectValue placeholder={t('options.choose')} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="الانتقال إلى مكان آخر">الانتقال إلى مكان آخر</SelectItem>
-                  <SelectItem value="الحاجة للمال">الحاجة للمال</SelectItem>
-                  <SelectItem value="شراء عقار أكبر">شراء عقار أكبر</SelectItem>
-                  <SelectItem value="تصغير حجم المسكن">تصغير حجم المسكن</SelectItem>
-                  <SelectItem value="الاستثمار في مشروع آخر">الاستثمار في مشروع آخر</SelectItem>
-                  <SelectItem value="ظروف عائلية">ظروف عائلية</SelectItem>
-                  <SelectItem value="ظروف مالية">ظروف مالية</SelectItem>
-                  <SelectItem value="السفر للخارج">السفر للخارج</SelectItem>
-                  <SelectItem value="تقسيم الميراث">تقسيم الميراث</SelectItem>
-                  <SelectItem value="عدم الحاجة للعقار">عدم الحاجة للعقار</SelectItem>
-                  <SelectItem value="أسباب شخصية">أسباب شخصية</SelectItem>
-                </SelectContent>
-              </Select>
+              <Textarea
+                id="sellReason"
+                placeholder="أدخل سبب البيع..."
+                value={formData.sellReason}
+                onChange={(e) => updateField("sellReason", e.target.value)}
+                className="min-h-[80px]"
+              />
             </div>
           </CardContent>
         </Card>
@@ -590,27 +579,14 @@ const RealEstateForm = ({ onBack, onGenerateDescription }: RealEstateFormProps) 
           </CardHeader>
           <CardContent>
             <div>
-              <Label className="text-base font-medium">{t('common.unwanted_customers_desc')}:</Label>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2">
-                {unwantedCustomers.map((customer, index) => (
-                  <div key={index} className="flex items-center space-x-2 space-x-reverse">
-                    <Checkbox
-                      id={`customer-${index}`}
-                      checked={formData.unwantedCustomers.includes(customer)}
-                      onCheckedChange={(checked) => updateArrayField("unwantedCustomers", customer, !!checked)}
-                    />
-                    <Label htmlFor={`customer-${index}`} className="text-sm">
-                      {customer === "السائلين عن السعر فقط" && "🤔"} 
-                      {customer === "غير الجادين" && "😴"} 
-                      {customer === "طالبي التبادل فقط" && "🔄"} 
-                      {customer === "الوسطاء" && "🏢"} 
-                      {customer === "الأطفال" && "👶"} 
-                      {customer === "غير المهتمين حقاً" && "💭"} 
-                      {customer}
-                    </Label>
-                  </div>
-                ))}
-              </div>
+              <Label htmlFor="unwantedCustomers">{t('form.unwanted_customers')}</Label>
+              <Textarea
+                id="unwantedCustomers"
+                placeholder="أدخل أنواع العملاء غير المرغوب فيهم..."
+                value={formData.unwantedCustomers}
+                onChange={(e) => updateField("unwantedCustomers", e.target.value)}
+                className="min-h-[100px]"
+              />
             </div>
           </CardContent>
         </Card>
