@@ -16,4 +16,8 @@ if (!rootElement) {
 }
 
 // إنشاء التطبيق وتشغيله
-createRoot(rootElement).render(<App />);
+createRoot(rootElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
